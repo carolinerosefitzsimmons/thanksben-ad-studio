@@ -14,7 +14,9 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "public", "logos");
+const OUT_COLOR = join(ROOT, "public", "logos", "color");
 mkdirSync(OUT, { recursive: true });
+mkdirSync(OUT_COLOR, { recursive: true });
 
 // Load LOGO_DEV_TOKEN from .env.local if present.
 try {
@@ -162,6 +164,55 @@ async function toGreyMark(buf) {
     .toBuffer();
 }
 
+/**
+ * Keep the brand's own colours, just lift it off whatever background it arrived on.
+ * The landing-page marquee uses these; the flat-green set is for places that need
+ * one cohesive ink.
+ */
+async function toColorMark(buf) {
+  const { data, info } = await sharp(buf, { density: 300 })
+    .resize(800, 800, { fit: "inside", withoutEnlargement: false })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  const total = info.width * info.height;
+  let transparent = 0;
+  for (let i = 3; i < data.length; i += 4) if (data[i] < 245) transparent++;
+  const hasAlpha = transparent > total * 0.03;
+
+  const out = Buffer.from(data);
+  if (!hasAlpha) {
+    // Flat white/near-white paper -> transparent, so it sits on any background.
+    for (let i = 0; i < data.length; i += 4) {
+      const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
+      const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+      const chroma = Math.max(r, g, b) - Math.min(r, g, b);
+      if (lum > 242 && chroma < 12) out[i + 3] = 0;
+    }
+  }
+
+  let minX = info.width, minY = info.height, maxX = 0, maxY = 0, opaque = 0;
+  for (let y = 0; y < info.height; y++)
+    for (let x = 0; x < info.width; x++) {
+      if (out[(y * info.width + x) * 4 + 3] > 40) {
+        opaque++;
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+    }
+  if (opaque === 0) return null;
+  if (opaque / ((maxX - minX + 1) * (maxY - minY + 1)) > 0.92) return null; // solid block
+
+  return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } })
+    .trim({ threshold: 8 })
+    .resize({ height: 160, fit: "inside" })
+    .png()
+    .toBuffer();
+}
+
 const clients = JSON.parse(readFileSync(join(ROOT, "data", "clients.json"), "utf8")).filter((c) => c.domain);
 let ok = 0,
   fail = 0;
@@ -173,6 +224,10 @@ async function run(c) {
     const png = await toGreyMark(raw.buf);
     if (!png) throw new Error("unusable (block/blank)");
     if (png.byteLength < 300) throw new Error("tiny");
+    const colored = await toColorMark(raw.buf);
+    if (colored && colored.byteLength > 300) {
+      writeFileSync(join(OUT_COLOR, `${slug(c.domain)}.png`), colored);
+    }
     writeFileSync(join(OUT, `${slug(c.domain)}.png`), png);
     ok++;
     process.stdout.write(`✓ ${c.name}\n`);

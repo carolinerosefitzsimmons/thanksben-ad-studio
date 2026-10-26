@@ -294,6 +294,26 @@ so turning on verification broke the connection. Rather than disabling it again,
 connection and checked, by fingerprint, against the chain the pooler serves.
 Verification stays on; only the trust anchor changes.
 
+### The landing page
+
+Rebuilt to mirror thanksben.com rather than the thin hero the prototype had:
+sticky nav, tailored hero over the brand gradient, an **animated logo marquee**,
+a tailored problem statement, Ben's three pillars (01 Manage / 02 Experience /
+03 Insights) with per-prospect body copy, the "Other platforms added AI" section,
+the real stat row, matched peers, and a closing CTA.
+
+The marquee is two identical groups side by side in a `max-content` track,
+animated to `translate3d(-50%, …)` — when the first group leaves the viewport the
+second sits exactly where it started, so the loop is seamless with no JS. Edges
+are masked, hover pauses it, and `prefers-reduced-motion` turns it into a plain
+scroller. The images must **not** be lazy-loaded: they live inside the translated
+track, so each has to contribute its width before the animation starts, or the
+50% is measured against the wrong total.
+
+Logos in the marquee are the customers' own colours, from
+`public/logos/color/`. The flat-green set in `public/logos/` is still used where
+one cohesive ink reads better.
+
 ### Still weak: the logo row
 
 The ad's "Trusted by" row is the one visibly poor part. `fetchLogoPng` scrapes

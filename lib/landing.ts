@@ -5,19 +5,27 @@ import { vendor, market } from "./brand";
 import type { FirmResearch, Specialty } from "./types";
 
 export interface LandingData {
-  headline: string; // hero headline, vendor voice, tailored to the prospect's segment
+  headline: string; // hero headline, vendor voice, tailored to the prospect's challenge
   subhead: string; // hero subline
-  points: { title: string; body: string }[]; // 3 tailored value props (currently unused in the page)
-  logos: { name: string; domain: string; logoUrl: string | null }[]; // social-proof peer firms
+  /** The problem statement, in the prospect's own terms. Mirrors thanksben.com's
+   *  "Running benefits shouldn't be this hard." but specific to them. */
+  problem: string;
+  /** Ben's three pillars, each tailored. Titles are fixed; bodies are not. */
+  points: { title: string; body: string }[];
+  logos: { name: string; domain: string; logoUrl: string | null }[]; // matched peers
 }
 
+/** Fixed on thanksben.com; only the body copy under each is tailored. */
+export const PILLARS = ["Manage", "Experience", "Insights"] as const;
+
 const FALLBACK = (firm: FirmResearch, sp: Specialty): Omit<LandingData, "logos"> => ({
-  headline: `AI built for ${sp.name.toLowerCase()}.`,
-  subhead: `The AI benefits platform built for ${firm.firmName}'s ${sp.name.toLowerCase()}.`,
+  headline: `The AI-native benefits platform for ${firm.firmName}.`,
+  subhead: `One platform, every market — built for teams carrying ${sp.name.toLowerCase()}.`,
+  problem: "Running benefits shouldn't be this hard.",
   points: [
-    { title: "One programme", body: "The same benefits programme everywhere, with each country's rules built in." },
-    { title: "Clean payroll", body: "Benefits data is checked as it moves, so errors surface before payday." },
-    { title: "Real usage", body: "See what people actually use, not what the brochure said they would." },
+    { title: "Manage", body: "One eligibility engine across every entity and market, reconciled against payroll before it runs." },
+    { title: "Experience", body: "One card, one app, and an assistant that answers your people instead of your inbox." },
+    { title: "Insights", body: "Live spend and usage, so you can show which benefits earn their cost." },
   ],
 });
 
@@ -42,8 +50,13 @@ LEAD ${market.segmentLabel.toUpperCase()}: ${sp.name}${sp.blurb ? ` — ${sp.blu
 SECTORS: ${sp.industries.join(", ") || "various"}
 
 Return STRICT JSON (no markdown):
-{"headline":"4-8 words. Must make UNMISTAKABLY clear ${vendor.name} is AI SOFTWARE that helps with ${sp.name} work — NOT the prospect's own slogan. It must contain the word 'AI'. Good patterns: 'AI built for ${sp.name.toLowerCase()} teams', 'The AI workspace for ${sp.name.toLowerCase()}'. BAD (sounds like their own tagline): '${sp.name}, without compromise.'","subhead":"one line (max 14 words) positioning ${vendor.name} as the platform that takes ${sp.name} off ${firm.firmName}'s people team","points":[{"title":"2-3 words","body":"max 16 words, concrete to how ${sp.name} teams would use ${vendor.name}"}]}
-Return exactly 3 points. No markdown.`,
+{"headline":"5-10 words. Must make UNMISTAKABLY clear ${vendor.name} is AI SOFTWARE for running employee benefits — NOT ${firm.firmName}'s own slogan. It must contain 'AI'. The house pattern is 'The AI-native benefits platform for <who>'; vary it, but keep that clarity.","subhead":"One line, max 22 words. Echo the house structure 'One platform, every market — ...' and land what changes for ${firm.firmName} specifically.","problem":"ONE short sentence naming the pain in their words, in the register of 'Running benefits shouldn't be this hard.' Make it specific to ${sp.name} at an organisation like theirs. Max 10 words.","points":[{"title":"Manage","body":"max 22 words"},{"title":"Experience","body":"max 22 words"},{"title":"Insights","body":"max 22 words"}]}
+
+The three points are ${vendor.name}'s fixed pillars and the titles MUST be exactly "Manage", "Experience" and "Insights", in that order. Tailor only the body of each to ${firm.firmName} and to ${sp.name}:
+- Manage = the admin, eligibility rules, multi-entity and multi-country setup, payroll reconciliation
+- Experience = what an employee at ${firm.firmName} actually gets: the card, the allowance, the assistant
+- Insights = what their reward and finance teams can finally see and prove
+No markdown.`,
           },
         ],
       }),
@@ -61,14 +74,17 @@ Return exactly 3 points. No markdown.`,
       return FALLBACK(firm, sp);
     }
     const o = JSON.parse(m[0]) as Partial<Omit<LandingData, "logos">>;
-    const points = Array.isArray(o.points) ? o.points.filter((p) => p?.title && p?.body).slice(0, 3) : [];
     const fb = FALLBACK(firm, sp);
+    // The pillar titles are Ben's, not the model's — keep them fixed and take only the bodies.
+    const bodies = (Array.isArray(o.points) ? o.points : []).map((p) => (typeof p?.body === "string" ? p.body : ""));
+    const points = PILLARS.map((title, i) => ({ title, body: bodies[i] || fb.points[i].body }));
     // Guard: the headline must read as software, not the prospect's own slogan.
     const headline = o.headline && market.landingHeadlineGuard.test(o.headline) ? o.headline : fb.headline;
     return {
       headline,
       subhead: o.subhead || fb.subhead,
-      points: points.length === 3 ? points : fb.points,
+      problem: typeof o.problem === "string" && o.problem.trim() ? o.problem : fb.problem,
+      points,
     };
   } catch (err) {
     console.error(`[landing] ${firm.firmName}: threw — ${(err as Error).message}`);

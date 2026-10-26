@@ -120,3 +120,53 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
   animation: shimmer 1.4s infinite;
 }
+
+/* ── Landing-page logo marquee ───────────────────────────────────────────────
+   Two identical groups sit side by side and the track slides left by exactly
+   50%, so the moment the first group leaves the viewport the second is in the
+   same place it started — the loop is seamless with no JS.
+   Masked at both edges so logos fade rather than clip. */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 46s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 4.5rem;
+  padding-right: 4.5rem;
+  flex: none;
+}
+.marquee-logo {
+  height: 34px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  flex: none;
+  /* Slight knock-back so a wall of competing brand colours still reads as one
+     strip; full colour on hover. */
+  opacity: 0.82;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.marquee-logo:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+@keyframes marquee-slide {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+}

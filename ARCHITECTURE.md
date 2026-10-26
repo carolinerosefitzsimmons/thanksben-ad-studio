@@ -255,19 +255,56 @@ Both refuse with a 429 naming the actual counts.
 | `POST /api/research` was dead code, along with `researchFirm()` | deleted |
 | `LOGO_DEV_TOKEN` undocumented, `PARALLEL_KEY`/`EXA_KEY` documented but unread | `.env.example` |
 
-## What has and has not been exercised
+## What has been exercised
 
-**Verified:** production build and type-check clean; the app serves; Basic auth
-returns 401/200 correctly and leaves `/lp/*` public; the storage layer
-round-trips a PNG and rejects path traversal; the matcher produces sensible,
-differentiated peers across all nine challenges; all 23 vault domains were
-checked to resolve, and the flagged ones checked to be the right company.
+Run end to end on 26 Oct 2026 against a live Supabase database, Anthropic and
+OpenAI, with Revolut as the prospect.
 
-**Not verified, because it needs credentials and spend:** no ad has been
-rendered. The image prompt was rewritten wholesale for an illustrated brand and
-has never been run against `gpt-image-2`. Expect to iterate on it — that is the
-first thing to look at once a key is in place.
+| Step | Result |
+| --- | --- |
+| Schema applied by `ensureSchema()` | Tables created on a fresh database |
+| `POST /api/seed` | 29 customers loaded |
+| `POST /api/research-stream` | 7s; correct challenges, correct region, real narration |
+| `POST /api/generate` | 86s end to end for one market |
+| Copy | *"One banking license per market. One benefits policy everywhere."* |
+| Image | 1792×1024, on-brand, text spelled correctly |
+| Storage + `/api/ads/[id]` | Written, served, correct ETag |
+| `/lp/[id]` | Renders publicly, uses the pre-rendered green logos |
+| Basic auth | 401/200 correct, `/lp/*` exempt |
 
-**Also unverified:** nothing has run against a real Postgres, so `ensureSchema()`
-applying `supabase/schema.sql` is type-correct but untested, as is the Supabase
-Storage driver.
+### Two faults this run found
+
+**Research returned the wrong kind of thing.** The streaming route never
+received `market.segmentExamples`, so the model free-texted from the website and
+returned Revolut's *commercial* priorities — "Customer acquisition and
+retention", "Product feature development". Those match nothing in the vault, and
+worse, "acquisition" token-matched "Post-acquisition harmonisation", so the
+matcher returned confident nonsense.
+
+Fixed in two places, because a prompt alone is not a guarantee:
+- the prompt now carries the closed list and states plainly that a challenge is
+  a problem the organisation has *running benefits for its own staff*, not its
+  business strategy;
+- `lib/segments.ts` validates what comes back, snapping names onto the allowed
+  list and dropping anything else, plus rejecting "Europe"/"Multiple" as cities.
+
+**Supabase TLS.** Supabase signs database certificates with its own private root,
+so turning on verification broke the connection. Rather than disabling it again,
+`supabase/prod-ca-2021.crt` is pinned — downloaded from Supabase over a verified
+connection and checked, by fingerprint, against the chain the pooler serves.
+Verification stays on; only the trust anchor changes.
+
+### Still weak: the logo row
+
+The ad's "Trusted by" row is the one visibly poor part. `fetchLogoPng` scrapes
+favicons and `og:image`, which gave a full-colour red HSBC hexagon and an "EY
+Parthenon" mark in blue and yellow, both fighting Ben's palette; MUFG resolved to
+nothing. The same scraping produced Trustpilot badges for the landing page.
+**Setting `LOGO_DEV_TOKEN` is the fix** — it is tried first and returns clean
+transparent wordmarks. Until then, review anything the logo script produces.
+
+### Still unverified
+
+Supabase Storage (the run used the local-disk driver, since `SUPABASE_URL` and
+`SUPABASE_SERVICE_ROLE_KEY` are not set), the remix path, and multi-market
+fan-out — the test prospect only yielded one office city.

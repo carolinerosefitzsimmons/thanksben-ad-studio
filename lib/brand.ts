@@ -167,6 +167,9 @@ export const market = {
     "The future of reward.",
   ],
 
+  /** Pre-built for prompts that need the noun with an article. */
+  withArticlePrompt: "an employer",
+
   /** Shown as the example in the URL box. */
   exampleProspectDomain: "zalando.com",
 

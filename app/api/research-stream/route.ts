@@ -16,26 +16,37 @@ export async function POST(req: Request) {
     model: anthropic("claude-haiku-4-5"),
     temperature: 0.4,
     system:
-      `You research a ${market.prospectNoun} from its website for a marketing tool. Be concise, accurate, and never invent facts not supported by the text (infer sensibly from a well-known name if the text is thin).`,
+      `You research ${market.withArticlePrompt} from its website, for a tool that markets an employee benefits platform to them. ` +
+      `Be concise and accurate. Never invent facts about the organisation that the text does not support.`,
     prompt: `${market.prospectNoun.toUpperCase()} DOMAIN: ${domain}
 WEBSITE TEXT:
 ${siteText}
 
-Do TWO things, in this exact order:
+Do TWO things, in this exact order.
 
-1) Output 3 to 5 VERY concise research findings, ONE PER LINE, each starting with "• " and under 9 words. Write them as live narration of what you're discovering, e.g.:
-• Headquartered in London
-• Offices across Europe, US and Asia
-• Strong in financial services and energy
+1) Output 3 to 5 VERY concise findings, ONE PER LINE, each starting with "• " and under 9 words. Narrate what you are discovering about them AS AN EMPLOYER — size, where their people are, what kind of work their staff do. Not their products. For example:
+• Around 4,000 staff across eleven countries
+• Mostly warehouse and delivery, not desk-based
+• Heavily regulated — financial services
+• Hiring fast in Germany and Poland
 
-2) Then output a line containing EXACTLY:
+2) Then a line containing EXACTLY:
 ###DATA###
-Then STRICT JSON on one line (no markdown, no commentary):
-{"firmName":"","location":"City, Country","region":"one of ${JSON.stringify(
-      market.regions,
-    )}","summary":"one sentence","specialties":[{"name":"${market.segmentLabel}","industries":["client sectors"],"blurb":"few words"}],"offices":[{"city":"","country":""}]}
+Then STRICT JSON on one line, no markdown:
+{"firmName":"","location":"City, Country","region":"one of ${JSON.stringify(market.regions)}","summary":"one sentence on what they do","specialties":[{"name":"","industries":[""],"blurb":""}],"offices":[{"city":"","country":""}]}
 
-Rules: specialties = 2-6 of their most prominent ${market.segmentLabelPlural} (most important first). offices = their actual office cities (HQ first, up to 8). If the text is thin, infer sensibly. Always return at least one specialty and one office.`,
+RULES FOR "specialties" — read carefully, this is the part that is usually got wrong:
+Each one is a ${market.segmentLabel.toUpperCase()}: a problem THIS ORGANISATION LIKELY HAS IN RUNNING EMPLOYEE BENEFITS FOR ITS OWN STAFF.
+It is NOT their commercial strategy, NOT their product roadmap, NOT their customer growth. "Customer acquisition", "product development" and "international expansion" are all WRONG — they describe the business, not its workforce.
+
+"name" MUST be copied EXACTLY, character for character, from this list:
+${market.segmentExamples.map((e) => `  - ${e}`).join("\n")}
+
+Choose the 2 to 4 from that list that most plausibly apply, most likely first, inferring from observable facts: how many people, how many countries, frontline vs desk-based, how regulated the sector is, whether they are growing or acquiring. Never invent a name that is not on the list.
+
+"industries" = the sector THEY operate in, chosen from: ${JSON.stringify(market.sectorExamples)}.
+"blurb" = a few words on why that challenge applies to them specifically.
+"offices" = real, named CITIES they operate in, HQ first, up to 8. A city, never a country or a region — "Berlin" not "Germany", and never "Europe" or "Multiple". If only one city is evident, return just that one.`,
   });
 
   return result.toTextStreamResponse();

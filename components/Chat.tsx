@@ -8,6 +8,7 @@ import LoadingDots from "./LoadingDots";
 import Sources from "./Sources";
 import SelectWizard from "./SelectWizard";
 import type { Ad, FirmResearch, Office } from "@/lib/types";
+import { coerceSegments, coerceOffices } from "@/lib/segments";
 import { vendor, assets, market, label, brandGaps, withArticle } from "@/lib/brand";
 
 type Phase = "empty" | "researching" | "selecting" | "generating" | "done";
@@ -85,12 +86,18 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
       const m = (acc.split("###DATA###")[1] || "").match(/\{[\s\S]*\}/);
       if (!m) throw new Error("Could not parse research");
       const data = JSON.parse(m[0]) as FirmResearch;
+      // The model is told to pick challenges from a closed list; make sure it did.
+      // A free-text name reaches the matcher and produces confident nonsense.
+      const segments = coerceSegments(data.specialties);
       const f: FirmResearch = {
         ...data,
         firmDomain: domainFromUrl(url),
-        offices: data.offices?.length ? data.offices : [{ city: data.location?.split(",")[0] || "HQ", country: "" }],
-        specialties: data.specialties?.length ? data.specialties : [{ name: "General", industries: [] }],
+        offices: coerceOffices(data.offices, data.location?.split(",")[0]?.trim(), data.location?.split(",").pop()?.trim()),
+        specialties: segments.length ? segments : [{ name: market.segmentExamples[0], industries: [] }],
       };
+      if (!segments.length) {
+        console.warn("[research] no recognised challenges returned; falling back to the first on the list.");
+      }
       setFirm(f);
       setSpecialties([]);
       setMarkets([]);

@@ -8,3 +8,6 @@
 /research
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Local ad-image storage (lib/storage.ts local driver)
+/.data

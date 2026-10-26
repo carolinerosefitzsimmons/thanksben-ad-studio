@@ -2,6 +2,7 @@
 // expensive hero image is generated once and reused (see assets.landingHero in lib/brand.ts).
 import { matchLogos } from "./match";
 import { vendor, market } from "./brand";
+import { stripMachineTells } from "./copy-style";
 import type { FirmResearch, Specialty } from "./types";
 
 export interface LandingData {
@@ -40,7 +41,7 @@ async function genCopy(firm: FirmResearch, sp: Specialty): Promise<Omit<LandingD
         model: "claude-sonnet-5",
         max_tokens: 3000,
         system:
-          `You write landing-page copy for ${vendor.name}, ${vendor.descriptor} — SOFTWARE that ${market.prospectNounPlural} buy to help their ${market.practitionerNounPlural} work faster. ${vendor.name} is a VENDOR/TOOL, never a ${market.prospectNoun}. Voice: confident, elegant, understated (echoing '${vendor.landingVoiceLine}'). No hype, no exclamation marks, no emojis, no clichés.`,
+          `You write landing-page copy for ${vendor.name}, ${vendor.descriptor} — SOFTWARE that ${market.prospectNounPlural} buy to help their ${market.practitionerNounPlural} work faster. ${vendor.name} is a VENDOR/TOOL, never a ${market.prospectNoun}. Voice: confident, elegant, understated (echoing '${vendor.landingVoiceLine}'). No hype, no exclamation marks, no emojis, no clichés. NEVER use an em dash, an en dash or a colon anywhere in your output. Use full stops and commas. That punctuation is the clearest sign copy was not written by a person.`,
         messages: [
           {
             role: "user",
@@ -81,10 +82,12 @@ No markdown.`,
     // Guard: the headline must read as software, not the prospect's own slogan.
     const headline = o.headline && market.landingHeadlineGuard.test(o.headline) ? o.headline : fb.headline;
     return {
-      headline,
-      subhead: o.subhead || fb.subhead,
-      problem: typeof o.problem === "string" && o.problem.trim() ? o.problem : fb.problem,
-      points,
+      headline: stripMachineTells(headline),
+      subhead: stripMachineTells(o.subhead || fb.subhead),
+      problem: stripMachineTells(
+        typeof o.problem === "string" && o.problem.trim() ? o.problem : fb.problem,
+      ),
+      points: points.map((p) => ({ title: p.title, body: stripMachineTells(p.body) })),
     };
   } catch (err) {
     console.error(`[landing] ${firm.firmName}: threw — ${(err as Error).message}`);

@@ -70,9 +70,12 @@ export const vendor = {
 
 export const palette = {
   /** Ben dark green. Sampled from the official logo plate. */
-  primary: "#002923",
+  primary: "#002924",
   /** Ben off-white. Sampled from the official ad backgrounds. */
   onPrimary: "#F8F9F3",
+  /** Muted green used for secondary nav links on thanksben.com. */
+  navMuted: "#4E7A70",
+
   /** Pale mint, for selected rows. */
   primarySoft: "#EAF4F0",
   /** Deeper green, for buttons on photographic or gradient backgrounds. */

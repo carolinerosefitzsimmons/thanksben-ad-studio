@@ -6,7 +6,25 @@ import type { LandingData } from "@/lib/landing";
 
 /* eslint-disable @next/next/no-img-element */
 
-const NAV = ["Solutions", "How it works", "Customer stories", "Pricing", "Brokers"];
+// Exactly as they appear on thanksben.com, including which carry a dropdown caret.
+const NAV: { label: string; caret?: boolean }[] = [
+  { label: "Solutions", caret: true },
+  { label: "How it works" },
+  { label: "Customer Stories" },
+  { label: "Pricing" },
+  { label: "Resources", caret: true },
+  { label: "Brokers" },
+  { label: "Company", caret: true },
+];
+
+function Caret() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+      stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
 
 const slugOf = (domain: string) =>
   (domain || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -65,17 +83,33 @@ export default function LandingPage({
   const track = Array.from({ length: reps }, () => marquee).flat();
 
   return (
-    <div className="min-h-screen bg-white font-sans text-ink antialiased">
+    <div className="min-h-screen bg-white font-ben text-ink antialiased">
       {/* ── nav ─────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-30 border-b border-black/5 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-3.5">
-          <BrandWordmark height={26} />
-          <nav className="hidden items-center gap-7 text-[14px] text-ink/70 lg:flex">
-            {NAV.map((n) => <a key={n} href="#" className="transition hover:text-ink">{n}</a>)}
+      {/* Measured against thanksben.com: 83px tall, white, logo 34px, links bold
+          17px in #002924, "Login" in #4E7A70, and a 170x62 solid button at 12px
+          radius. */}
+      <header className="sticky top-0 z-30 bg-white">
+        <div className="mx-auto flex h-[83px] max-w-[1600px] items-center gap-10 px-8 xl:px-12">
+          <a href="#" aria-label={vendor.name} className="shrink-0">
+            <BrandWordmark height={34} />
+          </a>
+          <nav className="hidden flex-1 items-center gap-8 xl:flex">
+            {NAV.map((n) => (
+              <a key={n.label} href="#"
+                className="inline-flex items-center gap-1.5 whitespace-nowrap text-[17px] font-bold leading-none text-brand transition hover:opacity-70">
+                {n.label}
+                {n.caret && <Caret />}
+              </a>
+            ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <a href="#" className="hidden text-[14px] text-ink/70 transition hover:text-ink sm:block">Login</a>
-            <Button>Book a demo</Button>
+          <div className="ml-auto flex shrink-0 items-center gap-7">
+            <a href="#" className="hidden text-[17px] font-medium leading-none text-navmuted transition hover:text-brand sm:block">
+              Login
+            </a>
+            <a href="#demo"
+              className="inline-flex h-[62px] items-center justify-center rounded-[12px] bg-brand px-8 text-[17px] font-bold leading-none text-white transition hover:bg-branddeep">
+              Book a demo
+            </a>
           </div>
         </div>
       </header>

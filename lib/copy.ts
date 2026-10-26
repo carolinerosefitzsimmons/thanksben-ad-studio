@@ -3,6 +3,7 @@
 import type { Specialty } from "./types";
 import { capabilityBrief } from "./capabilities";
 import { vendor, market } from "./brand";
+import { stripMachineTells } from "./copy-style";
 
 /** One attempt at the model call. Returns null (never a fallback) so the caller can retry. */
 async function attemptCopy(
@@ -42,6 +43,7 @@ CRITICAL — ${firmName} is a PROSPECT being pitched, NOT a ${V} customer. They 
 - NAME ${V.toUpperCase()}. The subhead must say "${V}" exactly once, as the thing doing the work, not an impersonal instruction. The reader must finish the ad knowing who does this.
 - VARY THE FRAME. Do NOT default to "${V} cross-checks every X against your Y" — that construction is worn out. Vary the verb and the sentence shape ad to ad.
 - STAY IN THE STATED ${market.segmentLabel.toUpperCase()}. Build the scenario from the ${market.segmentLabel} named above, not from a plausible-sounding adjacent one.
+- PUNCTUATION. Never use an em dash or an en dash, and never a colon. Use a full stop or a comma. Two short sentences beat one long one joined by a dash. This is the single clearest tell that copy was not written by a person.
 - NEVER promise a specific number, percentage, saving or timeframe. ${V} sells into regulated employers and an invented statistic in an ad is a real problem.
 
 WHAT ${V.toUpperCase()} CHANGES — illustrative examples of the KIND of thing it does, NOT a menu to recite:
@@ -72,7 +74,7 @@ Return STRICT JSON: {"headline":"MAX 10 words. Create tension a ${market.decisio
       console.error(`[copy] ${firmName}: incomplete JSON — ${m[0].slice(0, 200)}`);
       return null;
     }
-    return { headline: o.headline, subhead: o.subhead };
+    return { headline: stripMachineTells(o.headline), subhead: stripMachineTells(o.subhead) };
   } catch (err) {
     console.error(`[copy] ${firmName}: threw — ${(err as Error).message}`);
     return null;

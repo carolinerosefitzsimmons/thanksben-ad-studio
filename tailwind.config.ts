@@ -17,12 +17,15 @@ const config: Config = {
         hover: "#e7e7e9", // sidebar item hover (sits on #F1F1F2)
         // Brand colours live in lib/brand.ts — change them there, not here.
         brand: palette.primary,
+        navmuted: palette.navMuted,
         brandsoft: palette.primarySoft,
         branddeep: palette.primaryDeep,
         ink2: "#1a1a1a",
       },
       borderRadius: { panel: "14px" },
       fontFamily: {
+        // Ben's landing pages; the studio UI keeps `sans`.
+        ben: ["var(--font-ben)", "Figtree", "-apple-system", "Segoe UI", "sans-serif"],
         sans: [
           "-apple-system",
           "BlinkMacSystemFont",

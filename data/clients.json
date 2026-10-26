@@ -456,5 +456,131 @@
     "tier": "Global Enterprise",
     "sourceUrl": "https://jobs.ashbyhq.com/ben",
     "evidence": "Named among 'large enterprise brands' using Ben on its careers site."
+  },
+  {
+    "name": "ASICS",
+    "domain": "asics.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=asics.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Frontline and shift workforce",
+      "Low benefits engagement",
+      "Post-acquisition harmonisation"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Manufacturing"
+    ],
+    "geo": {
+      "country": "Japan",
+      "region": "Asia-Pacific"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
+  },
+  {
+    "name": "Fever-Tree",
+    "domain": "fever-tree.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fever-tree.com&sz=256",
+    "practiceAreas": [
+      "Rapid headcount growth",
+      "Multi-country benefits complexity"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Manufacturing"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Public Company",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
+  },
+  {
+    "name": "Henkel",
+    "domain": "henkel.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=henkel.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale",
+      "Post-acquisition harmonisation"
+    ],
+    "industries": [
+      "Manufacturing",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "Germany",
+      "region": "DACH"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
+  },
+  {
+    "name": "JTI",
+    "domain": "jti.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=jti.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Regulated-industry compliance",
+      "Cost control under scrutiny",
+      "Post-acquisition harmonisation"
+    ],
+    "industries": [
+      "Manufacturing",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "Switzerland",
+      "region": "DACH"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
+  },
+  {
+    "name": "Opella",
+    "domain": "opella.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=opella.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Regulated-industry compliance"
+    ],
+    "industries": [
+      "Healthcare & Life Sciences",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
+  },
+  {
+    "name": "MUFG",
+    "domain": "mufg.jp",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=www.mufg.jp&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "Japan",
+      "region": "Asia-Pacific"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named as a Ben customer on thanksben.com (confirmed by the client, Oct 2026)."
   }
 ]

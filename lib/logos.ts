@@ -4,6 +4,8 @@
 // Everything is normalised to a square PNG on white via sharp so gpt-image-2 gets clean inputs.
 import sharp from "sharp";
 import { vendor } from "./brand";
+// Plain-JS module shared with scripts/ (see lib/logo-dev.mjs).
+import { resolveLogoUrl, LogoDevAuthError } from "./logo-dev.mjs";
 
 const UA = `Mozilla/5.0 (compatible; ${vendor.name}-AdStudio/1.0)`;
 
@@ -62,7 +64,21 @@ async function fromSite(domain: string): Promise<{ buf: Buffer; ct: string } | n
 export async function fetchLogoPng(domain: string): Promise<Buffer | null> {
   const token = process.env.LOGO_DEV_TOKEN;
   const sources: (() => Promise<{ buf: Buffer; ct: string } | null>)[] = [];
-  if (token) sources.push(() => get(`https://img.logo.dev/${domain}?token=${token}&format=png&size=400&retina=true`));
+  if (token) {
+    sources.push(async () => {
+      try {
+        const url = await resolveLogoUrl(domain, token);
+        return url ? await get(url) : null;
+      } catch (e) {
+        if (e instanceof LogoDevAuthError) {
+          // Loud, because the fallback scrapes the company page and returns
+          // whatever image it finds there — often not their logo at all.
+          console.error(`[logos] ${e.message}`);
+        }
+        return null;
+      }
+    });
+  }
   sources.push(() => fromSite(domain));
   sources.push(() => get(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`));
 

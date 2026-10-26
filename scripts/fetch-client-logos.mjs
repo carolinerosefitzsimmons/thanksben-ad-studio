@@ -7,6 +7,7 @@
 // Source order per domain: logo.dev (if LOGO_DEV_TOKEN, best transparent wordmarks) ->
 // the customer's own site (prefer an <img> whose src says "logo", incl. SVG) -> Google favicon.
 import sharp from "sharp";
+import { resolveLogoUrl, LogoDevAuthError } from "../lib/logo-dev.mjs";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -25,6 +26,8 @@ try {
 } catch {}
 
 const TOKEN = process.env.LOGO_DEV_TOKEN;
+let logoDevResolved = 0;
+let logoDevAuthError = null;
 const UA = "Mozilla/5.0 (compatible; Ben-AdStudio/1.0)";
 const GREY = { r: 0, g: 41, b: 35 }; // Ben dark green #002923
 const slug = (d) => d.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -64,12 +67,50 @@ async function fromSite(domain) {
   return null;
 }
 
+/**
+ * Collect every candidate and keep the most wordmark-like.
+ *
+ * logo.dev reliably returns the CORRECT brand but usually its square icon, and a
+ * row of abstract icons tells a reader nothing — "trusted by [hexagon] [butterfly]"
+ * is not social proof. Scraping a company's own page often finds the full wordmark,
+ * but just as often finds a Trustpilot badge or a sub-brand.
+ *
+ * So: gather both, and prefer the widest aspect ratio, which is what distinguishes
+ * a wordmark from an icon. A favicon is the last resort.
+ */
 async function rawLogo(domain) {
+  const cands = [];
+
   if (TOKEN) {
-    const r = await get(`https://img.logo.dev/${domain}?token=${TOKEN}&format=png&size=512&retina=true`);
-    if (r && r.buf.byteLength > 500) return r;
+    try {
+      const url = await resolveLogoUrl(domain, TOKEN, 512);
+      if (url) {
+        const r = await get(url);
+        if (r && r.buf.byteLength > 500) { logoDevResolved++; cands.push({ ...r, src: "logo.dev" }); }
+      }
+    } catch (e) {
+      if (e instanceof LogoDevAuthError) logoDevAuthError = e.message;
+    }
   }
-  return (await fromSite(domain)) || (await get(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`));
+
+  const site = await fromSite(domain);
+  if (site && site.buf.byteLength > 500) cands.push({ ...site, src: "site" });
+
+  if (!cands.length) {
+    const fav = await get(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`);
+    return fav ? { ...fav, src: "favicon" } : null;
+  }
+
+  for (const c of cands) {
+    try {
+      const m = await sharp(c.buf, { density: 300 }).metadata();
+      c.ratio = m.width && m.height ? m.width / m.height : 1;
+    } catch {
+      c.ratio = 0; // unreadable by sharp; rank last
+    }
+  }
+  cands.sort((a, b) => b.ratio - a.ratio);
+  return cands[0];
 }
 
 // Recolour any logo into a single uniform grey silhouette on a transparent bg, so the
@@ -144,4 +185,14 @@ async function run(c) {
 // small concurrency
 const Q = 8;
 for (let i = 0; i < clients.length; i += Q) await Promise.all(clients.slice(i, i + Q).map(run));
-console.log(`\nDone. ${ok} ok, ${fail} failed. Source: ${TOKEN ? "logo.dev" : "site/favicon (no LOGO_DEV_TOKEN)"}. -> public/logos/`);
+console.log(`\nDone. ${ok} ok, ${fail} failed. -> public/logos/`);
+if (!TOKEN) {
+  console.log("Source: scraped from each site (no LOGO_DEV_TOKEN). Expect wrong marks — review them.");
+} else if (logoDevAuthError) {
+  console.error(`\n!! logo.dev was NOT used: ${logoDevAuthError}`);
+  console.error("!! Every logo above came from scraping the company page instead, which");
+  console.error("!! frequently returns a review badge or a sub-brand. Do not ship these.");
+} else {
+  console.log(`logo.dev returned an image for ${logoDevResolved} of ${ok + fail} domains; ${ok} passed the quality check.`);
+  console.log("Review every file before shipping — rejected ones fall back to a text name, which is safe.");
+}

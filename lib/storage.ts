@@ -39,6 +39,17 @@ function supabaseUrl(key: string): string {
   return `${process.env.SUPABASE_URL!.replace(/\/$/, "")}/storage/v1/object/${BUCKET}/${key}`;
 }
 
+/**
+ * Supabase accepts two kinds of server key and they authenticate differently:
+ * the legacy `service_role` JWT goes in Authorization, while the newer
+ * `sb_secret_...` keys are not JWTs and must go in `apikey` (Storage rejects
+ * them as "Invalid Compact JWS" otherwise). Sending both covers either.
+ */
+function supabaseAuth(): Record<string, string> {
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  return { apikey: key, authorization: `Bearer ${key}` };
+}
+
 /** Store a PNG and return the opaque key to persist on the ad row. */
 export async function putAd(png: Buffer): Promise<string> {
   warnOnce();
@@ -48,7 +59,7 @@ export async function putAd(png: Buffer): Promise<string> {
     const res = await fetch(supabaseUrl(key), {
       method: "POST",
       headers: {
-        authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+        ...supabaseAuth(),
         "content-type": "image/png",
         "cache-control": "public, max-age=31536000, immutable",
       },
@@ -70,9 +81,7 @@ export async function getAd(key: string): Promise<Buffer | null> {
   if (!key || key.includes("/") || key.includes("..")) return null;
 
   if (driver() === "supabase") {
-    const res = await fetch(supabaseUrl(key), {
-      headers: { authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}` },
-    });
+    const res = await fetch(supabaseUrl(key), { headers: supabaseAuth() });
     if (!res.ok) return null;
     return Buffer.from(await res.arrayBuffer());
   }
@@ -89,10 +98,7 @@ export async function deleteAd(key: string | null | undefined): Promise<void> {
   if (!key || key.includes("/") || key.includes("..")) return;
   try {
     if (driver() === "supabase") {
-      await fetch(supabaseUrl(key), {
-        method: "DELETE",
-        headers: { authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}` },
-      });
+      await fetch(supabaseUrl(key), { method: "DELETE", headers: supabaseAuth() });
     } else {
       await unlink(join(LOCAL_DIR, key));
     }

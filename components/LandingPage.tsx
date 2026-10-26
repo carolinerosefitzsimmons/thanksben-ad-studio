@@ -53,7 +53,7 @@ export default function LandingPage({ firmName, location, landing }: { firmName:
               ))}
             </div>
             <div className="absolute left-1/2 -translate-x-1/2">
-              <BrandWordmark fill={palette.onPrimary} height={22} />
+              <BrandWordmark variant="light" height={22} />
             </div>
             <div className="flex items-center gap-5 text-[14px]">
               <a href="#" className="text-white/90 hover:text-white">

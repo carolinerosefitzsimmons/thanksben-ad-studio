@@ -1,11 +1,11 @@
 // One-off: pre-fetch a logo for every row in data/clients.json and bake it into a uniform, grey,
-// transparent wordmark PNG (the Legora "trusted by" aesthetic). Run once; the landing
+// transparent wordmark PNG for the landing-page trusted-by row. Run once; the landing
 // pages just drop in public/logos/<slug>.png — no per-request logo search.
 //
 //   node scripts/fetch-client-logos.mjs
 //
 // Source order per domain: logo.dev (if LOGO_DEV_TOKEN, best transparent wordmarks) ->
-// the firm's own site (prefer an <img> whose src says "logo", incl. SVG) -> Google favicon.
+// the customer's own site (prefer an <img> whose src says "logo", incl. SVG) -> Google favicon.
 import sharp from "sharp";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -25,8 +25,8 @@ try {
 } catch {}
 
 const TOKEN = process.env.LOGO_DEV_TOKEN;
-const UA = "Mozilla/5.0 (compatible; LegoraAdGen/1.0)";
-const GREY = { r: 74, g: 74, b: 82 }; // #4a4a52
+const UA = "Mozilla/5.0 (compatible; Ben-AdStudio/1.0)";
+const GREY = { r: 0, g: 41, b: 35 }; // Ben dark green #002923
 const slug = (d) => d.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 async function get(url, ms = 12000) {

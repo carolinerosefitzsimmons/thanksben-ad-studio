@@ -85,8 +85,13 @@ export const palette = {
 } as const;
 
 export const assets = {
-  wordmarkSvg: "/ben-wordmark.svg",
+  /** Cut out of the official logo plate — see the note in components/BrandLogo.tsx. */
+  wordmark: "/ben-wordmark.png",
+  wordmarkLight: "/ben-wordmark-light.png",
+  mark: "/ben-mark.png",
+  markLight: "/ben-mark-light.png",
   landingHero: "/ben-gradient.png",
+  benimals: "/ben-benimals.png",
   /** Reference creative in assets/refs/, fed to the image model as style guides. */
   referenceAds: ["ad-benimal-cards.png", "ad-benimal-hero.png", "ad-gradient.png"],
 } as const;

@@ -8,7 +8,7 @@ import LoadingDots from "./LoadingDots";
 import Sources from "./Sources";
 import SelectWizard from "./SelectWizard";
 import type { Ad, FirmResearch, Office } from "@/lib/types";
-import { vendor, palette, assets, market, label, brandGaps, withArticle } from "@/lib/brand";
+import { vendor, assets, market, label, brandGaps, withArticle } from "@/lib/brand";
 
 type Phase = "empty" | "researching" | "selecting" | "generating" | "done";
 
@@ -178,7 +178,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
         <div className="pointer-events-none absolute inset-0" style={{ backgroundImage: "radial-gradient(55% 45% at 50% 40%, rgba(0,0,0,0.022), transparent 70%)" }} />
         <div className="relative z-10 -mt-8 w-full max-w-2xl">
           <div className="flex justify-center">
-            <img src={assets.wordmarkSvg} alt={vendor.name} draggable={false} className="w-[500px] max-w-[82%] select-none" />
+            <img src={assets.wordmark} alt={vendor.name} draggable={false} className="w-[420px] max-w-[78%] select-none" />
           </div>
           {/* pulled up so the bottom quarter of the wordmark tucks behind this white card */}
           <div className="relative z-10 -mt-[20px] rounded-2xl border border-line2 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -347,9 +347,8 @@ function Assistant({ children, pulse = false }: { children: React.ReactNode; pul
   return (
     <div className="mb-6 flex gap-3 fadein">
       <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#eaeaec]">
-        <svg viewBox="0 0 24 24" width="15" height="15" className={pulse ? "softpulse" : ""}>
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill={palette.primary} />
-        </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={assets.mark} alt="" width={15} height={15} className={pulse ? "softpulse" : ""} />
       </div>
       <div className="min-w-0 flex-1 pt-0.5">{children}</div>
     </div>

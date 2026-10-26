@@ -1,0 +1,2036 @@
+[
+  {
+    "name": "Linklaters",
+    "domain": "linklaters.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=linklaters.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation",
+      "Restructuring"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Energy",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Magic Circle",
+    "sourceUrl": "https://legora.com/newsroom/linklaters-announces-firmwide-rollout-of-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Cleary Gottlieb",
+    "domain": "clearygottlieb.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=clearygottlieb.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation",
+      "Arbitration"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Technology",
+      "Energy"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "White Shoe",
+    "sourceUrl": "https://legora.com/newsroom/cleary-gottlieb-announces-strategic-partnership-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "White & Case",
+    "domain": "whitecase.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=whitecase.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation",
+      "Arbitration"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Infrastructure",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/white-case-announces-global-rollout-of-legora-across-43-offices",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Bird & Bird",
+    "domain": "twobirds.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=twobirds.com&sz=128",
+    "practiceAreas": [
+      "IP",
+      "Technology",
+      "Regulatory",
+      "Competition",
+      "Litigation",
+      "Corporate"
+    ],
+    "industries": [
+      "Technology",
+      "Life Sciences",
+      "Media & Entertainment",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/customers/bird-bird",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Deloitte Legal",
+    "domain": "deloitte.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=deloitte.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Tax",
+      "Employment",
+      "Regulatory",
+      "Restructuring",
+      "Compliance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Life Sciences",
+      "Public Sector"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "Big Four",
+    "sourceUrl": "https://legora.com/newsroom/deloitte-legal-and-legora-join-forces-to-drive-the-next-wave-of-legal-ai-transformation",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Dentons",
+    "domain": "dentons.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=dentons.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Regulatory",
+      "Restructuring"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Infrastructure",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Canada",
+      "region": "North America"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/customers/dentons",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Goodwin",
+    "domain": "goodwinlaw.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=goodwinlaw.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Capital Markets",
+      "IP",
+      "Litigation",
+      "Private Equity"
+    ],
+    "industries": [
+      "Technology",
+      "Life Sciences",
+      "Private Equity",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/goodwin-announces-successful-roll-out-of-legora-firmwide",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Mannheimer Swartling",
+    "domain": "mannheimerswartling.se",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mannheimerswartling.se&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Regulatory",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Sweden",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/mannheimer-swartling",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Trowers & Hamlins",
+    "domain": "trowers.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=trowers.com&sz=128",
+    "practiceAreas": [
+      "Real Estate",
+      "Public Law",
+      "Regulatory",
+      "Corporate",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Real Estate",
+      "Public Sector",
+      "Financial Services",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/customers/driving-smarter-legal-delivery-inside-trowers-hamlins-legora-journey",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Schoenherr",
+    "domain": "schoenherr.eu",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=schoenherr.eu&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Competition",
+      "Litigation",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Austria",
+      "region": "CEE"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/customers/schoenherr",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "BDO Abogados",
+    "domain": "bdo.es",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bdo.es&sz=128",
+    "practiceAreas": [
+      "Tax",
+      "Corporate",
+      "Audit & Compliance",
+      "Restructuring",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Real Estate",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Spain",
+      "region": "Southern Europe"
+    },
+    "tier": "Big Four",
+    "sourceUrl": "https://legora.com/customers",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Herbert Smith Freehills Kramer",
+    "domain": "hsfkramer.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hsfkramer.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Litigation",
+      "Arbitration",
+      "Finance",
+      "Capital Markets"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Magic Circle",
+    "sourceUrl": "https://legora.com/newsroom/herbert-smith-freehills-kramer-partners-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Addleshaw Goddard",
+    "domain": "addleshawgoddard.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=addleshawgoddard.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Banking & Finance",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Silver Circle",
+    "sourceUrl": "https://legora.com/newsroom/addleshaw-goddard-enhances-legal-services-by-adopting-legora-platform",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "AGP",
+    "domain": "agp.com.pk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=agp.com.pk&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Banking & Finance",
+      "Regulatory",
+      "Litigation"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Pakistan",
+      "region": "South Asia"
+    },
+    "tier": "In-house",
+    "sourceUrl": "https://legora.com/newsroom/agp-and-legora-partner-to-advance-agp-s-legal-processes",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "AKD",
+    "domain": "akd.eu",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=akd.eu&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Banking & Finance",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Real Estate",
+      "Energy"
+    ],
+    "geo": {
+      "country": "Netherlands",
+      "region": "Benelux"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/akd-enters-strategic-portal-partnership-with-legora-as-lighthouse-partner",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Al Tamimi & Company",
+    "domain": "tamimi.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=tamimi.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Banking & Finance",
+      "Litigation",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Real Estate",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "United Arab Emirates",
+      "region": "Middle East"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/al-tamimi-company-becomes-legora-s-first-partner-in-the-middle-east",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Allens",
+    "domain": "allens.com.au",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=allens.com.au&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Technology",
+      "Energy",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Australia",
+      "region": "Asia-Pacific"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/allens-expands-ai-capabilities-with-australian-first-investment",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Pérez-Llorca",
+    "domain": "perezllorca.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=perezllorca.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Spain",
+      "region": "Southern Europe"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/perez-llorca",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Arendt & Medernach",
+    "domain": "arendt.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=arendt.com&sz=128",
+    "practiceAreas": [
+      "Finance",
+      "Capital Markets",
+      "Banking & Finance",
+      "M&A",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Insurance"
+    ],
+    "geo": {
+      "country": "Luxembourg",
+      "region": "Benelux"
+    },
+    "tier": "Boutique",
+    "sourceUrl": "https://legora.com/newsroom/arendt-medernach-partners-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Baker McKenzie",
+    "domain": "bakermckenzie.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bakermckenzie.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Tax",
+      "Employment",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Life Sciences",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "Magic Circle",
+    "sourceUrl": "https://legora.com/newsroom/baker-mckenzie-deploys-legora-building-on-a-decade-of-innovation",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "BCLP",
+    "domain": "bclplaw.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bclplaw.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Regulatory",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Private Equity",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "Silver Circle",
+    "sourceUrl": "https://legora.com/newsroom/legora-selected-by-bclp-as-firmwide-ai-platform-provider",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Van Doorne",
+    "domain": "vandoorne.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=vandoorne.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Private Equity",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Netherlands",
+      "region": "Benelux"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/better-relationships-not-fewer-lawyers-how-van-doorne-turned-ai-into-a-client-advantage",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "SK&S",
+    "domain": "skslegal.pl",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=skslegal.pl&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "CEE"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/beyond-ai-theater-how-sk-s-is-using-legora-to-scale-quality-not-hype",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Bowmans",
+    "domain": "bowmanslaw.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bowmanslaw.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Regulatory",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Mining",
+      "Infrastructure",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "South Africa",
+      "region": "Africa"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/bowmans-rolls-out-legora-to-enhance-legal-delivery",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Bracewell",
+    "domain": "bracewell.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bracewell.com&sz=128",
+    "practiceAreas": [
+      "Energy",
+      "Finance",
+      "M&A",
+      "Litigation",
+      "Corporate",
+      "Tax"
+    ],
+    "industries": [
+      "Energy",
+      "Financial Services",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/bracewell-announces-strategic-partnership-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Browne Jacobson",
+    "domain": "brownejacobson.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=brownejacobson.com&sz=128",
+    "practiceAreas": [
+      "Public Law",
+      "Health & Social Care",
+      "Litigation",
+      "Employment",
+      "Regulatory"
+    ],
+    "industries": [
+      "Public Sector",
+      "Health & Social Care"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/browne-jacobson-selects-legora-for-firm-wide-ai-deployment",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Cescon Barrieu",
+    "domain": "cescon.com.br",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cescon.com.br&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Litigation",
+      "Finance",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Brazil",
+      "region": "Latin America"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/cescon-barrieu-partners-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Chandhiok & Mahajan",
+    "domain": "chandhiok.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=chandhiok.com&sz=128",
+    "practiceAreas": [
+      "Competition",
+      "Litigation",
+      "Arbitration",
+      "Regulatory",
+      "Corporate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy"
+    ],
+    "geo": {
+      "country": "India",
+      "region": "South Asia"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/chandhiok-mahajan-rolls-out-legora-firm-wide-following-competitive-pilot",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Cooley",
+    "domain": "cooley.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cooley.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Capital Markets",
+      "IP",
+      "Employment"
+    ],
+    "industries": [
+      "Technology",
+      "Private Equity",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/cooley-launches-cooley-go-lab-powered-by-legora-for-y-combinator-startups",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Cyril Amarchand Mangaldas",
+    "domain": "cyrilshroff.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cyrilshroff.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Litigation",
+      "Finance",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy"
+    ],
+    "geo": {
+      "country": "India",
+      "region": "South Asia"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/cyril-amarchand-mangaldas-selects-legora-as-its-generative-ai",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Dua Associates",
+    "domain": "duaassociates.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=duaassociates.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Finance",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "India",
+      "region": "South Asia"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/dua-associates-rolls-out-legora-across-its-offices-and-practice-areas-in-india",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "DWF",
+    "domain": "dwfgroup.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=dwfgroup.com&sz=128",
+    "practiceAreas": [
+      "Insurance",
+      "Litigation",
+      "Corporate",
+      "Regulatory",
+      "Employment"
+    ],
+    "industries": [
+      "Insurance",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/dwf-partnership",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Fondia",
+    "domain": "fondia.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fondia.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Employment"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Finland",
+      "region": "Nordics"
+    },
+    "tier": "Boutique",
+    "sourceUrl": "https://legora.com/newsroom/fondia-expands-partnership-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Altius",
+    "domain": "altius.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=altius.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Real Estate",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Belgium",
+      "region": "Benelux"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/from-15-tools-to-one-platform-how-altius-is-embedding-legal-ai-with-intent",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Forvis Mazars",
+    "domain": "forvismazars.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=forvismazars.com&sz=128",
+    "practiceAreas": [
+      "Tax",
+      "Corporate",
+      "Finance",
+      "Regulatory",
+      "M&A"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "Big Four",
+    "sourceUrl": "https://legora.com/newsroom/from-pilot-to-80-daily-usage-how-forvis-mazars-is-making-ai-part-of-legal-work",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Nordic Semiconductor",
+    "domain": "nordicsemi.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=nordicsemi.com&sz=128",
+    "practiceAreas": [
+      "IP",
+      "Corporate",
+      "Regulatory",
+      "Employment",
+      "Commercial"
+    ],
+    "industries": [
+      "Technology"
+    ],
+    "geo": {
+      "country": "Norway",
+      "region": "Nordics"
+    },
+    "tier": "In-house",
+    "sourceUrl": "https://legora.com/newsroom/from-the-treadmill-to-the-boardroom-how-nordic-semiconductor-s-legal-team",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Harbottle & Lewis",
+    "domain": "harbottle.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=harbottle.com&sz=128",
+    "practiceAreas": [
+      "Media & Entertainment",
+      "Private Client",
+      "Litigation",
+      "Corporate"
+    ],
+    "industries": [
+      "Media & Entertainment",
+      "Technology",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "White Shoe",
+    "sourceUrl": "https://legora.com/newsroom/harbottle-lewis-partners-with-legora-to-integrate-innovative-ai-powered-technology",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Harrison Clark Rickerbys",
+    "domain": "hcrlaw.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hcrlaw.com&sz=128",
+    "practiceAreas": [
+      "Private Client",
+      "Trusts & Estates",
+      "Tax",
+      "Corporate",
+      "Real Estate"
+    ],
+    "industries": [
+      "Private Client"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Regional",
+    "sourceUrl": "https://legora.com/newsroom/harrison-llp-partners-with-legora-to-bring-cutting-edge-ai-to-private-wealth-law",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Holding Redlich",
+    "domain": "holdingredlich.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=holdingredlich.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Litigation",
+      "Commercial"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Private Equity",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Australia",
+      "region": "Asia-Pacific"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/holding-redlich-partners-with-legora-to-deploy-ai-across-transactional-practices",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Freeths",
+    "domain": "freeths.co.uk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=freeths.co.uk&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Real Estate",
+      "Employment",
+      "Litigation",
+      "Construction"
+    ],
+    "industries": [
+      "Real Estate",
+      "Construction",
+      "Financial Services",
+      "Energy"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/how-freeths-is-scaling-responsible-legal-ai-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "GÖRG",
+    "domain": "goerg.de",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=goerg.de&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Competition",
+      "Finance",
+      "Litigation"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services",
+      "Energy",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "Germany",
+      "region": "DACH"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/how-gorg-achieved-96-weekly-active-usage-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Gorrissen Federspiel",
+    "domain": "gorrissenfederspiel.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=gorrissenfederspiel.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Capital Markets"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Energy",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Denmark",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/gorrissen-federspiel",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "HPP",
+    "domain": "hpp.fi",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hpp.fi&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Finance",
+      "M&A",
+      "Litigation",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Finland",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/hpp-rolls-out-legora-to-enhance-legal-productivity",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Husch Blackwell",
+    "domain": "huschblackwell.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=huschblackwell.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Litigation",
+      "Employment",
+      "Real Estate",
+      "Finance"
+    ],
+    "industries": [
+      "Real Estate",
+      "Financial Services",
+      "Energy",
+      "Infrastructure",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/husch-blackwell-continues-tech-expansion-and-firmwide-use-of-ai-with-rollout-of-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "HWL Ebsworth",
+    "domain": "hwlebsworth.com.au",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hwlebsworth.com.au&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Litigation",
+      "Employment",
+      "Construction",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Construction",
+      "Real Estate",
+      "Technology",
+      "Energy"
+    ],
+    "geo": {
+      "country": "Australia",
+      "region": "Asia-Pacific"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/hwle-lawyers-selects-legora-as-firmwide-ai-platform",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "id est avocats",
+    "domain": "idestavocats.ch",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=idestavocats.ch&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Real Estate",
+      "Private Equity",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Switzerland",
+      "region": "DACH"
+    },
+    "tier": "Boutique",
+    "sourceUrl": "https://legora.com/newsroom/id-est-avocats-partners-with-legora-to-help-clients-achieve-more",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "K&L Gates",
+    "domain": "klgates.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=klgates.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/k-l-gates-announces-global-collaboration-with-legora-following-successful-pilot",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Kocian Solc Balastik",
+    "domain": "ksb.cz",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=ksb.cz&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Real Estate",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Czech Republic",
+      "region": "CEE"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/kocian-solc-balastik-partnership",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Krogerus",
+    "domain": "krogerus.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=krogerus.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Tax",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Finland",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/krogerus-and-legora-defining-the-next-era-of-legal-work",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Legance",
+    "domain": "legance.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=legance.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Banking & Finance",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Energy",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Italy",
+      "region": "Southern Europe"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/legance-announces-adoption-of-legora-across-all-practice-areas",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Barclays",
+    "domain": "barclays.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=barclays.com&sz=128",
+    "practiceAreas": [
+      "Banking & Finance",
+      "Capital Markets",
+      "Regulatory",
+      "Compliance",
+      "Corporate",
+      "Litigation"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Bank In-house",
+    "sourceUrl": "https://legora.com/newsroom/legora-announces-global-rollout-across-barclays-in-house-legal-team",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Jeantet",
+    "domain": "jeantet.fr",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=jeantet.fr&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Tax",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Private Equity",
+      "Energy"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/legora-expands-into-the-french-market-with-a-strategic-partnership-with-jeantet",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "LKS Next Legal",
+    "domain": "lks.es",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=lks.es&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Real Estate",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Real Estate",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Spain",
+      "region": "Southern Europe"
+    },
+    "tier": "Regional",
+    "sourceUrl": "https://legora.com/newsroom/lks-next-legal-incorporates-legora-ai-for-the-provision-of-legal-services",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Magnusson",
+    "domain": "magnussonlaw.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=magnussonlaw.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Private Equity",
+      "Energy"
+    ],
+    "geo": {
+      "country": "Latvia",
+      "region": "Nordics"
+    },
+    "tier": "Regional",
+    "sourceUrl": "https://legora.com/newsroom/magnusson-law-and-legora-partner-to-advance-legal-workflows",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "McGuireWoods",
+    "domain": "mcguirewoods.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mcguirewoods.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Finance",
+      "Real Estate",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Real Estate",
+      "Energy",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/mcguirewoods-adopts-legora-to-drive-digital-transformation",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "MinterEllison",
+    "domain": "minterellison.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=minterellison.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Finance",
+      "Employment",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Infrastructure",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Australia",
+      "region": "Asia-Pacific"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/minterellison-takes-ai-adoption-firmwide-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Mishcon de Reya",
+    "domain": "mishcon.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mishcon.com&sz=128",
+    "practiceAreas": [
+      "Litigation",
+      "Disputes",
+      "Private Client",
+      "Corporate",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Media & Entertainment",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Silver Circle",
+    "sourceUrl": "https://legora.com/newsroom/mishcon-de-reya-rolls-out-legora-firmwide-after-successful-pilot",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Morais Leitão",
+    "domain": "mlgts.pt",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mlgts.pt&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Real Estate",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Portugal",
+      "region": "Southern Europe"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/morais-leitao-partners-with-legora-to-advance-legal-innovation-through-ai",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Morrison Foerster",
+    "domain": "mofo.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mofo.com&sz=128",
+    "practiceAreas": [
+      "IP",
+      "Technology",
+      "M&A",
+      "Corporate",
+      "Litigation",
+      "Capital Markets"
+    ],
+    "industries": [
+      "Technology",
+      "Life Sciences",
+      "Financial Services",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/morrison-foerster-accelerates-ai-leadership-with-partnership-and-firmwide-deployment-of-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Kochański & Partners",
+    "domain": "kochanski.pl",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kochanski.pl&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Litigation",
+      "Finance",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Energy",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "CEE"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/not-another-ai-rollout-how-kochanski-partners-is-building-durable-advantage-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Pinsent Masons",
+    "domain": "pinsentmasons.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pinsentmasons.com&sz=128",
+    "practiceAreas": [
+      "Infrastructure",
+      "Energy",
+      "Finance",
+      "Corporate",
+      "Litigation"
+    ],
+    "industries": [
+      "Energy",
+      "Infrastructure",
+      "Financial Services",
+      "Construction"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Silver Circle",
+    "sourceUrl": "https://legora.com/newsroom/pinsent-masons-forges-strategic-partnership-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Portolano Cavallo",
+    "domain": "portolano.it",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=portolano.it&sz=128",
+    "practiceAreas": [
+      "Technology",
+      "IP",
+      "Media & Entertainment",
+      "Corporate",
+      "Competition"
+    ],
+    "industries": [
+      "Technology",
+      "Media & Entertainment",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "Italy",
+      "region": "Southern Europe"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/portolano-cavallo-partnership",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Quinz",
+    "domain": "quinz.be",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=quinz.be&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Finance",
+      "M&A",
+      "Banking & Finance"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Belgium",
+      "region": "Benelux"
+    },
+    "tier": "Boutique",
+    "sourceUrl": "https://legora.com/newsroom/quinz-partners-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Racine",
+    "domain": "racine.eu",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=racine.eu&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Tax",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/racine-is-redefining-what-ai-adoption-looks-like-in-french-law",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Sheppard Mullin",
+    "domain": "sheppardmullin.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=sheppardmullin.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Litigation",
+      "IP",
+      "Finance",
+      "Capital Markets"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services",
+      "Media & Entertainment",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "AmLaw 100",
+    "sourceUrl": "https://legora.com/newsroom/sheppard-mullin-partners-with-legora-to-enhance-legal-delivery-firmwide",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "SSW Pragmatic Solutions",
+    "domain": "ssw.solutions",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=ssw.solutions&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Competition",
+      "Regulatory",
+      "Employment"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services",
+      "Energy"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "CEE"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/ssw-and-legora-defining-what-an-ai-empowered-law-firm-in-poland-really-looks-like",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Taylor Wessing",
+    "domain": "taylorwessing.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=taylorwessing.com&sz=128",
+    "practiceAreas": [
+      "IP",
+      "Technology",
+      "Life Sciences",
+      "Corporate",
+      "M&A"
+    ],
+    "industries": [
+      "Technology",
+      "Life Sciences",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/taylor-wessing-partners-with-legora-to-enhance-legal-services-through-ai-innovation",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "NautaDutilh",
+    "domain": "nautadutilh.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=nautadutilh.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Competition"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Netherlands",
+      "region": "Benelux"
+    },
+    "tier": "International",
+    "sourceUrl": "https://legora.com/newsroom/the-5.5-hour-shift-how-nautadutilh-and-legora-are-elevating-legal-work-together",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "TLT",
+    "domain": "tltsolicitors.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=tltsolicitors.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Litigation",
+      "Finance",
+      "Employment",
+      "Real Estate"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/tlt-joins-forces-with-legora",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Wardyński & Partners",
+    "domain": "wardynski.com.pl",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=wardynski.com.pl&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Competition",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "CEE"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/wardynski-partners",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Webber Wentzel",
+    "domain": "webberwentzel.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=webberwentzel.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Competition",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "South Africa",
+      "region": "Africa"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/webber-wentzel-selects-legora-as-anchor-technology-partner-for-innovation-lab",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Wikborg Rein",
+    "domain": "wr.no",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=wr.no&sz=128",
+    "practiceAreas": [
+      "Shipping",
+      "Energy",
+      "Finance",
+      "Litigation",
+      "Arbitration"
+    ],
+    "industries": [
+      "Energy",
+      "Maritime",
+      "Insurance",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Norway",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/wikborg-rein-rollout-legora-with-firmwide-partnership",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "BAHR",
+    "domain": "bahr.no",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bahr.no&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Norway",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/bahr-legora-building-the-firm-of-the-future",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "STRABAG",
+    "domain": "strabag.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=strabag.com&sz=128",
+    "practiceAreas": [
+      "Procurement",
+      "Regulatory",
+      "Compliance",
+      "Corporate",
+      "Finance"
+    ],
+    "industries": [
+      "Construction",
+      "Infrastructure"
+    ],
+    "geo": {
+      "country": "Austria",
+      "region": "DACH"
+    },
+    "tier": "In-house",
+    "sourceUrl": "https://legora.com/customers/strabag",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Erste Group",
+    "domain": "erstegroup.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=erstegroup.com&sz=128",
+    "practiceAreas": [
+      "Banking & Finance",
+      "Regulatory",
+      "Compliance",
+      "Finance",
+      "Capital Markets"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "Austria",
+      "region": "CEE"
+    },
+    "tier": "Bank In-house",
+    "sourceUrl": "https://legora.com/customers/setting-the-new-standard-for-ai-in-banking-inside-erste-group-s-landmark-collaboration",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Borenius",
+    "domain": "borenius.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=borenius.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Litigation",
+      "Arbitration"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "Finland",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/borenius",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Lindahl",
+    "domain": "lindahl.se",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=lindahl.se&sz=128",
+    "practiceAreas": [
+      "IP",
+      "Technology",
+      "Corporate",
+      "M&A",
+      "Litigation"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services",
+      "Life Sciences",
+      "Media & Entertainment"
+    ],
+    "geo": {
+      "country": "Sweden",
+      "region": "Nordics"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/customers/lindahl",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Accor",
+    "domain": "accor.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=accor.com&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "Real Estate",
+      "Employment",
+      "Compliance",
+      "Finance"
+    ],
+    "industries": [
+      "Hospitality",
+      "Real Estate"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "In-house",
+    "sourceUrl": "https://legora.com/customers/accor",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "Debevoise & Plimpton",
+    "domain": "debevoise.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=debevoise.com&sz=128",
+    "practiceAreas": [
+      "M&A",
+      "Corporate",
+      "Finance",
+      "Capital Markets",
+      "Litigation",
+      "Regulatory"
+    ],
+    "industries": [
+      "Financial Services",
+      "Private Equity",
+      "Technology",
+      "Life Sciences"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "White Shoe",
+    "sourceUrl": "https://legora.com/newsroom/legora-marks-portal-milestone-with-debevoise-launch-of-staar-2.0",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "DZP",
+    "domain": "dzp.pl",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=dzp.pl&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Competition",
+      "Litigation",
+      "Tax"
+    ],
+    "industries": [
+      "Financial Services",
+      "Energy",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "CEE"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/dzp-implements-legora-to-support-safe-and-effective-legal-advice",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  },
+  {
+    "name": "RDJ",
+    "domain": "rdj.ie",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rdj.ie&sz=128",
+    "practiceAreas": [
+      "Corporate",
+      "M&A",
+      "Finance",
+      "Real Estate",
+      "Litigation",
+      "Employment"
+    ],
+    "industries": [
+      "Financial Services",
+      "Real Estate",
+      "Technology",
+      "Private Equity"
+    ],
+    "geo": {
+      "country": "Ireland",
+      "region": "UK & Ireland"
+    },
+    "tier": "National",
+    "sourceUrl": "https://legora.com/newsroom/rdj-rolls-out-legora-firmwide",
+    "evidence": "Named Legora customer (Legora newsroom/customers page)"
+  }
+]

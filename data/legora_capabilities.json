@@ -1,0 +1,507 @@
+[
+  {
+    "id": 1,
+    "name": "Legora aOS",
+    "layer": "Platform",
+    "technical": "The agentic operating system that binds seven layers — LLMs, agentic harness, data & integrations, context & knowledge, legal capabilities, products & interfaces, and security & governance — into one system.",
+    "prospect": "One system rather than a bolt-on tool: the work, the firm's knowledge and the controls all sit in the same place.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "marketing"
+  },
+  {
+    "id": 2,
+    "name": "Agentic Harness",
+    "layer": "Orchestration",
+    "technical": "Orchestration layer handling tool routing, control flow, memory management, model selection, and guardrails; deploys specialist sub-agents in parallel for multi-step tasks.",
+    "prospect": "Multi-step work is split up and run in parallel rather than one prompt at a time.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "marketing"
+  },
+  {
+    "id": 3,
+    "name": "Agent",
+    "layer": "Orchestration",
+    "technical": "Execution engine running a plan → execute → review → deliver loop, with autonomous tool selection and output written into the project workspace for human approval.",
+    "prospect": "Work is planned, carried out and checked, then handed back for a lawyer to approve before it goes anywhere.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 4,
+    "name": "Skills",
+    "layer": "Orchestration",
+    "technical": "Reusable encoded instructions capturing a firm's processes, preferences, and standards, injected into Agent runs so output matches house method.",
+    "prospect": "The firm's own method and house standards are written down once, so what comes back is already in the firm's way of doing things.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 5,
+    "name": "Proactivity",
+    "layer": "Orchestration",
+    "technical": "Agent monitors email, documents, and projects and triggers action without an explicit prompt.",
+    "prospect": "It watches the matter, the documents and the inbox, and raises things without being asked.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 6,
+    "name": "Assistant",
+    "layer": "Interface",
+    "technical": "Conversational interface over internal and external documents in any language, returning answers with source citations.",
+    "prospect": "Ask a question across the whole document set, in any language, and get an answer cited to the source.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 7,
+    "name": "@-mention file referencing",
+    "layer": "Interface",
+    "technical": "Typing @ in the Assistant opens a picker for documents and Tabular Reviews to scope context.",
+    "prospect": "Point it at exactly the documents you want it to consider, and nothing else.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 8,
+    "name": "Voice mode",
+    "layer": "Interface",
+    "technical": "Speech input to the Assistant as an alternative to typing.",
+    "prospect": "Dictate instead of typing.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 9,
+    "name": "Tabular Review",
+    "layer": "Capability",
+    "technical": "AI spreadsheet where each imported document becomes a row and each natural-language prompt becomes a column; supports format specification, filtering, and sorting. Bulk actions include redlining and export.",
+    "prospect": "Every document becomes a row and every question a column — hundreds reviewed side by side instead of opened one at a time.",
+    "practices": [
+      "M&A",
+      "Corporate",
+      "Real Estate",
+      "Private Equity",
+      "Capital Markets",
+      "Banking & Finance",
+      "Investment Funds",
+      "Employment",
+      "Tax"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 10,
+    "name": "TR cell provenance",
+    "layer": "Capability",
+    "technical": "Each cell expands to show the model's reasoning and the underlying source document.",
+    "prospect": "Every answer opens up to show the reasoning and the source document it came from.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 11,
+    "name": "TR collaboration controls",
+    "layer": "Capability",
+    "technical": "Real-time multi-user editing with Mark as Reviewed, Lock Cells, and Review Mode as workflow guardrails.",
+    "prospect": "A whole team reviews the same set at once, locking and signing off rows as they go.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 12,
+    "name": "TR chat / analysis",
+    "layer": "Capability",
+    "technical": "In-grid chat that creates columns from plain language, answers analytical questions across cells, and calculates values, with cited answers.",
+    "prospect": "Ask analytical questions across the entire set — counts, comparisons, outliers — and get cited answers back.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 13,
+    "name": "TR templates",
+    "layer": "Capability",
+    "technical": "Column sets saved as reusable, shareable templates encoding firm expertise.",
+    "prospect": "The question set for a recurring review is saved once and reused by everyone who runs it next.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 14,
+    "name": "Workflows",
+    "layer": "Capability",
+    "technical": "Agentic multi-step sequences that chain drafting, review, extraction, search, and custom tools into one run. Defined in natural language rather than a no-code node builder.",
+    "prospect": "A whole sequence — draft, review, extract, check — described in plain English and run end to end in one go.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 15,
+    "name": "Playbooks",
+    "layer": "Capability",
+    "technical": "Configurable rule sets defining starting positions, non-negotiables, and fallbacks, authored once in Legora and executed against documents in Word.",
+    "prospect": "The firm's opening positions, red lines and fallbacks written down once, then applied to every document that comes in.",
+    "practices": [
+      "M&A",
+      "Corporate",
+      "Banking & Finance",
+      "Private Equity",
+      "Commercial",
+      "Procurement",
+      "Employment",
+      "Real Estate"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 16,
+    "name": "Legal Research",
+    "layer": "Capability",
+    "technical": "Investigates multiple angles in parallel across jurisdictions, ranks sources by authority, and verifies each finding against primary law before returning it.",
+    "prospect": "Several angles researched at once across jurisdictions, sources ranked by authority, every point checked against primary law.",
+    "practices": [
+      "Litigation",
+      "Commercial Disputes",
+      "Arbitration",
+      "Regulatory",
+      "Antitrust & Competition",
+      "Tax",
+      "Public Law"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 17,
+    "name": "Citation verification",
+    "layer": "Capability",
+    "technical": "Every finding links to its primary source, is checked to confirm it still holds, and displays the exact passage in context, hosted on-platform.",
+    "prospect": "Every point links to primary source, is checked that it still holds, and shows you the passage in context.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 18,
+    "name": "Web search",
+    "layer": "Capability",
+    "technical": "Agentic retrieval over publicly available web sources.",
+    "prospect": "Searches public sources as part of the same piece of work.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 19,
+    "name": "Database Search",
+    "layer": "Capability",
+    "technical": "Scoped query against user-selected licensed legal databases, with results used to answer the query.",
+    "prospect": "Queries the licensed databases the firm already pays for, inside the same piece of work.",
+    "practices": [
+      "Litigation",
+      "Commercial Disputes",
+      "Regulatory",
+      "Tax",
+      "Antitrust & Competition"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 20,
+    "name": "Deep Research",
+    "layer": "Capability",
+    "technical": "Slower, higher-depth research mode for more exhaustive analysis.",
+    "prospect": "A slower, more exhaustive mode for when the question warrants it.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 21,
+    "name": "Lists",
+    "layer": "Product",
+    "technical": "Structured task and fact management: the Agent populates rows from source documents, each with a status, assignee, and link back to the originating clause or paragraph.",
+    "prospect": "The facts and tasks buried in the documents pulled into a structured list — each row with an owner, a status and a link back to the clause it came from.",
+    "practices": [
+      "M&A",
+      "Corporate",
+      "Capital Markets",
+      "Banking & Finance",
+      "Litigation",
+      "Commercial Disputes",
+      "Real Estate",
+      "Restructuring"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 22,
+    "name": "List templates",
+    "layer": "Product",
+    "technical": "Prebuilt structures for closing checklists, chronologies, and prospectus verification across corporate, finance, capital markets, disputes, real estate, and regulatory work; custom lists supported.",
+    "prospect": "Ready-made structures for closing checklists, chronologies and prospectus verification, rather than rebuilding the same grid each matter.",
+    "practices": [
+      "M&A",
+      "Corporate",
+      "Capital Markets",
+      "Banking & Finance",
+      "Litigation",
+      "Commercial Disputes",
+      "Real Estate",
+      "Regulatory"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 23,
+    "name": "Editor",
+    "layer": "Product",
+    "technical": "AI-native drafting surface that converts Tabular Review and Assistant output into full documents with citations back to the underlying data.",
+    "prospect": "The review turns straight into the finished document, with citations back to the material it rests on.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 24,
+    "name": "Editor collaboration",
+    "layer": "Product",
+    "technical": "Real-time co-editing plus AI-suggested refinements the user accepts or rejects individually.",
+    "prospect": "Co-edit in real time, taking or leaving each suggested change one at a time.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 25,
+    "name": "Editor export",
+    "layer": "Product",
+    "technical": "Direct export to Word applying firm house styles, avoiding post-export reformatting.",
+    "prospect": "Comes out in Word in the firm's house style, with no reformatting afterwards.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 26,
+    "name": "Word Add-In",
+    "layer": "Product",
+    "technical": "Side-panel Agent inside Microsoft Word for drafting clauses, proofreading, risk flagging, and redlining without leaving the document. Edits appear as native track changes with citations.",
+    "prospect": "It works inside Word — drafting, proofreading, flagging risk and redlining — and the edits arrive as ordinary track changes.",
+    "practices": [
+      "M&A",
+      "Corporate",
+      "Banking & Finance",
+      "Private Equity",
+      "Real Estate",
+      "Employment",
+      "Commercial"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 27,
+    "name": "Word Actions",
+    "layer": "Product",
+    "technical": "Fill Template (populate a document from a related source doc), Anonymize (replace names, dates, addresses with placeholders), Improve Writing (rewrite a selection without changing meaning), Translate (DeepL-backed, format-preserving).",
+    "prospect": "Fill a template from a source document, anonymise names and dates, tighten wording without changing meaning, or translate with the formatting intact.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 28,
+    "name": "Outlook Add-In",
+    "layer": "Product",
+    "technical": "In-inbox Assistant that summarizes long threads and drafts replies, and one-click saves emails and attachments into Legora.",
+    "prospect": "In the inbox: long threads summarised, replies drafted, and mail filed to the matter in one click.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 29,
+    "name": "Mobile app",
+    "layer": "Product",
+    "technical": "iOS and Android clients with Assistant history synced across devices, plus document Q&A, summarization, and key-point extraction with citations.",
+    "prospect": "The same thing on a phone, with cited answers on documents wherever you are.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 30,
+    "name": "Portal",
+    "layer": "Product",
+    "technical": "White-labelled, AI-native client workspace requiring no guest license, where firms publish files, Tabular Reviews, and Workflows for clients to run. Underlying prompts, logic, and firm knowledge stay hidden from the guest.",
+    "prospect": "A branded workspace where the client runs the firm's own reviews themselves — without ever seeing the firm's know-how behind them.",
+    "practices": [
+      "Corporate",
+      "Commercial",
+      "Regulatory",
+      "Banking & Finance",
+      "Employment"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 31,
+    "name": "Portal collaboration",
+    "layer": "Product",
+    "technical": "Shared real-time workspace with role-based access controls and audit trails; clients query shared databases and get grounded, cited answers.",
+    "prospect": "Client and team in one space, with who-sees-what controls and a record of everything done.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 32,
+    "name": "Monitors",
+    "layer": "Product",
+    "technical": "Continuous horizon scanning scoped to chosen jurisdictions, topics, and sources; items arrive with a summary, metadata, and a link to the original.",
+    "prospect": "Continuous scanning of the jurisdictions and topics you choose, each item arriving summarised with a link to the original.",
+    "practices": [
+      "Regulatory",
+      "Antitrust & Competition",
+      "Public Law",
+      "Tax",
+      "Employment",
+      "Banking & Finance"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 33,
+    "name": "Monitors triage & act",
+    "layer": "Product",
+    "technical": "Filter, prioritise, and assign owners, then compare current law, assess impact, track tasks, and produce deliverables in-platform with an audit trail.",
+    "prospect": "Changes get an owner, an impact assessment against current law, and a finished client note — with an audit trail.",
+    "practices": [
+      "Regulatory",
+      "Antitrust & Competition",
+      "Public Law",
+      "Tax",
+      "Employment"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 34,
+    "name": "Library",
+    "layer": "Knowledge",
+    "technical": "Single location for prompts, templates, playbooks, and workflows.",
+    "prospect": "Prompts, templates, playbooks and workflows all in one place.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 35,
+    "name": "Prompt Library",
+    "layer": "Knowledge",
+    "technical": "Saved reusable prompts with name, document-scope setting, prompt body, usage instructions, and tags, shareable to individuals, practice groups, or the whole org.",
+    "prospect": "What one lawyer works out is shared to the practice group or the whole firm, not lost.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 36,
+    "name": "Projects",
+    "layer": "Knowledge",
+    "technical": "Matter-scoped workspaces with instant switching, including Private Projects for personal work.",
+    "prospect": "Each matter has its own workspace, switched between instantly.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 37,
+    "name": "Global Search",
+    "layer": "Knowledge",
+    "technical": "Search spanning projects, Tabular Reviews, and chats.",
+    "prospect": "Search across every matter, review and conversation at once.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 38,
+    "name": "Context & Knowledge layer",
+    "layer": "Knowledge",
+    "technical": "Firm playbooks, precedent libraries, clause banks, negotiated positions, and full matter history layered into every agent action so state carries between rounds.",
+    "prospect": "The firm's precedents, clause banks and previously negotiated positions carry into every round, so nothing restarts from scratch.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 39,
+    "name": "Data & Integrations",
+    "layer": "Infrastructure",
+    "technical": "DMS integrations, document ingestion, content sources, third-party legal services, and MCP connectors all feed the agent's context. Includes iManage and SharePoint.",
+    "prospect": "It works on the documents where they already sit, including iManage and SharePoint.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 40,
+    "name": "Content partnerships",
+    "layer": "Infrastructure",
+    "technical": "Licensed primary and secondary law hosted on-platform, covering US federal and all 50 states plus jurisdiction-specific sources (EUR-Lex, EDGAR, FromCounsel, Lovdata, Bundesrecht, and others).",
+    "prospect": "Licensed primary and secondary law on the platform itself — US federal and all fifty states, plus EUR-Lex, EDGAR, Lovdata and other national sources.",
+    "practices": [
+      "Litigation",
+      "Commercial Disputes",
+      "Regulatory",
+      "Tax",
+      "Antitrust & Competition",
+      "Capital Markets"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 41,
+    "name": "Security & Governance",
+    "layer": "Infrastructure",
+    "technical": "Ethical walls and cross-matter isolation prevent information bleeding across matters, users, or time; full audit trails cover every tool call, file access, and agent action.",
+    "prospect": "Ethical walls hold: nothing crosses between matters, users or time, and every action leaves an audit trail.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 42,
+    "name": "Compliance posture",
+    "layer": "Infrastructure",
+    "technical": "SOC 2 Type II, ISO 27001, ISO 42001, GDPR, HIPAA, and zero model training on customer data.",
+    "prospect": "SOC 2 Type II, ISO 27001, ISO 42001, GDPR and HIPAA — and nothing you put in trains a model.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "published"
+  }
+]

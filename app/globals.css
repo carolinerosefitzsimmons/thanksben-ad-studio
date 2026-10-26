@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #f1f1f2;
+  color: #1c1c1e;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+* {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #dcdce0;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c7c7cc;
+  background-clip: content-box;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadein {
+  animation: fadein 0.35s ease both;
+}
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateX(38px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.slidein {
+  animation: slidein 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes swipein {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.swipe-in {
+  animation: swipein 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes shimmerText {
+  to {
+    background-position: -200% 0;
+  }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #b4b4ba 35%, #1c1c1e 50%, #b4b4ba 65%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerText 1.7s linear infinite;
+}
+@keyframes softpulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+.softpulse {
+  animation: softpulse 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: #ececed;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  animation: shimmer 1.4s infinite;
+}

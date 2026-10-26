@@ -101,6 +101,8 @@ shows which customers would appear in an ad and exactly why each one scored.
   design, infrastructure, and an honest list of what has and has not been tested.
 - **[data/SCHEMA.md](./data/SCHEMA.md)** — the two data files, and the rules that
   keep a customer out of a generated ad until it is safe to name them.
+- **[DEPLOY.md](./DEPLOY.md)** — deploying to Vercel, including the one step
+  that is not optional.
 - **[public/logos/README.md](./public/logos/README.md)** — why automated logo
   sourcing cannot be trusted, with examples of what it got wrong.
 

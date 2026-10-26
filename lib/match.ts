@@ -1,8 +1,10 @@
 import { query } from "./db";
+import { vault, market } from "./brand";
+// Plain-JS module shared with scripts/ so the dev tooling runs the same code.
+import { scoreClients } from "./match-score.mjs";
 import type { VaultClient, Specialty } from "./types";
-import { vault } from "./brand";
 
-interface ClientRow {
+export interface ClientRow {
   name: string;
   domain: string;
   logo_url: string | null;
@@ -13,18 +15,7 @@ interface ClientRow {
   tier: string | null;
 }
 
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
-const toks = (s: string) => new Set(norm(s).split(" ").filter((w) => w.length > 2));
-function overlap(a: Set<string>, b: Set<string>): number {
-  let n = 0;
-  for (const x of a) if (b.has(x)) n++;
-  return n;
-}
-
-/**
- * Pick the best social-proof logos for a given segment + prospect region.
- * Prefers peers whose taxonomy / served industries / geography match.
- */
+/** Best social-proof logos for a given segment + prospect region, read from Postgres. */
 export async function matchLogos(
   specialty: Specialty,
   region: string | null,
@@ -36,38 +27,20 @@ export async function matchLogos(
     `select name, domain, logo_url, practice_areas, industries, geo_country, geo_region, tier
        from tb_clients where logo_url is not null`,
   );
-  if (!rows.length) return [];
+  if (!rows.length) {
+    console.error("[match] tb_clients is empty — ads will carry no social proof. Run POST /api/seed.");
+    return [];
+  }
+  const scored = scoreClients(rows, specialty, {
+    region,
+    country,
+    limit,
+    excludeDomain,
+    marqueePattern: vault.marqueePattern,
+    stopwords: [...market.taxonomyStopwords],
+  }) as { row: ClientRow }[];
 
-  // Never show the organisation we are pitching in its own "Trusted by" row — they are a
-  // prospect, and some targets are themselves customers and so appear in this table.
-  const bare = (d: string) => d.toLowerCase().replace(/^www\./, "").trim();
-  const exclude = excludeDomain ? bare(excludeDomain) : null;
-  const pool = exclude ? rows.filter((r) => bare(r.domain) !== exclude) : rows;
-  if (!pool.length) return [];
-
-  const specTok = toks(specialty.name);
-  const indTok = toks(specialty.industries.join(" "));
-  const regionN = region ? norm(region) : "";
-  const countryN = country ? norm(country) : "";
-
-  const scored = pool.map((r) => {
-    const paTok = toks(r.practice_areas.join(" "));
-    const riTok = toks(r.industries.join(" "));
-    let score = 0;
-    score += overlap(specTok, paTok) * 3; // practice-area match (strongest)
-    score += overlap(indTok, riTok) * 2; // served-industry match
-    if (regionN && r.geo_region && norm(r.geo_region) === regionN) score += 2;
-    if (countryN && r.geo_country && norm(r.geo_country) === countryN) score += 1;
-    if (r.tier && vault.marqueePattern.test(`${r.tier} ${r.name}`)) score += 1; // recognizable beats obscure on a tie
-    return { r, score };
-  });
-
-  // Sort by score, then prefer a spread (don't return 4 identical-region firms only).
-  scored.sort((a, b) => b.score - a.score);
-  const picked = scored.slice(0, Math.max(limit, 6)).filter((s) => s.score > 0);
-  const top = (picked.length ? picked : scored).slice(0, limit);
-
-  return top.map(({ r }) => ({
+  return scored.map(({ row: r }) => ({
     name: r.name,
     domain: r.domain,
     logoUrl: r.logo_url,

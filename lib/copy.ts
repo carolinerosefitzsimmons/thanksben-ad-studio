@@ -30,10 +30,10 @@ async function attemptCopy(
 PROSPECT: ${firmName}
 ABOUT: ${summary || `(${market.prospectNoun})`}
 ${market.segmentLabel.toUpperCase()} TO TARGET: ${specialty.name}${specialty.blurb ? ` — ${specialty.blurb}` : ""}
-SECTORS THEY SERVE: ${specialty.industries.join(", ") || "various"}
+THEIR ${market.sectorLabel.toUpperCase()}: ${specialty.industries.join(", ") || "various"}
 REGION: ${region || "—"}
 
-Reference the SPECIFIC nature of this ${market.segmentLabel} and the sectors/clients they actually work with (e.g. the real work a ${specialty.name} team does day-to-day, the documents/matters involved). Make it feel bespoke to ${firmName}.
+Ground the ad in how this challenge actually shows up at an organisation like ${firmName} — the shape of their workforce, where their people are, what their ${market.sectorLabel} makes hard. Make it feel bespoke to them.
 
 CRITICAL — ${firmName} is a PROSPECT being pitched, NOT a ${V} customer. They do not use ${V} yet.
 - Never make ${firmName} the subject of a capability or performance claim. WRONG: "${firmName} moves faster", "${firmName} reviews contracts in half the time" — that credits them with a result they have not bought.
@@ -42,14 +42,15 @@ CRITICAL — ${firmName} is a PROSPECT being pitched, NOT a ${V} customer. They 
 - NAME ${V.toUpperCase()}. The subhead must say "${V}" exactly once, as the thing doing the work, not an impersonal instruction. The reader must finish the ad knowing who does this.
 - VARY THE FRAME. Do NOT default to "${V} cross-checks every X against your Y" — that construction is worn out. Vary the verb and the sentence shape ad to ad.
 - STAY IN THE STATED ${market.segmentLabel.toUpperCase()}. Build the scenario from the ${market.segmentLabel} named above, not from a plausible-sounding adjacent one.
+- NEVER promise a specific number, percentage, saving or timeframe. ${V} sells into regulated employers and an invented statistic in an ad is a real problem.
 
 WHAT ${V.toUpperCase()} CHANGES — illustrative examples of the KIND of thing it does, NOT a menu to recite:
 ${capabilityBrief(specialty, firmName)}
 
-Every ${market.segmentLabel} hurts differently. Work out what specifically costs ${specialty.name} ${market.practitionerNounPlural} acting for ${specialty.industries.join(", ") || "their"} clients their evenings (the volume, the deadline pressure, the exposure that surfaces too late) and speak to THAT. Do not reduce ${V} to one feature, and never let the ad collapse into "AI reads your documents".
+Every ${market.segmentLabel} hurts differently. Work out what "${specialty.name}" specifically costs the ${market.practitionerNounPlural} at ${firmName} — the manual reconciliation, the rules that contradict each other across borders, the spend nobody can account for, the questions that land in an inbox instead of being answered — and speak to THAT. Do not reduce ${V} to one feature, and never let the ad collapse into "AI for benefits".
 Never name ${V} product, module or feature names — a prospect does not know those words yet.
 
-Return STRICT JSON: {"headline":"MAX 10 words. Create tension a ${specialty.name} ${market.decisionMakerNoun} recognises instantly — the specific pressure, deadline or exposure in their world — and imply the resolution. Evocative, confident, with rhythm: this is brand advertising, not a feature line. It must NOT be generic enough to swap onto another ${market.prospectNoun} (avoid ${market.bannedHeadlines.map((h) => `'${h}'`).join(", ")}), must NOT use the template 'X. One question. Every Y.', and must NOT be a bare stack of noun fragments.","subhead":"One or two short sentences, MAX 22 words total. Must name ${V} exactly once, as the actor doing the work. Land ONE concrete thing that changes for this team, in their own language — specific enough that a rival vendor could not run the same line. Do NOT open with a subordinate clause ('When...', 'As...'), do NOT restate the headline, do NOT name a feature."}. No markdown.`,
+Return STRICT JSON: {"headline":"MAX 10 words. Create tension a ${market.decisionMakerNoun} at ${firmName} recognises instantly, specifically about ${specialty.name} — the specific pressure, deadline or exposure in their world — and imply the resolution. Evocative, confident, with rhythm: this is brand advertising, not a feature line. It must NOT be generic enough to swap onto another ${market.prospectNoun} (avoid ${market.bannedHeadlines.map((h) => `'${h}'`).join(", ")}), must NOT use the template 'X. One question. Every Y.', and must NOT be a bare stack of noun fragments.","subhead":"One or two short sentences, MAX 22 words total. Must name ${V} exactly once, as the actor doing the work. Land ONE concrete thing that changes for this team, in their own language — specific enough that a rival vendor could not run the same line. Do NOT open with a subordinate clause ('When...', 'As...'), do NOT restate the headline, do NOT name a feature."}. No markdown.`,
           },
         ],
       }),
@@ -89,8 +90,8 @@ export async function genCopy(
   summary: string,
 ): Promise<{ headline: string; subhead: string }> {
   const fallback = {
-    headline: `${specialty.name}, accelerated.`,
-    subhead: `${vendor.name} helps ${specialty.name.toLowerCase()} teams move faster on the document work.`,
+    headline: `${specialty.name}, handled.`,
+    subhead: `${vendor.name} takes the admin out of ${specialty.name.toLowerCase()} so your people team doesn't carry it.`,
   };
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error(`[copy] ${firmName}: ANTHROPIC_API_KEY not set — using generic fallback copy.`);

@@ -1,1 +1,460 @@
-[]
+[
+  {
+    "name": "Pleo",
+    "domain": "pleo.io",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pleo.io&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Distributed and remote teams",
+      "Rapid headcount growth"
+    ],
+    "industries": [
+      "Technology",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "Denmark",
+      "region": "Nordics"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study: 20+ benefits managed across 28+ countries."
+  },
+  {
+    "name": "Zalando",
+    "domain": "zalando.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=zalando.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Low benefits engagement",
+      "Rapid headcount growth"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Germany",
+      "region": "DACH"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben customer stories: employee-story videos and featured-customer listing."
+  },
+  {
+    "name": "Sigma Connected",
+    "domain": "sigmaconnected.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=sigmaconnected.com&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Professional Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Testimonial from Mark Cowen, Head of Colleague Experience."
+  },
+  {
+    "name": "Healios",
+    "domain": "healios.org.uk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=healios.org.uk&sz=256",
+    "practiceAreas": [
+      "Distributed and remote teams",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Healthcare & Life Sciences"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/",
+    "evidence": "Testimonial from Stephanie Gilmour, People & Talent Director."
+  },
+  {
+    "name": "Fastmarkets",
+    "domain": "fastmarkets.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fastmarkets.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Professional Services",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study: 750 employees across eight countries."
+  },
+  {
+    "name": "Thriva",
+    "domain": "thriva.co",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=thriva.co&sz=256",
+    "practiceAreas": [
+      "Low benefits engagement",
+      "Distributed and remote teams"
+    ],
+    "industries": [
+      "Healthcare & Life Sciences"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study: seven benefits, 87% engagement."
+  },
+  {
+    "name": "Lightricks",
+    "domain": "lightricks.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=lightricks.com&sz=256",
+    "practiceAreas": [
+      "Distributed and remote teams",
+      "Multi-country benefits complexity"
+    ],
+    "industries": [
+      "Technology"
+    ],
+    "geo": {
+      "country": "Israel",
+      "region": "Middle East"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study on centralising benefits for a hybrid/remote team."
+  },
+  {
+    "name": "Chattermill",
+    "domain": "chattermill.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=chattermill.com&sz=256",
+    "practiceAreas": [
+      "Distributed and remote teams",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study on remote-first benefits delivery."
+  },
+  {
+    "name": "Mondelez International",
+    "domain": "mondelezinternational.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mondelezinternational.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale",
+      "Cost control under scrutiny"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Manufacturing"
+    ],
+    "geo": {
+      "country": "United States",
+      "region": "North America"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/blog",
+    "evidence": "Named customer in Ben's Series B announcement and LinkedIn featured customers."
+  },
+  {
+    "name": "Trainline",
+    "domain": "thetrainline.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=thetrainline.com&sz=256",
+    "practiceAreas": [
+      "Low benefits engagement",
+      "Cost control under scrutiny"
+    ],
+    "industries": [
+      "Logistics & Transport",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Public Company",
+    "sourceUrl": "https://www.thanksben.com/blog",
+    "evidence": "Named customer across Ben's blog, LinkedIn and funding coverage."
+  },
+  {
+    "name": "Octopus Energy",
+    "domain": "octopus.energy",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=octopus.energy&sz=256",
+    "practiceAreas": [
+      "Rapid headcount growth",
+      "Multi-country benefits complexity",
+      "Frontline and shift workforce"
+    ],
+    "industries": [
+      "Energy & Utilities"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/blog",
+    "evidence": "Named in Ben's Series B announcement and careers page."
+  },
+  {
+    "name": "Deliveroo",
+    "domain": "deliveroo.co.uk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=deliveroo.co.uk&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Low benefits engagement",
+      "Multi-country benefits complexity"
+    ],
+    "industries": [
+      "Logistics & Transport",
+      "Hospitality & Food"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Public Company",
+    "sourceUrl": "https://www.thanksben.com/blog",
+    "evidence": "Named in Ben's Series B announcement and LinkedIn featured customers."
+  },
+  {
+    "name": "Virgin",
+    "domain": "virgin.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=virgin.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Logistics & Transport"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/blog",
+    "evidence": "Named among Ben's customers in its Series B announcement."
+  },
+  {
+    "name": "HSBC",
+    "domain": "hsbc.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hsbc.com&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Named as a featured customer on LinkedIn and in funding coverage."
+  },
+  {
+    "name": "itsu",
+    "domain": "itsu.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=itsu.com&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Hospitality & Food",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Named as a featured customer on LinkedIn and in funding coverage."
+  },
+  {
+    "name": "Bitpanda",
+    "domain": "bitpanda.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bitpanda.com&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Rapid headcount growth",
+      "Multi-country benefits complexity"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology"
+    ],
+    "geo": {
+      "country": "Austria",
+      "region": "DACH"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer on LinkedIn."
+  },
+  {
+    "name": "Funding Circle",
+    "domain": "fundingcircle.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fundingcircle.com&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Public Company",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer (Funding Circle UK) on LinkedIn."
+  },
+  {
+    "name": "Improbable",
+    "domain": "improbable.io",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=improbable.io&sz=256",
+    "practiceAreas": [
+      "Distributed and remote teams",
+      "Rapid headcount growth"
+    ],
+    "industries": [
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer on LinkedIn."
+  },
+  {
+    "name": "Flat Iron",
+    "domain": "flatironsteak.co.uk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=flatironsteak.co.uk&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Hospitality & Food"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer on LinkedIn."
+  },
+  {
+    "name": "10x Banking",
+    "domain": "10xbanking.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=10xbanking.com&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Distributed and remote teams"
+    ],
+    "industries": [
+      "Financial Services",
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer on LinkedIn."
+  },
+  {
+    "name": "InPost",
+    "domain": "inpost.eu",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=inpost.eu&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Logistics & Transport"
+    ],
+    "geo": {
+      "country": "Poland",
+      "region": "Central & Eastern Europe"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.linkedin.com/company/thanksben/",
+    "evidence": "Listed as a featured customer on LinkedIn."
+  },
+  {
+    "name": "British Airways",
+    "domain": "britishairways.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=britishairways.com&sz=256",
+    "practiceAreas": [
+      "Frontline and shift workforce",
+      "Regulated-industry compliance",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Logistics & Transport"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://jobs.ashbyhq.com/ben",
+    "evidence": "Named among 'large enterprise brands' using Ben on its careers site."
+  },
+  {
+    "name": "EY",
+    "domain": "ey.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=ey.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Regulated-industry compliance",
+      "Cost control under scrutiny"
+    ],
+    "industries": [
+      "Professional Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "Global"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://jobs.ashbyhq.com/ben",
+    "evidence": "Named among 'large enterprise brands' using Ben on its careers site."
+  }
+]

@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { query } from "@/lib/db";
 import LandingPage from "@/components/LandingPage";
 import { buildLanding, type LandingData } from "@/lib/landing";
@@ -6,21 +7,28 @@ import { vendor } from "@/lib/brand";
 
 export const runtime = "nodejs";
 
+/**
+ * Next calls generateMetadata and the page separately; React's cache() de-dupes the
+ * query so the page costs one round trip instead of two.
+ */
+const load = cache(async (id: string) => {
+  const { rows } = await query<any>(
+    `select id, firm_name, firm_domain, location, specialties, summary, landing from tb_generations where id=$1`,
+    [id],
+  );
+  return rows[0] ?? null;
+});
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const { rows } = await query<{ firm_name: string }>(`select firm_name from tb_generations where id=$1`, [params.id]);
-  const name = rows[0]?.firm_name;
+  const name = (await load(params.id))?.firm_name;
   return { title: name ? `${vendor.name} × ${name}` : vendor.name };
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const { rows } = await query<any>(
-    `select id, firm_name, firm_domain, location, specialties, summary, landing from tb_generations where id=$1`,
-    [params.id],
-  );
-  if (!rows.length) {
+  const row = await load(params.id);
+  if (!row) {
     return <div className="flex min-h-screen items-center justify-center text-[#8a8a92]">Landing page not found.</div>;
   }
-  const row = rows[0];
   const specialties: Specialty[] = Array.isArray(row.specialties) ? row.specialties : [];
   let landing: LandingData | null = row.landing;
 

@@ -4,6 +4,8 @@ import { matchLogos } from "@/lib/match";
 import { genCopy } from "@/lib/copy";
 import { generateAd } from "@/lib/image";
 import { fetchLogoPng } from "@/lib/logos";
+import { putAd, deleteAd } from "@/lib/storage";
+import { checkBudget } from "@/lib/limits";
 import type { FirmResearch, Office } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -21,6 +23,9 @@ export async function POST(req: Request) {
       market: Office;
     };
     const specialty = firm.specialties.find((s) => s.name === specialtyName) || firm.specialties[0];
+
+    const overBudget = await checkBudget(1);
+    if (overBudget) return NextResponse.json({ error: overBudget }, { status: 429 });
 
     const { headline, subhead } = await genCopy(firm.firmName, specialty, firm.region, firm.summary);
     const logos = await matchLogos(specialty, firm.region, market.country, 3, firm.firmDomain);
@@ -46,10 +51,17 @@ export async function POST(req: Request) {
     const logoMeta = logos.map((l) => ({ name: l.name, logoUrl: l.logoUrl }));
     const label = `${market.city} · ${specialty.name}`;
 
-    await query(
-      `update tb_ads set headline=$1, subhead=$2, image_base64=$3, logos=$4, specialty=$5 where id=$6`,
-      [headline, subhead, imageB64, JSON.stringify(logoMeta), label, adId],
+    const prev = await query<{ image_key: string | null }>(
+      `select image_key from tb_ads where id=$1`,
+      [adId],
     );
+    const imageKey = await putAd(Buffer.from(imageB64, "base64"));
+    await query(
+      `update tb_ads set headline=$1, subhead=$2, image_key=$3, logos=$4, specialty=$5 where id=$6`,
+      [headline, subhead, imageKey, JSON.stringify(logoMeta), label, adId],
+    );
+    // The row now points at the new image, so the old one is unreferenced.
+    await deleteAd(prev.rows[0]?.image_key);
 
     return NextResponse.json({
       ad: {
@@ -57,7 +69,7 @@ export async function POST(req: Request) {
         specialty: label,
         headline,
         subhead,
-        imageDataUri: `data:image/png;base64,${imageB64}`,
+        imageUrl: `/api/ads/${adId}`,
         logos: logoMeta,
       },
     });

@@ -1,0 +1,193 @@
+[
+  {
+    "name": "JBM",
+    "domain": "jbmgroup.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=jbmgroup.com&sz=256",
+    "practiceAreas": [
+      "Rapid headcount growth",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Professional Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study on employee satisfaction and allowances.",
+    "needsVerification": "Domain unresolved. jbmgroup.com is an Indian electric-bus manufacturer, not this customer. Find the right JBM from the Ben case study before using."
+  },
+  {
+    "name": "Cleveland Group",
+    "domain": "clevelandgroup.co.uk",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=clevelandgroup.co.uk&sz=256",
+    "practiceAreas": [
+      "Rapid headcount growth",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Professional Services",
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Mid-market",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study: time-to-hire reportedly fell by over 50%.",
+    "needsVerification": "Domain unconfirmed — clevelandgroup.co.uk resolves but could not be identified. Confirm against the Ben case study."
+  },
+  {
+    "name": "Impala",
+    "domain": "impala.travel",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=impala.travel&sz=256",
+    "practiceAreas": [
+      "Distributed and remote teams",
+      "Rapid headcount growth"
+    ],
+    "industries": [
+      "Technology"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Scale-up",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Ben case study on benefits engagement and administration.",
+    "needsVerification": "Domain unconfirmed (impala.travel is Cloudflare-blocked) and the company may no longer be trading. Verify before using."
+  },
+  {
+    "name": "ASICS",
+    "domain": "asics.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=asics.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Frontline and shift workforce",
+      "Low benefits engagement"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Manufacturing"
+    ],
+    "geo": {
+      "country": "Japan",
+      "region": "Asia-Pacific"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited. Confirm ASICS is publicly nameable as a Ben customer before putting the logo in collateral."
+  },
+  {
+    "name": "Fever-Tree",
+    "domain": "fever-tree.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fever-tree.com&sz=256",
+    "practiceAreas": [
+      "Rapid headcount growth",
+      "Multi-country benefits complexity"
+    ],
+    "industries": [
+      "Retail & Consumer",
+      "Manufacturing"
+    ],
+    "geo": {
+      "country": "United Kingdom",
+      "region": "UK & Ireland"
+    },
+    "tier": "Public Company",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited. Confirm publicly nameable before use."
+  },
+  {
+    "name": "Henkel",
+    "domain": "henkel.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=henkel.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale",
+      "Post-acquisition harmonisation"
+    ],
+    "industries": [
+      "Manufacturing",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "Germany",
+      "region": "DACH"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited. Confirm publicly nameable before use."
+  },
+  {
+    "name": "JTI",
+    "domain": "jti.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=jti.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Regulated-industry compliance",
+      "Cost control under scrutiny"
+    ],
+    "industries": [
+      "Manufacturing",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "Switzerland",
+      "region": "DACH"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited. Confirm publicly nameable before use."
+  },
+  {
+    "name": "Opella",
+    "domain": "opella.com",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=opella.com&sz=256",
+    "practiceAreas": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Regulated-industry compliance"
+    ],
+    "industries": [
+      "Healthcare & Life Sciences",
+      "Retail & Consumer"
+    ],
+    "geo": {
+      "country": "France",
+      "region": "France"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited, and opella.com could not be reached to confirm it is the right Opella. Verify both."
+  },
+  {
+    "name": "MUFG",
+    "domain": "mufg.jp",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mufg.jp&sz=256",
+    "practiceAreas": [
+      "Regulated-industry compliance",
+      "Multi-country benefits complexity",
+      "Payroll accuracy at scale"
+    ],
+    "industries": [
+      "Financial Services"
+    ],
+    "geo": {
+      "country": "Japan",
+      "region": "Asia-Pacific"
+    },
+    "tier": "Global Enterprise",
+    "sourceUrl": "https://www.thanksben.com/customers",
+    "evidence": "Named by the client as a Ben customer; not yet traced to a public Ben source.",
+    "needsVerification": "No public Ben source cited, and mufg.jp could not be reached to confirm. Verify both."
+  }
+]

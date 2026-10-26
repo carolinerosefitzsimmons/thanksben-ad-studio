@@ -4,9 +4,22 @@ These are the system's real IP. The app runs without them — it just produces
 generic ads with no social proof, which is the thing that made the prototype
 work. Fill both before judging output quality.
 
-Worked examples from the prototype are in `reference/`, along with
-`reference/HARVEST_NOTES.md`, which documents how 81 customers were found and
-tagged. **Read those notes before harvesting your own.**
+Both are populated for Ben. The prototype's originals are in `reference/`, along
+with `reference/HARVEST_NOTES.md`, which documents how that vault was harvested
+and tagged — worth reading before extending this one.
+
+### Three files, not two
+
+| File | Seeded? | What it is |
+| --- | --- | --- |
+| `clients.json` | yes | 23 customers with a public citation and a confirmed domain. Only these can appear in generated collateral. |
+| `clients.needs-verification.json` | **no** | 9 customers held back, each with a `needsVerification` note saying what to check. |
+| `capabilities.json` | n/a (read from disk) | 26 Ben capabilities, 22 of them ad-worthy. |
+
+Nothing moves from the holding file into `clients.json` until both things are
+true: the domain is confirmed to be that company, and the customer is **publicly
+nameable**. Ads go to competitors of the companies in that logo row, so naming a
+customer who has not been publicly named is a real problem, not a tidiness one.
 
 ---
 
@@ -38,11 +51,16 @@ Existing customers whose logos can appear as social proof. Seeded into
 - **`region` must be one of `market.regions` in `lib/brand.ts`.** The research
   model is told to pick from that closed set, and `lib/match.ts` scores an exact
   string match. A region here that isn't in that list can never score.
-- **`practiceAreas` is the field renamed last.** It is matched ×3 — the
-  strongest signal in the whole system — so it must use the same vocabulary the
-  research model returns for a prospect's segments. Mismatched vocabularies
-  between this file and `market.segmentExamples` are the most likely reason
-  matching silently returns nothing useful.
+- **`practiceAreas` holds the workforce challenges**, Ben's analogue of a law
+  firm's practice area. Matched ×3 — the strongest signal in the system — so the
+  values must come from `market.segmentExamples` in `lib/brand.ts`, which is the
+  same list the research model picks from. Mismatched vocabularies between the
+  two are the most likely reason matching silently returns nothing useful.
+- **Watch the shared words.** Because most challenges contain "benefits" or
+  "workforce", those are listed in `market.taxonomyStopwords` and ignored when
+  scoring. Without that, every tag partially matches every other one.
+- **Check your tagging with the explainer**, which runs the real scoring with no
+  database: `node scripts/explain-match.mjs "Frontline and shift workforce" "UK & Ireland" "United Kingdom"`
 - **`logoUrl` must resolve.** Clearbit's free logo CDN is dead. Google favicons
   at `sz=256` work but look poor composited into an ad; set `LOGO_DEV_TOKEN` for
   real wordmarks.
@@ -85,3 +103,6 @@ off disk by `lib/capabilities.ts`; never seeded into Postgres.
 - Nine rows are selected per ad and **rotated by a hash of the prospect's
   name**, so a campaign doesn't lead on the same capability every time. Fewer
   than nine ad-worthy rows means every ad draws on the same small pool.
+- Each challenge currently has five to nine directly tagged capabilities. The
+  brief always fills to nine, so a thinly-tagged challenge pulls in loosely
+  related rows — add tags rather than accept that.

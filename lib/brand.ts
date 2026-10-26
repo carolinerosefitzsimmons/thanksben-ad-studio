@@ -1,145 +1,181 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // THE SEAM.
 //
-// Everything in this file was hardcoded to Legora (a legal-AI vendor selling to
-// law firms) in the prototype. It is now the single place that knows who we are
-// and who we sell to. Nothing else in the codebase should contain the vendor's
-// name, the market's vocabulary, or the brand's colours.
+// The single place that knows who we are and who we sell to. Nothing else in
+// the codebase contains the vendor's name, the market's vocabulary, or the
+// brand's colours.
 //
-// Values marked REPLACE are placeholders. Until they are filled in,
-// `brandGaps()` reports them and /api/generate refuses to run — shipping
-// "REPLACE_ME" into a rendered ad is worse than a clear error.
+// Configured for Ben (thanksben.com) — an AI-native employee benefits platform
+// selling to multi-country employers. Forked from a tool built for a legal-AI
+// vendor selling to law firms; the architecture carried over, this file did not.
 //
-// The Legora values are kept in comments as a worked example of the register
-// each field wants.
+// `brandGaps()` reports any field still holding a REPLACE placeholder, and
+// /api/generate refuses to run while any remain.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const PLACEHOLDER = "REPLACE";
 
 export const vendor = {
-  /** Display name, as it should appear in ad copy. */
-  name: "thanksben",
+  /** Display name, as it should appear in ad copy. The product is "Ben", not "thanksben". */
+  name: "Ben",
 
   /** Legal/full name, for page titles and metadata. */
-  fullName: "thanksben AI",
+  fullName: "Ben",
+
+  /** What we are, in one noun phrase, for someone who has never heard of us. */
+  descriptor: "an AI-native employee benefits platform",
+
+  /** The brand line ads should echo in register — not quoted, just the voice. */
+  voiceLine: "Benefits that work for life.",
+
+  /** The same, for landing pages, which are plainer than ads. */
+  landingVoiceLine: "Get benefits that get your people.",
 
   /**
-   * What we are, in one noun phrase, as a prospect who has never heard of us
-   * would need it explained. Goes straight into the copy and image prompts.
-   * Legora: "a premium collaborative legal-AI platform"
+   * Words the copywriter must never reach for. The first four are generic
+   * B2B filler; the rest are specific to this category and sound like every
+   * other benefits vendor.
    */
-  descriptor: `${PLACEHOLDER}: a one-phrase description of what thanksben AI is`,
+  bannedWords: [
+    "velocity", "friction", "unlock", "supercharge",
+    "holistic", "seamless", "empower", "journey", "one-stop shop", "game-changer",
+  ],
+
+  /** Rendered as the wordmark inside generated ad images. */
+  wordmarkText: "Ben",
+
+  /** The ad's visual language, described for the image model. */
+  visualLanguage:
+    "warm, optimistic and graphic — a soft off-white (#F8F9F3) ground, a very large " +
+    "dark-green (#002923) headline set in a heavy geometric grotesque with tight leading, " +
+    "generous negative space, and one flowing coral-to-peach-to-mint gradient used either " +
+    "as the full background or as a soft shape; clean, friendly, never corporate-stock",
+
+  /** The non-typographic mark allowed in a generated ad. */
+  markDescription:
+    "the Ben logo: a solid rounded-square ring enclosing a single horizontal rounded bar " +
+    "(a toggle switch seen head-on), set immediately left of the lowercase-weighted wordmark \"Ben\"",
 
   /**
-   * The brand line the ad copy should echo in register — not quoted in the ad,
-   * just used to set the voice.
-   * Legora: "Law just got more attractive."
+   * Ben's illustrated characters. Unique to this brand and the main reason its
+   * ads don't look like everyone else's, so the image prompt asks for one by
+   * description rather than leaving the model to invent a mascot.
    */
-  voiceLine: `${PLACEHOLDER}: the brand line whose register ads should echo`,
-
-  /**
-   * The same thing for landing pages, which are plainer than ads.
-   * Legora: "Collaborative AI for exceptional lawyers"
-   */
-  landingVoiceLine: `${PLACEHOLDER}: the register for landing-page copy`,
-
-  /** Words the copywriter must never reach for. Add house-style bans here. */
-  bannedWords: ["velocity", "friction", "unlock", "supercharge"],
-
-  /** Rendered as the wordmark inside generated ad images. Usually name.toUpperCase(). */
-  wordmarkText: "THANKSBEN",
-
-  /**
-   * The ad's visual language, described for the image model. This matters less
-   * than assets/refs/*.png — the three reference images do most of the work —
-   * but it should not contradict them.
-   * Legora: "cinematic, editorial, sophisticated; muted elegant tones; generous
-   *          negative space; a clean top bar with the wordmark on the left and a
-   *          small four-point star icon on the right; refined restrained typography"
-   */
-  visualLanguage: `${PLACEHOLDER}: how thanksben's creative looks, in one sentence`,
-
-  /** The non-typographic mark allowed in a generated ad, described in words. */
-  markDescription: `${PLACEHOLDER}: e.g. "a small four-point star icon"`,
+  characterStyle:
+    "a \"benimal\" — a single friendly anthropomorphic animal (elephant, stork, gorilla, " +
+    "hare) drawn as clean line art with a dark-green outline of even weight, filled with a " +
+    "coral-to-mint vertical gradient, wearing contemporary casual office clothing and doing " +
+    "an ordinary human thing (working at a laptop, roller-skating, carrying a guitar case)",
 } as const;
 
 export const palette = {
-  /** Primary brand colour. Legora: #005230. Also set as `brand` in tailwind.config.ts. */
-  primary: "#005230",
-  onPrimary: "#ffffff",
-  /** Tint of primary used for selected rows in the wizard. */
-  primarySoft: "#f1f6f3",
-  /** Darker primary, for buttons on photographic backgrounds. Legora: #0b3d2e. */
-  primaryDeep: "#0b3d2e",
+  /** Ben dark green. Sampled from the official logo plate. */
+  primary: "#002923",
+  /** Ben off-white. Sampled from the official ad backgrounds. */
+  onPrimary: "#F8F9F3",
+  /** Pale mint, for selected rows. */
+  primarySoft: "#EAF4F0",
+  /** Deeper green, for buttons on photographic or gradient backgrounds. */
+  primaryDeep: "#001A16",
+  /** Gradient stops, sampled from the official brand gradient. */
+  coral: "#F37A69",
+  peach: "#F89969",
+  sand: "#FFF3C9",
+  mint: "#75BCAC",
 } as const;
 
 export const assets = {
-  /** Public paths. Replace the files themselves in public/. */
-  wordmarkSvg: "/legora-wordmark.svg",
-  landingHero: "/landing-hero.png",
+  wordmarkSvg: "/ben-wordmark.svg",
+  landingHero: "/ben-gradient.png",
+  /** Reference creative in assets/refs/, fed to the image model as style guides. */
+  referenceAds: ["ad-benimal-cards.png", "ad-benimal-hero.png", "ad-gradient.png"],
 } as const;
 
-/**
- * The market we sell into. The prototype assumed law firms throughout; every
- * noun below was a hardcoded "law firm", "lawyer", "partner" or "practice area".
- */
+/** The market we sell into: employers buying benefits for their people. */
 export const market = {
-  /** What a prospect organisation is called. Legora: "law firm" / "law firms" */
-  prospectNoun: `${PLACEHOLDER}: singular, e.g. "law firm"`,
-  prospectNounPlural: `${PLACEHOLDER}: plural, e.g. "law firms"`,
+  prospectNoun: "employer",
+  prospectNounPlural: "employers",
 
-  /** The people who do the work we help with. Legora: "lawyer" / "lawyers" */
-  practitionerNoun: `${PLACEHOLDER}: singular, e.g. "lawyer"`,
-  practitionerNounPlural: `${PLACEHOLDER}: plural, e.g. "lawyers"`,
+  /** The people inside a prospect who own this problem. */
+  practitionerNoun: "reward lead",
+  practitionerNounPlural: "reward and people teams",
 
-  /** Who the ad has to land with on first read. Legora: "partner" */
-  decisionMakerNoun: `${PLACEHOLDER}: e.g. "partner"`,
-
-  /**
-   * What we call a division of a prospect's business. Drives the first wizard
-   * step and the taxonomy on every vault row.
-   * Legora: "practice area" / "specialism"
-   */
-  segmentLabel: `${PLACEHOLDER}: e.g. "practice area"`,
-  segmentLabelPlural: `${PLACEHOLDER}: e.g. "practice areas"`,
+  /** Who the headline has to land with on first read. */
+  decisionMakerNoun: "reward director",
 
   /**
-   * Examples of the KIND of segment to extract, shown to the research model so
-   * it returns the right granularity.
-   * Legora: "M&A / Corporate", "Competition & Antitrust", "Disputes & Litigation", ...
+   * Ben's analogue of a law firm's "practice area": the benefits problem a
+   * given employer has, inferred from their visible footprint. This is the
+   * axis the vault is tagged on and the one scored ×3 in lib/match.ts.
    */
-  segmentExamples: [`${PLACEHOLDER}: 4-8 example segments from your market`],
+  segmentLabel: "workforce challenge",
+  segmentLabelPlural: "workforce challenges",
+
+  /** The closed-ish set the research model picks from. Keep in sync with data/clients.json. */
+  segmentExamples: [
+    "Multi-country benefits complexity",
+    "Payroll accuracy at scale",
+    "Low benefits engagement",
+    "Frontline and shift workforce",
+    "Rapid headcount growth",
+    "Post-acquisition harmonisation",
+    "Regulated-industry compliance",
+    "Distributed and remote teams",
+    "Cost control under scrutiny",
+  ],
 
   /**
-   * Client sectors a segment might serve.
-   * Legora: "Financial Services", "Energy", "Technology", "Life Sciences"
+   * Words that appear in so many tags they carry no signal. Without these,
+   * "Low benefits engagement" partially matches "Multi-country benefits
+   * complexity" on the word "benefits" alone and unrelated peers look relevant.
    */
-  sectorExamples: [`${PLACEHOLDER}: 4-6 example client sectors`],
+  taxonomyStopwords: ["benefits", "workforce", "under", "and", "the", "for"],
 
-  /** Coarse geographic buckets. Must stay a closed set — the research model picks one. */
+  /** The prospect's OWN sector — not, as in the legal original, sectors they serve. */
+  sectorLabel: "sector",
+  sectorExamples: [
+    "Financial Services",
+    "Retail & Consumer",
+    "Technology",
+    "Energy & Utilities",
+    "Healthcare & Life Sciences",
+    "Logistics & Transport",
+    "Professional Services",
+    "Manufacturing",
+    "Hospitality & Food",
+  ],
+
+  /** Coarse geographic buckets. Ben sells across Europe and North America. */
   regions: [
     "UK & Ireland", "Nordics", "DACH", "Benelux", "Southern Europe", "France",
     "Central & Eastern Europe", "North America", "Middle East", "Asia-Pacific", "Global",
   ],
 
   /**
-   * Headlines that are true of every prospect and bespoke to none. The copy
-   * prompt bans these by example; generic output is the main failure mode.
-   * Legora: "Due diligence. Faster.", "Deal velocity"
+   * Headlines that are true of every employer and bespoke to none. Banned by
+   * example, because generic output is the main failure mode.
    */
-  bannedHeadlines: [`${PLACEHOLDER}: 2-3 generic headlines to ban by example`],
+  bannedHeadlines: [
+    "Benefits, simplified.",
+    "Employee benefits that work.",
+    "Put your people first.",
+    "The future of reward.",
+  ],
 
-  /**
-   * Regex the landing headline must match, or it reads as the prospect's own
-   * tagline rather than software being sold to them. Keep the vendor name in it.
-   */
-  landingHeadlineGuard: /\b(ai|thanksben)\b/i,
+  /** Shown as the example in the URL box. */
+  exampleProspectDomain: "zalando.com",
+
+  /** The landing headline must match this or it reads as the employer's own slogan. */
+  landingHeadlineGuard: /\b(ai|ben)\b/i,
 } as const;
 
 /** Vault taxonomy: how a customer row is tagged. Mirrors data/SCHEMA.md. */
 export const vault = {
-  /** Tier labels used for the marquee tie-break in lib/match.ts. */
-  marqueePattern: new RegExp(PLACEHOLDER, "i"),
+  /**
+   * Tiers that make a logo recognisable enough to be worth showing. Used only
+   * as a tie-break in lib/match.ts when scores are level.
+   */
+  marqueePattern: /global enterprise|ftse|public company|household/i,
 } as const;
 
 const PLACEHOLDER_RE = new RegExp(PLACEHOLDER);
@@ -177,4 +213,9 @@ export function isBrandConfigured(): boolean {
  */
 export function label(value: string, fallback: string): string {
   return PLACEHOLDER_RE.test(value) ? fallback : value;
+}
+
+/** "employer" -> "an employer". Market nouns are configurable, so the article is too. */
+export function withArticle(noun: string): string {
+  return `${/^[aeiou]/i.test(noun.trim()) ? "an" : "a"} ${noun}`;
 }

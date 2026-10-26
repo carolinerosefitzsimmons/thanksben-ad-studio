@@ -5,6 +5,8 @@ import { genCopy } from "@/lib/copy";
 import { generateAd } from "@/lib/image";
 import { fetchLogoPng } from "@/lib/logos";
 import { buildLanding } from "@/lib/landing";
+import { putAd } from "@/lib/storage";
+import { checkBudget } from "@/lib/limits";
 import { brandGaps } from "@/lib/brand";
 import type { FirmResearch, Office, Specialty } from "@/lib/types";
 
@@ -42,11 +44,15 @@ export async function POST(req: Request) {
     if (!chosen.length) return NextResponse.json({ error: "Select at least one specialism." }, { status: 400 });
     const primary = chosen[0];
 
-    // One ad per selected market (skyline + local professional tailored to each).
+    // One ad per selected market (setting tailored to each).
     const useMarkets: Office[] =
       markets && markets.length
         ? markets
         : [{ city: (firm.location.split(",")[0] || firm.firmName).trim(), country: locationCountry(firm.location) || "" }];
+
+    // Each market is a billable image. Check before writing anything.
+    const overBudget = await checkBudget(useMarkets.length);
+    if (overBudget) return NextResponse.json({ error: overBudget }, { status: 429 });
 
     const gen = await query<{ id: string }>(
       `insert into tb_generations (firm_url, firm_name, firm_domain, location, specialties, summary)
@@ -88,17 +94,18 @@ export async function POST(req: Request) {
         });
         const label = `${mkt.city} · ${primary.name}`;
         const logoMeta = logos.map((l) => ({ name: l.name, logoUrl: l.logoUrl }));
+        const imageKey = await putAd(Buffer.from(imageB64, "base64"));
         const row = await query<{ id: string }>(
-          `insert into tb_ads (generation_id, specialty, headline, subhead, image_base64, logos)
+          `insert into tb_ads (generation_id, specialty, headline, subhead, image_key, logos)
            values ($1,$2,$3,$4,$5,$6) returning id`,
-          [generationId, label, headline, subhead, imageB64, JSON.stringify(logoMeta)],
+          [generationId, label, headline, subhead, imageKey, JSON.stringify(logoMeta)],
         );
         return {
           id: row.rows[0].id,
           specialty: label,
           headline,
           subhead,
-          imageDataUri: `data:image/png;base64,${imageB64}`,
+          imageUrl: `/api/ads/${row.rows[0].id}`,
           logos: logoMeta,
         };
       }),

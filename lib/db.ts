@@ -9,7 +9,11 @@ export function getPool(): Pool {
   if (!pool) {
     const cs = process.env.SUPABASE_DB_URL;
     if (!cs) throw new Error("SUPABASE_DB_URL not set");
-    pool = new Pool({ connectionString: cs, ssl: { rejectUnauthorized: false }, max: 4 });
+    // Verify the server certificate unless explicitly disabled. The prototype
+    // hardcoded rejectUnauthorized:false, which silently accepted any certificate.
+    const noVerify = process.env.PGSSL_NO_VERIFY === "1";
+    if (noVerify) console.error("[db] PGSSL_NO_VERIFY=1 — database TLS certificate is NOT being verified.");
+    pool = new Pool({ connectionString: cs, ssl: { rejectUnauthorized: !noVerify }, max: 4 });
   }
   return pool;
 }

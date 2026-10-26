@@ -6,13 +6,12 @@ writes copy for one of their specialisms, and renders display ads plus a
 tailored landing page.
 
 Forked from `hgb-anam-2026/caroline-legora` @ `c105d9b` (a legal-AI vendor
-selling to law firms) and rebranded. Every vendor- and market-specific string
-now lives in **[`lib/brand.ts`](./lib/brand.ts)** — the one file to edit.
+selling to law firms) and rebranded for Ben. Every vendor- and market-specific
+string lives in **[`lib/brand.ts`](./lib/brand.ts)** — the one file to edit.
 
-**16 fields there are still placeholders, so generation is blocked** until they
-are filled; the app says so on its empty state and `/api/generate` returns a 400
-naming each one. See the rebrand status at the end of
-[ARCHITECTURE.md](./ARCHITECTURE.md) for what is done and what remains.
+The brand config is complete, the vault holds 23 publicly-citable customers and
+the capability library holds 26 entries. What it has never done is render an
+image: that needs an OpenAI key. See [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Run it
 
@@ -23,9 +22,9 @@ npm run dev                    # http://localhost:3001
 curl -X POST localhost:3001/api/seed   # once: loads data/clients.json into Postgres
 ```
 
-Then, in order: fill `lib/brand.ts`, then `data/clients.json` and
-`data/capabilities.json` (shape and rules in [data/SCHEMA.md](./data/SCHEMA.md)),
-then swap the three reference ads in `assets/refs/`.
+`APP_USER` and `APP_PASSWORD` are optional in development and **required in
+production** — the studio spends money on every run, so it returns 503 rather
+than sit open. `/lp/*` landing pages stay public by design.
 
 Nothing works without `SUPABASE_DB_URL`: the matcher reads the vault from
 Postgres, so with no database you get a UI and no ads. `ANTHROPIC_API_KEY` and
@@ -42,19 +41,34 @@ every statement is `if not exists`.
 
 One generation = 1 Haiku call (research) + 1 Haiku call (narration) + 1 Sonnet
 call (ad copy) + 1 Sonnet call (landing copy) + **one `gpt-image-2` render per
-selected market**. The image dominates. There is no auth, rate limit or spend
-cap on `/api/generate` — add one before this is reachable by anyone else.
+selected market**. The image dominates.
+
+Two caps are enforced before anything is rendered: `MAX_ADS_PER_REQUEST`
+(default 4) and `DAILY_AD_LIMIT` (default 50, from midnight UTC). Both return a
+429 with the counts rather than silently spending.
 
 ## Layout
 
 ```
 lib/brand.ts    THE SEAM — who we are, who we sell to, brand colours
+middleware.ts   HTTP Basic auth over everything except /lp/*
 app/api/        the pipeline, one route per stage
-app/lp/[id]/    the generated landing page
-lib/            research · match · copy · capabilities · image · logos · landing
-data/           the knowledge vault + capability library (the real IP)
+app/lp/[id]/    the generated landing page (public)
+lib/            research · match · copy · capabilities · image · logos
+                · landing · storage · limits
+lib/match-score.mjs  pure scoring, shared with scripts/
+data/           the vault + capability library (the real IP)
 data/reference/ Legora's originals, kept as worked examples
-assets/refs/    three reference ads that set the visual identity of every output
+assets/refs/    three real Ben ads that set the visual identity of every output
 supabase/       the schema, applied at runtime
-scripts/        one-off asset and logo preparation
+scripts/        explain-match (dev tool) + one-off asset preparation
 ```
+
+## Checking your tagging
+
+```bash
+node scripts/explain-match.mjs "Multi-country benefits complexity" "UK & Ireland" "United Kingdom"
+```
+
+Runs the real matcher against `data/clients.json` with no database, and prints
+which peers would appear in the ad and why each one scored.

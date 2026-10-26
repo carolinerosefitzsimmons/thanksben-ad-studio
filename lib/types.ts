@@ -35,7 +35,7 @@ export interface Ad {
   specialty: string;
   headline: string;
   subhead: string | null;
-  imageDataUri: string; // data:image/png;base64,...
+  imageUrl: string; // /api/ads/<id> — bytes live in object storage
   logos: { name: string; logoUrl: string | null }[];
 }
 

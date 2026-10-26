@@ -12,12 +12,12 @@ export interface LandingData {
 }
 
 const FALLBACK = (firm: FirmResearch, sp: Specialty): Omit<LandingData, "logos"> => ({
-  headline: `Collaborative AI for ${sp.name.toLowerCase()} teams.`,
-  subhead: `The AI workspace helping ${firm.firmName}'s ${sp.name.toLowerCase()} team do more.`,
+  headline: `AI built for ${sp.name.toLowerCase()}.`,
+  subhead: `The AI benefits platform built for ${firm.firmName}'s ${sp.name.toLowerCase()}.`,
   points: [
-    { title: "Draft faster", body: "Produce first drafts and review documents in a fraction of the time." },
-    { title: "Research deeper", body: "Interrogate thousands of documents and sources at once." },
-    { title: "Collaborate seamlessly", body: "One workspace for the whole matter team." },
+    { title: "One programme", body: "The same benefits programme everywhere, with each country's rules built in." },
+    { title: "Clean payroll", body: "Benefits data is checked as it moves, so errors surface before payday." },
+    { title: "Real usage", body: "See what people actually use, not what the brochure said they would." },
   ],
 });
 
@@ -42,7 +42,7 @@ LEAD ${market.segmentLabel.toUpperCase()}: ${sp.name}${sp.blurb ? ` — ${sp.blu
 SECTORS: ${sp.industries.join(", ") || "various"}
 
 Return STRICT JSON (no markdown):
-{"headline":"4-8 words. Must make UNMISTAKABLY clear ${vendor.name} is AI SOFTWARE that helps with ${sp.name} work — NOT the prospect's own slogan. It must contain the word 'AI'. Good patterns: 'AI built for ${sp.name.toLowerCase()} teams', 'The AI workspace for ${sp.name.toLowerCase()}'. BAD (sounds like their own tagline): '${sp.name}, without compromise.'","subhead":"one line (max 14 words) positioning ${vendor.name} as the tool that helps ${firm.firmName}'s ${sp.name} team","points":[{"title":"2-3 words","body":"max 16 words, concrete to how ${sp.name} teams would use ${vendor.name}"}]}
+{"headline":"4-8 words. Must make UNMISTAKABLY clear ${vendor.name} is AI SOFTWARE that helps with ${sp.name} work — NOT the prospect's own slogan. It must contain the word 'AI'. Good patterns: 'AI built for ${sp.name.toLowerCase()} teams', 'The AI workspace for ${sp.name.toLowerCase()}'. BAD (sounds like their own tagline): '${sp.name}, without compromise.'","subhead":"one line (max 14 words) positioning ${vendor.name} as the platform that takes ${sp.name} off ${firm.firmName}'s people team","points":[{"title":"2-3 words","body":"max 16 words, concrete to how ${sp.name} teams would use ${vendor.name}"}]}
 Return exactly 3 points. No markdown.`,
           },
         ],

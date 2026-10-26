@@ -1,11 +1,11 @@
 import OpenAI, { toFile } from "openai";
-import { vendor, market } from "./brand";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { vendor, market, assets, palette } from "./brand";
 
-// Reference ads (real vendor creative) used to steer gpt-image-2 toward the brand's visual language.
-// REPLACE these three files with your own creative — they do more work than the prompt text.
-const REF_FILES = ["ad-announcement.png", "ad-testimonial.png", "ad-portrait.png"];
+// Reference ads (real Ben creative, cropped from the brand sheet) used to steer
+// gpt-image-2 toward the brand's visual language. These do more work than the
+// prompt text does — replacing them changes the output more than any wording here.
 
 export interface AdInput {
   firmName: string;
@@ -13,13 +13,14 @@ export interface AdInput {
   specialty: string;
   headline: string;
   subhead: string;
-  logos: { name: string; png: Buffer }[]; // real peer-firm logos to place in the ad
-  market?: { city: string; country: string }; // skyline + local person tailored to this office
+  logos: { name: string; png: Buffer }[]; // real peer-employer logos to place in the ad
+  market?: { city: string; country: string }; // setting tailored to this office
 }
 
 /**
- * Generate a full, on-brand 16:9 ad with gpt-image-2, using the reference ads as style guides,
- * rendering the supplied copy, and compositing the ACTUAL peer-firm logos passed in. Returns base64 PNG.
+ * Generate a full, on-brand 16:9 ad with gpt-image-2, using the reference ads as
+ * style guides, rendering the supplied copy, and compositing the ACTUAL peer logos
+ * passed in. Returns base64 PNG.
  */
 export async function generateAd(opts: AdInput): Promise<string> {
   const apiKey = process.env.OPENAI_API_KEY;
@@ -27,7 +28,9 @@ export async function generateAd(opts: AdInput): Promise<string> {
   const openai = new OpenAI({ apiKey });
 
   const refs = await Promise.all(
-    REF_FILES.map((f) => toFile(readFileSync(join(process.cwd(), "assets", "refs", f)), f, { type: "image/png" })),
+    assets.referenceAds.map((f) =>
+      toFile(readFileSync(join(process.cwd(), "assets", "refs", f)), f, { type: "image/png" }),
+    ),
   );
   const logoFiles = await Promise.all(
     opts.logos.map((l, i) => toFile(l.png, `logo-${i}.png`, { type: "image/png" })),
@@ -36,28 +39,37 @@ export async function generateAd(opts: AdInput): Promise<string> {
 
   const proof =
     logoFiles.length > 0
-      ? `\n\nAfter the 3 style references, the next ${logoFiles.length} image(s) are the ACTUAL logos of peer organisations that already use ${vendor.name} (${logoNames.join(
+      ? `\n\nAfter the ${refs.length} style references, the next ${logoFiles.length} image(s) are the ACTUAL logos of employers that already use ${vendor.name} (${logoNames.join(
           ", ",
-        )}). Place these real logos — reproduced FAITHFULLY, not redrawn, recoloured, renamed or distorted — in a single tasteful "Trusted by" row near the bottom, evenly spaced, sized consistently. Do NOT write the firm names as text; use the supplied logos.`
+        )}). Place these real logos — reproduced FAITHFULLY, not redrawn, recoloured, renamed or distorted — in one restrained row along the bottom, evenly spaced and sized consistently, under a small "Trusted by" label in ${palette.primary}. Do NOT write the company names as text; use the supplied logos.`
       : "";
 
-  const prompt = `Create ONE premium 16:9 landscape advertisement for "${vendor.name}" — ${vendor.descriptor} for ${market.prospectNounPlural} — in the EXACT visual language of the first 3 reference images: ${vendor.visualLanguage}. A clean top bar carries the wordmark "${vendor.wordmarkText}" on the left and ${vendor.markDescription} on the right.
+  const setting = opts.market
+    ? `Place the character in an everyday setting that reads unmistakably as ${opts.market.city}, ${opts.market.country} — one or two recognisable local cues (architecture, transport, street furniture, weather), drawn in the same flat illustrated style, never photographic and never a postcard skyline.`
+    : "";
 
-Personalise it for the ${market.prospectNoun} "${opts.firmName}"${
+  const prompt = `Create ONE premium 16:9 landscape advertisement for "${vendor.name}" — ${vendor.descriptor} for ${market.prospectNounPlural} — in the EXACT visual language of the first ${refs.length} reference images: ${vendor.visualLanguage}.
+
+This is an illustrated, graphic brand. Do NOT produce a photograph, a photoreal scene, stock photography, or a composite of photographic elements.
+
+Layout, following the references:
+- The ${vendor.markDescription}, small, in the top-left corner, in ${palette.primary}.
+- The headline set very large on the left, in ${palette.primary}, ranged left, in a heavy geometric grotesque with tight leading. It is the dominant element on the canvas.
+- The supporting line beneath it, much smaller, same colour, generous space between them.
+- ${vendor.characterStyle} — occupying the right-hand third, at a comfortable scale, not cropped awkwardly.
+${setting ? `- ${setting}` : ""}
+
+Personalise it for "${opts.firmName}"${
     opts.location && opts.location !== "Unknown" ? ` in ${opts.location}` : ""
-  }, speaking to their ${opts.specialty} ${market.segmentLabel}.
+  }, speaking to ${opts.specialty}.
 
 Render this copy crisply, spelled EXACTLY and legibly:
 - Headline (large): "${opts.headline}"
 - Supporting line (smaller): "${opts.subhead}"
 
-Background: a cinematic, photoreal scene set in ${
-    opts.market ? `${opts.market.city}, ${opts.market.country}` : opts.location
-  } — feature that city's recognisable skyline / architecture, moody, premium, in the ${vendor.name} campaign style. ${
-    opts.market
-      ? `Feature a real, dignified professional who authentically reflects the local ${opts.market.city} (${opts.market.country}) business community and demographics. `
-      : ""
-  }The ONLY typographic brand mark is the ${vendor.wordmarkText} wordmark + ${vendor.markDescription}.${proof}
+Background: the soft off-white ${palette.onPrimary}, with the brand's flowing gradient (coral ${palette.coral} → peach ${palette.peach} → sand ${palette.sand} → mint ${palette.mint}) used as one soft organic shape behind or beside the character — not as a rectangular block and not across the whole canvas, so the headline stays on clean ground.
+
+The ONLY brand mark is the ${vendor.name} logo. Do not invent any other logo, badge, icon set or watermark.${proof}
 
 Keep every provided word accurate; do not invent text. 16:9 composition.`;
 

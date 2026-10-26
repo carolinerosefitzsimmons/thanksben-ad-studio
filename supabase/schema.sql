@@ -38,7 +38,7 @@ create table if not exists tb_ads (
   specialty     text,
   headline      text,
   subhead       text,
-  image_base64  text,               -- TODO: move to object storage; see ARCHITECTURE.md
+  image_key     text,               -- object-storage key; bytes served via /api/ads/[id]
   logos         jsonb default '[]',  -- [{name, logoUrl}]
   created_at    timestamptz default now()
 );
@@ -46,5 +46,6 @@ create table if not exists tb_ads (
 create index if not exists tb_ads_gen_idx on tb_ads(generation_id);
 create index if not exists tb_generations_created_idx on tb_generations(created_at desc);
 
--- Kept for instances created before `landing` was part of the create above.
+-- Kept for instances created before these columns were part of the creates above.
 alter table tb_generations add column if not exists landing jsonb;
+alter table tb_ads add column if not exists image_key text;

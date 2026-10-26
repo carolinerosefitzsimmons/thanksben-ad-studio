@@ -1,1 +1,338 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Cloud-native platform",
+    "layer": "Platform",
+    "technical": "Modern cloud-native, API-driven architecture that decouples the benefits core from delivery, versus legacy monoliths wrapped in rigid middleware.",
+    "prospect": "Connects to the systems already in place rather than asking anyone to rip them out.",
+    "practices": [],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 2,
+    "name": "HRIS and payroll integrations",
+    "layer": "Platform",
+    "technical": "Bi-directional integration with HRIS and payroll systems (Workday, ADP and others); Ben complements the HRIS rather than replacing it.",
+    "prospect": "Sits alongside the HR system already in use and hands payroll figures it can trust.",
+    "practices": [
+      "Payroll accuracy at scale",
+      "Post-acquisition harmonisation",
+      "Rapid headcount growth"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 3,
+    "name": "Ben Smartcard",
+    "layer": "Card",
+    "technical": "A Mastercard issued per employee, carrying that employee's allowance directly.",
+    "prospect": "One card per person, with their allowance already on it.",
+    "practices": [
+      "Distributed and remote teams",
+      "Frontline and shift workforce",
+      "Multi-country benefits complexity"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 4,
+    "name": "Point-of-sale policy rules",
+    "layer": "Card",
+    "technical": "Smart-card rules evaluate company policy at the point of sale, pre-approving or flagging a transaction as it happens.",
+    "prospect": "The card already knows the policy, so spend is approved or stopped at the till instead of argued about later.",
+    "practices": [
+      "Frontline and shift workforce",
+      "Cost control under scrutiny",
+      "Multi-country benefits complexity"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 5,
+    "name": "Auto-substantiation",
+    "layer": "Card",
+    "technical": "Card rules substantiate the majority of transactions automatically at point of sale, removing manual receipt collection.",
+    "prospect": "Most purchases clear themselves, so people stop photographing receipts and nobody chases them.",
+    "practices": [
+      "Frontline and shift workforce",
+      "Low benefits engagement",
+      "Distributed and remote teams"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 6,
+    "name": "Custom-branded Mastercards",
+    "layer": "Card",
+    "technical": "Enterprise-tier physical and virtual cards carrying the customer's own brand.",
+    "prospect": "The card carries the employer's brand, not the vendor's.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 7,
+    "name": "Segmented allowances",
+    "layer": "Budgets",
+    "technical": "Budgets configurable by department, band, location, role and other attributes, managed centrally.",
+    "prospect": "Different budgets for different teams, grades, countries or roles, all set in one place.",
+    "practices": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Rapid headcount growth",
+      "Distributed and remote teams",
+      "Frontline and shift workforce"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 8,
+    "name": "Complex eligibility processing",
+    "layer": "Budgets",
+    "technical": "Rules engine resolving interacting eligibility conditions, including changes triggered by location, grade or life events.",
+    "prospect": "Rules that depend on other rules get worked out for you, including when someone changes country or grade mid-year.",
+    "practices": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Regulated-industry compliance",
+      "Payroll accuracy at scale"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 9,
+    "name": "One programme, local rules",
+    "layer": "Multi-country",
+    "technical": "A single benefits programme operated across every country, with local statutory and tax rules built in, instead of one vendor and spreadsheet per country.",
+    "prospect": "One benefits programme everywhere, that still obeys each country's own rules.",
+    "practices": [
+      "Multi-country benefits complexity",
+      "Post-acquisition harmonisation",
+      "Distributed and remote teams"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 10,
+    "name": "Real-time payroll reconciliation",
+    "layer": "AI",
+    "technical": "Continuous reconciliation of benefits data against payroll, surfacing discrepancies before the payroll run rather than after it.",
+    "prospect": "Benefits and payroll are checked against each other as things change, so a mistake surfaces before payday rather than in next month's correction.",
+    "practices": [
+      "Payroll accuracy at scale",
+      "Multi-country benefits complexity"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 11,
+    "name": "Inbound data validation",
+    "layer": "AI",
+    "technical": "Validation of inbound data at ingestion, flagging discrepancies before they propagate downstream.",
+    "prospect": "Bad data gets caught on the way in, instead of being discovered three systems later.",
+    "practices": [
+      "Payroll accuracy at scale",
+      "Regulated-industry compliance"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 12,
+    "name": "Benefits design agent",
+    "layer": "AI",
+    "technical": "Specialised agent that drafts and models benefits design against actual utilisation data.",
+    "prospect": "Next year's programme gets drafted against what people actually used this year.",
+    "practices": [
+      "Low benefits engagement",
+      "Cost control under scrutiny"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 13,
+    "name": "Employee lifecycle agent",
+    "layer": "AI",
+    "technical": "Specialised agent handling joiners, movers and leavers, updating entitlements without manual intervention.",
+    "prospect": "Joiners, movers and leavers have their entitlements updated without anyone keying it in twice.",
+    "practices": [
+      "Rapid headcount growth",
+      "Post-acquisition harmonisation",
+      "Payroll accuracy at scale"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 14,
+    "name": "Cost control agent",
+    "layer": "AI",
+    "technical": "Specialised agent monitoring spend against budget and surfacing drift.",
+    "prospect": "Spend that is drifting gets raised while there is still a quarter left to do something about it.",
+    "practices": [
+      "Cost control under scrutiny",
+      "Multi-country benefits complexity"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 15,
+    "name": "AI helpdesk for employees",
+    "layer": "AI",
+    "technical": "Conversational assistant trained on that customer's own benefits documentation, answering employee queries directly.",
+    "prospect": "People ask about their own benefits and get a real answer, instead of adding to the people team's inbox.",
+    "practices": [
+      "Low benefits engagement",
+      "Distributed and remote teams",
+      "Frontline and shift workforce"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 16,
+    "name": "Guardrailed conversational search",
+    "layer": "AI",
+    "technical": "Conversational search constrained by preset question prompts to fix intent, guarantee security and structurally prevent hallucination on policy topics.",
+    "prospect": "Answers about policy come from the employer's own documents and stay inside fixed bounds, so nothing gets invented about someone's cover.",
+    "practices": [
+      "Regulated-industry compliance",
+      "Low benefits engagement"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 17,
+    "name": "Automated implementation and UAT",
+    "layer": "AI",
+    "technical": "Automated requirements gathering and UAT testing during implementation.",
+    "prospect": "The build checks itself as it goes, so go-live is less of a leap of faith.",
+    "practices": [
+      "Post-acquisition harmonisation",
+      "Rapid headcount growth"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 18,
+    "name": "Private AI infrastructure",
+    "layer": "Security",
+    "technical": "All inference runs within Ben's AWS environment via Bedrock; customer and employee data is used only in a protected context and never retained in the models.",
+    "prospect": "Everything runs inside a closed environment, and nobody's personal data ends up absorbed into a model.",
+    "practices": [
+      "Regulated-industry compliance",
+      "Multi-country benefits complexity"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 19,
+    "name": "Live spend and usage dashboards",
+    "layer": "Analytics",
+    "technical": "Real-time dashboards covering spend, utilisation and compliance.",
+    "prospect": "What is being spent and what is actually being used, live, rather than stitched together from exports the week before a board meeting.",
+    "practices": [
+      "Cost control under scrutiny",
+      "Low benefits engagement",
+      "Multi-country benefits complexity",
+      "Rapid headcount growth"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 20,
+    "name": "Utilisation reporting",
+    "layer": "Analytics",
+    "technical": "Per-benefit utilisation reporting against cost.",
+    "prospect": "You can finally see which benefits earn their cost and which ones nobody has opened since January.",
+    "practices": [
+      "Cost control under scrutiny",
+      "Low benefits engagement"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 21,
+    "name": "Benefits strategy consulting",
+    "layer": "Service",
+    "technical": "Advisory engagements from benefits health checks through to full programme transformation, alongside the software.",
+    "prospect": "People who do this for a living work on the programme with you, not just hand over the software.",
+    "practices": [
+      "Post-acquisition harmonisation",
+      "Cost control under scrutiny"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 22,
+    "name": "Pre-contract sandbox",
+    "layer": "Service",
+    "technical": "A working, configured test environment built before any contract is signed.",
+    "prospect": "A working version of your own programme to try before anything is signed.",
+    "practices": [
+      "Rapid headcount growth",
+      "Post-acquisition harmonisation"
+    ],
+    "adWorthy": true,
+    "confidence": "marketing"
+  },
+  {
+    "id": 23,
+    "name": "Dedicated Customer Success Manager",
+    "layer": "Service",
+    "technical": "Enterprise-tier named CSM and annual benefits design credits.",
+    "prospect": "A named person who knows the account.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 24,
+    "name": "Security and compliance credentials",
+    "layer": "Security",
+    "technical": "ISO 27001:2022 certified, GDPR compliant, and registered as a UK financial-services supplier.",
+    "prospect": "Certified to the standards a bank's procurement team asks about before it will even take a meeting.",
+    "practices": [
+      "Regulated-industry compliance"
+    ],
+    "adWorthy": true,
+    "confidence": "published"
+  },
+  {
+    "id": 25,
+    "name": "SAML and Okta SSO",
+    "layer": "Security",
+    "technical": "Enterprise-tier SAML / Okta single sign-on.",
+    "prospect": "Signs in through the identity provider already in use.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  },
+  {
+    "id": 26,
+    "name": "Broker channel",
+    "layer": "Commercial",
+    "technical": "A dedicated offering for benefits brokers alongside direct sales.",
+    "prospect": "Available through a broker as well as direct.",
+    "practices": [],
+    "adWorthy": false,
+    "confidence": "published"
+  }
+]

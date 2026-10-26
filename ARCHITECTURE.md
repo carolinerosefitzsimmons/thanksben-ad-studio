@@ -155,45 +155,119 @@ server process, so there is no migration step.
 | `next.config.mjs` allows remote images from `hostname: "**"` | `next.config.mjs` |
 | `generateMetadata` in `/lp/[id]` queries the DB separately from the page body — two round trips | `app/lp/[id]/page.tsx` |
 
-## Rebrand status
+## Rebrand status — complete
 
-The v2 rebrand moved every vendor- and market-specific string into
-**`lib/brand.ts`** — the seam. Nothing else in the codebase names the vendor or
-the market. `brandGaps()` walks that config and reports any field still holding
-a `REPLACE` placeholder; `POST /api/generate` refuses with a 400 listing them,
-and the empty state shows a setup banner, so a placeholder can never reach a
-rendered ad.
+Configured for Ben. `lib/brand.ts` holds the vendor identity and voice, the
+market's vocabulary, the taxonomy stopwords and the brand palette; nothing else
+in the codebase names Ben or the benefits market. `brandGaps()` returns empty,
+so generation is unblocked.
 
-### Done
+### What changed from the Legora prototype
 
 | Was | Now |
 | --- | --- |
-| "Legora" in 6 prompt files | `vendor.name` / `vendor.descriptor` / `vendor.voiceLine` |
-| "law firm", "lawyer", "partner", "practice area" | `market.*` nouns |
-| Region buckets duplicated in two files | `market.regions`, single source |
-| `MARQUEE` regex of UK/US firm names | `vault.marqueePattern` |
-| `#005230` / `#0b3d2e` / `#f1f6f3` inline | `palette.*`, re-exported as Tailwind `brand` / `branddeep` / `brandsoft` |
-| `components/LegoraLogo.tsx` | `components/BrandLogo.tsx`, colours from `palette` |
-| `legora_clients`, `lag_generations`, `lag_ads` | `tb_clients`, `tb_generations`, `tb_ads` |
-| `supabase/legora_schema.sql` | `supabase/schema.sql` |
-| `interface LegoraClient` | `interface VaultClient` |
-| Legora's 81 customers / 42 capabilities | empty `data/clients.json` + `data/capabilities.json`, originals kept under `data/reference/` as worked examples |
+| "Legora", a legal-AI vendor | Ben, `vendor.*` in the seam |
+| Prospect = law firm, segment = practice area | Prospect = employer, segment = **workforce challenge** |
+| Photoreal cinematic ads, city skyline, local professional | Ben's illustrated language: off-white ground, heavy geometric headline, coral→mint gradient, a "benimal" character |
+| 3 Legora reference ads | 3 real Ben ads cropped from the brand sheet |
+| 81 law firms | 23 publicly-citable Ben customers, 9 more held back |
+| 42 Legora capabilities | 26 Ben capabilities, 22 ad-worthy |
+| Images as base64 in Postgres | Object storage behind `lib/storage.ts`, served by `/api/ads/[id]` |
+| No auth, no spend cap | Basic auth middleware + per-request and daily image caps |
 
-### Remaining — needs thanksben's own information
+### The mapping decision worth understanding
 
-1. **Fill `lib/brand.ts`.** 16 placeholder fields. Each carries the Legora value
-   in a comment to show the register it wants.
-2. **Build `data/clients.json`.** Your own customers, tagged. Read
-   `data/reference/HARVEST_NOTES.md` first — it documents the method and the
-   traps, including that Clearbit's logo CDN is dead.
-3. **Build `data/capabilities.json`.** Keep the `technical`/`prospect` split and
-   the `adWorthy` / `confidence` gates; `data/SCHEMA.md` explains why each
-   matters.
-4. **Replace `assets/refs/*.png`** with thanksben's own creative. These three
-   images set the visual identity of every generated ad and nothing else in the
-   system compensates for generic ones.
-5. **Replace `public/legora-*` and `public/landing-hero.png`**, then point
-   `assets.*` in `lib/brand.ts` at the new files.
-6. **Re-point `public/logos/`** — 57 pre-rendered grey law-firm wordmarks, used
-   by the landing page's trusted-by row. Regenerate with
-   `scripts/fetch-client-logos.mjs` once `data/clients.json` is populated.
+A law firm's website states its practice areas; an employer's website does not
+state its benefits problems. So the research model infers the **workforce
+challenge** from what is observable — headcount, countries, whether the work is
+frontline or desk-based, the sector's regulatory load — and picks from the fixed
+list in `market.segmentExamples`. The vault is tagged on that same list, which
+is what makes matching work. Change one and you must change the other.
+
+Because most of those challenge names share the words "benefits" and
+"workforce", `market.taxonomyStopwords` removes them before scoring. Without it
+every tag partially matches every other one and unrelated peers look relevant.
+
+### Matching, corrected
+
+Two faults in the prototype's scoring showed up with this taxonomy and are fixed
+in `lib/match-score.mjs`:
+
+1. **Shared vocabulary created phantom matches** — see stopwords above.
+2. **Geography and fame could qualify a peer on their own.** A row scoring only
+   the marquee tie-break still passed the `score > 0` filter, so an ad about
+   cost control could show three household names with no relevance to it.
+   Relevance (challenge and sector overlap) is now tracked separately and
+   required; proximity and recognisability only break ties between peers that
+   already match.
+
+The scoring moved to a plain-JS module so `scripts/explain-match.mjs` runs the
+same code with no database:
+
+```
+$ node scripts/explain-match.mjs "Frontline and shift workforce" "UK & Ireland" "United Kingdom"
+   16  Octopus Energy    UK & Ireland   challenge×4, region, country, marquee
+   16  Deliveroo         UK & Ireland   challenge×4, region, country, marquee
+   16  British Airways   UK & Ireland   challenge×4, region, country, marquee
+```
+
+## Infrastructure
+
+### Image storage — `lib/storage.ts`
+
+Ads are PNGs in object storage, keyed by UUID, with the key on `tb_ads.image_key`.
+The driver is chosen automatically: Supabase Storage when `SUPABASE_URL` and
+`SUPABASE_SERVICE_ROLE_KEY` are set, otherwise local disk under `.data/ads`.
+Local is for development and logs an error if it finds itself running in
+production, where images would not survive a redeploy or be shared between
+instances.
+
+Everything is served through `GET /api/ads/[id]` rather than straight from
+storage, so the driver stays an implementation detail, `?download=1` can set a
+filename whatever the backend, and the storage key doubles as a strong ETag
+(it changes on every remix, so caching is correct without invalidation).
+A remix deletes the image it replaced.
+
+### Auth — `middleware.ts`
+
+HTTP Basic over the whole app, except `/lp/*` and the brand assets those pages
+load — landing pages exist to be sent to a prospect. In production the app
+returns 503 when `APP_USER`/`APP_PASSWORD` are unset, rather than running open;
+in development it skips auth unless they are set. Credentials are compared
+without short-circuiting on the first differing byte.
+
+### Spend caps — `lib/limits.ts`
+
+Checked before any image is rendered or any row written:
+
+- `MAX_ADS_PER_REQUEST` (default 4) — caps the per-request fan-out
+- `DAILY_AD_LIMIT` (default 50) — counts `tb_ads` rows since midnight UTC
+
+Both refuse with a 429 naming the actual counts.
+
+### Smaller fixes
+
+| Fix | Where |
+| --- | --- |
+| `next/image` allowed remote images from `hostname: "**"`; now only the two logo hosts actually used | `next.config.mjs` |
+| Database TLS certificates were never verified; now verified unless `PGSSL_NO_VERIFY=1`, which logs a warning | `lib/db.ts` |
+| The landing page queried the database twice; now deduped with React `cache()` | `app/lp/[id]/page.tsx` |
+| `POST /api/research` was dead code, along with `researchFirm()` | deleted |
+| `LOGO_DEV_TOKEN` undocumented, `PARALLEL_KEY`/`EXA_KEY` documented but unread | `.env.example` |
+
+## What has and has not been exercised
+
+**Verified:** production build and type-check clean; the app serves; Basic auth
+returns 401/200 correctly and leaves `/lp/*` public; the storage layer
+round-trips a PNG and rejects path traversal; the matcher produces sensible,
+differentiated peers across all nine challenges; all 23 vault domains were
+checked to resolve, and the flagged ones checked to be the right company.
+
+**Not verified, because it needs credentials and spend:** no ad has been
+rendered. The image prompt was rewritten wholesale for an illustrated brand and
+has never been run against `gpt-image-2`. Expect to iterate on it — that is the
+first thing to look at once a key is in place.
+
+**Also unverified:** nothing has run against a real Postgres, so `ensureSchema()`
+applying `supabase/schema.sql` is type-correct but untested, as is the Supabase
+Storage driver.

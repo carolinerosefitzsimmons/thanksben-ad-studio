@@ -8,7 +8,7 @@ import LoadingDots from "./LoadingDots";
 import Sources from "./Sources";
 import SelectWizard from "./SelectWizard";
 import type { Ad, FirmResearch, Office } from "@/lib/types";
-import { vendor, palette, assets, market, label, brandGaps } from "@/lib/brand";
+import { vendor, palette, assets, market, label, brandGaps, withArticle } from "@/lib/brand";
 
 type Phase = "empty" | "researching" | "selecting" | "generating" | "done";
 
@@ -167,10 +167,8 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
   }
 
   function download(ad: Ad) {
-    const a = document.createElement("a");
-    a.href = ad.imageDataUri;
-    a.download = `${vendor.name}-${(firm?.firmDomain || "ad").replace(/\W+/g, "-")}-${ad.specialty.replace(/\W+/g, "-").toLowerCase()}.png`;
-    a.click();
+    // Content-Disposition is set by the route, so this works cross-driver.
+    window.location.href = `/api/ads/${ad.id}?download=1`;
   }
 
   /* ---------- Empty state ---------- */
@@ -188,7 +186,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && research()}
-              placeholder={`Enter a ${label(market.prospectNoun, "prospect")} URL  (e.g. example.com)`}
+              placeholder={`Enter ${withArticle(label(market.prospectNoun, "prospect"))} URL  (e.g. ${market.exampleProspectDomain})`}
               className="w-full bg-transparent px-4 pt-4 pb-2 text-[15px] outline-none placeholder:text-faint"
               autoFocus
             />
@@ -282,7 +280,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
                         {remixing[ad.id] ? (
                           <LoadingDots />
                         ) : (
-                          <img src={ad.imageDataUri} alt={ad.headline} onLoad={scrollBottom} className="w-full rounded-xl border border-line" />
+                          <img src={ad.imageUrl} alt={ad.headline} onLoad={scrollBottom} className="w-full rounded-xl border border-line" />
                         )}
                         <div className="mt-2 flex items-center gap-1">
                           <IconBtn title="Download" onClick={() => download(ad)}><DownloadOutlinedIcon style={{ fontSize: 18 }} /></IconBtn>

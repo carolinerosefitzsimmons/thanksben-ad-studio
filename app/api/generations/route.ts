@@ -10,8 +10,8 @@ export async function GET() {
     const { rows } = await query(
       `select g.id, g.firm_name, g.firm_url, g.location, g.created_at,
               count(a.id)::int as ad_count
-         from lag_generations g
-         left join lag_ads a on a.generation_id = g.id
+         from tb_generations g
+         left join tb_ads a on a.generation_id = g.id
         group by g.id
         order by g.created_at desc
         limit 100`,

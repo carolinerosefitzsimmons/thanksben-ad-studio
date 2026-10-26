@@ -1,10 +1,11 @@
-// Tailored landing-page content for a firm. Cheap (one Haiku call + a DB logo match) — the expensive
-// hero image is generated once and reused (public/landing-hero.png).
+// Tailored landing-page content for a prospect. Cheap (one model call + a DB logo match) — the
+// expensive hero image is generated once and reused (see assets.landingHero in lib/brand.ts).
 import { matchLogos } from "./match";
+import { vendor, market } from "./brand";
 import type { FirmResearch, Specialty } from "./types";
 
 export interface LandingData {
-  headline: string; // hero headline, Legora voice, tailored to the firm's practice
+  headline: string; // hero headline, vendor voice, tailored to the prospect's segment
   subhead: string; // hero subline
   points: { title: string; body: string }[]; // 3 tailored value props (currently unused in the page)
   logos: { name: string; domain: string; logoUrl: string | null }[]; // social-proof peer firms
@@ -12,7 +13,7 @@ export interface LandingData {
 
 const FALLBACK = (firm: FirmResearch, sp: Specialty): Omit<LandingData, "logos"> => ({
   headline: `Collaborative AI for ${sp.name.toLowerCase()} teams.`,
-  subhead: `The AI workspace helping ${firm.firmName}'s ${sp.name.toLowerCase()} lawyers do more.`,
+  subhead: `The AI workspace helping ${firm.firmName}'s ${sp.name.toLowerCase()} team do more.`,
   points: [
     { title: "Draft faster", body: "Produce first drafts and review documents in a fraction of the time." },
     { title: "Research deeper", body: "Interrogate thousands of documents and sources at once." },
@@ -31,17 +32,17 @@ async function genCopy(firm: FirmResearch, sp: Specialty): Promise<Omit<LandingD
         model: "claude-sonnet-5",
         max_tokens: 3000,
         system:
-          "You write landing-page copy for Legora, a premium collaborative legal-AI SOFTWARE platform that law firms buy to help their lawyers work faster. Legora is a VENDOR/TOOL, never a law firm. Voice: confident, elegant, understated (echoing 'Collaborative AI for exceptional lawyers'). No hype, no exclamation marks, no emojis, no clichés.",
+          `You write landing-page copy for ${vendor.name}, ${vendor.descriptor} — SOFTWARE that ${market.prospectNounPlural} buy to help their ${market.practitionerNounPlural} work faster. ${vendor.name} is a VENDOR/TOOL, never a ${market.prospectNoun}. Voice: confident, elegant, understated (echoing '${vendor.landingVoiceLine}'). No hype, no exclamation marks, no emojis, no clichés.`,
         messages: [
           {
             role: "user",
             content: `Write a tailored landing page for ${firm.firmName}${firm.location && firm.location !== "Unknown" ? ` (${firm.location})` : ""}.
-ABOUT: ${firm.summary || "law firm"}
-LEAD PRACTICE: ${sp.name}${sp.blurb ? ` — ${sp.blurb}` : ""}
+ABOUT: ${firm.summary || market.prospectNoun}
+LEAD ${market.segmentLabel.toUpperCase()}: ${sp.name}${sp.blurb ? ` — ${sp.blurb}` : ""}
 SECTORS: ${sp.industries.join(", ") || "various"}
 
 Return STRICT JSON (no markdown):
-{"headline":"4-8 words. Must make UNMISTAKABLY clear Legora is AI SOFTWARE that helps lawyers with ${sp.name} work — NOT a firm slogan. It must contain the word 'AI'. Good patterns: 'AI built for ${sp.name.toLowerCase()} teams', 'Collaborative AI for ${sp.name.toLowerCase()} lawyers', 'The AI workspace for ${sp.name.toLowerCase()}'. BAD (sounds like the firm's own tagline): '${sp.name}, without compromise.'","subhead":"one line (max 14 words) positioning Legora as the tool that helps ${firm.firmName}'s ${sp.name} lawyers","points":[{"title":"2-3 words","body":"max 16 words, concrete to how ${sp.name} teams would use Legora"}]}
+{"headline":"4-8 words. Must make UNMISTAKABLY clear ${vendor.name} is AI SOFTWARE that helps with ${sp.name} work — NOT the prospect's own slogan. It must contain the word 'AI'. Good patterns: 'AI built for ${sp.name.toLowerCase()} teams', 'The AI workspace for ${sp.name.toLowerCase()}'. BAD (sounds like their own tagline): '${sp.name}, without compromise.'","subhead":"one line (max 14 words) positioning ${vendor.name} as the tool that helps ${firm.firmName}'s ${sp.name} team","points":[{"title":"2-3 words","body":"max 16 words, concrete to how ${sp.name} teams would use ${vendor.name}"}]}
 Return exactly 3 points. No markdown.`,
           },
         ],
@@ -62,8 +63,8 @@ Return exactly 3 points. No markdown.`,
     const o = JSON.parse(m[0]) as Partial<Omit<LandingData, "logos">>;
     const points = Array.isArray(o.points) ? o.points.filter((p) => p?.title && p?.body).slice(0, 3) : [];
     const fb = FALLBACK(firm, sp);
-    // Guard: the headline must read as software (mention AI/Legora), not a firm slogan.
-    const headline = o.headline && /\b(ai|legora)\b/i.test(o.headline) ? o.headline : fb.headline;
+    // Guard: the headline must read as software, not the prospect's own slogan.
+    const headline = o.headline && market.landingHeadlineGuard.test(o.headline) ? o.headline : fb.headline;
     return {
       headline,
       subhead: o.subhead || fb.subhead,

@@ -7,10 +7,10 @@ export const dynamic = "force-dynamic";
 
 export async function GET(_req: Request, { params }: { params: { id: string } }) {
   try {
-    const g = await query(`select * from lag_generations where id = $1`, [params.id]);
+    const g = await query(`select * from tb_generations where id = $1`, [params.id]);
     if (!g.rows.length) return NextResponse.json({ error: "Not found" }, { status: 404 });
     const a = await query(
-      `select id, specialty, headline, subhead, image_base64, logos from lag_ads where generation_id = $1 order by created_at`,
+      `select id, specialty, headline, subhead, image_base64, logos from tb_ads where generation_id = $1 order by created_at`,
       [params.id],
     );
     const row: any = g.rows[0];

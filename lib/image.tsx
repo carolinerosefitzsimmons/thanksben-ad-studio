@@ -1,8 +1,10 @@
 import OpenAI, { toFile } from "openai";
+import { vendor, market } from "./brand";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-// Reference ads (real Legora creative) used to steer gpt-image-2 toward the brand's visual language.
+// Reference ads (real vendor creative) used to steer gpt-image-2 toward the brand's visual language.
+// REPLACE these three files with your own creative — they do more work than the prompt text.
 const REF_FILES = ["ad-announcement.png", "ad-testimonial.png", "ad-portrait.png"];
 
 export interface AdInput {
@@ -16,7 +18,7 @@ export interface AdInput {
 }
 
 /**
- * Generate a full, on-brand 16:9 Legora ad with gpt-image-2, using the reference ads as style guides,
+ * Generate a full, on-brand 16:9 ad with gpt-image-2, using the reference ads as style guides,
  * rendering the supplied copy, and compositing the ACTUAL peer-firm logos passed in. Returns base64 PNG.
  */
 export async function generateAd(opts: AdInput): Promise<string> {
@@ -34,16 +36,16 @@ export async function generateAd(opts: AdInput): Promise<string> {
 
   const proof =
     logoFiles.length > 0
-      ? `\n\nAfter the 3 style references, the next ${logoFiles.length} image(s) are the ACTUAL logos of peer firms that already use Legora (${logoNames.join(
+      ? `\n\nAfter the 3 style references, the next ${logoFiles.length} image(s) are the ACTUAL logos of peer organisations that already use ${vendor.name} (${logoNames.join(
           ", ",
         )}). Place these real logos — reproduced FAITHFULLY, not redrawn, recoloured, renamed or distorted — in a single tasteful "Trusted by" row near the bottom, evenly spaced, sized consistently. Do NOT write the firm names as text; use the supplied logos.`
       : "";
 
-  const prompt = `Create ONE premium 16:9 landscape advertisement for "Legora" — a collaborative legal-AI platform for law firms — in the EXACT visual language of the first 3 reference images: cinematic, editorial, sophisticated; muted elegant tones; generous negative space; a clean top bar with the wordmark "LEGORA" on the left and a small four-point star icon on the right; refined restrained typography.
+  const prompt = `Create ONE premium 16:9 landscape advertisement for "${vendor.name}" — ${vendor.descriptor} for ${market.prospectNounPlural} — in the EXACT visual language of the first 3 reference images: ${vendor.visualLanguage}. A clean top bar carries the wordmark "${vendor.wordmarkText}" on the left and ${vendor.markDescription} on the right.
 
-Personalise it for the law firm "${opts.firmName}"${
+Personalise it for the ${market.prospectNoun} "${opts.firmName}"${
     opts.location && opts.location !== "Unknown" ? ` in ${opts.location}` : ""
-  }, speaking to their ${opts.specialty} practice.
+  }, speaking to their ${opts.specialty} ${market.segmentLabel}.
 
 Render this copy crisply, spelled EXACTLY and legibly:
 - Headline (large): "${opts.headline}"
@@ -51,11 +53,11 @@ Render this copy crisply, spelled EXACTLY and legibly:
 
 Background: a cinematic, photoreal scene set in ${
     opts.market ? `${opts.market.city}, ${opts.market.country}` : opts.location
-  } — feature that city's recognisable skyline / architecture, moody, premium, in the Legora campaign style. ${
+  } — feature that city's recognisable skyline / architecture, moody, premium, in the ${vendor.name} campaign style. ${
     opts.market
-      ? `Feature a real, dignified legal professional who authentically reflects the local ${opts.market.city} (${opts.market.country}) business community and demographics. `
+      ? `Feature a real, dignified professional who authentically reflects the local ${opts.market.city} (${opts.market.country}) business community and demographics. `
       : ""
-  }The ONLY typographic brand mark is the LEGORA wordmark + the four-point star.${proof}
+  }The ONLY typographic brand mark is the ${vendor.wordmarkText} wordmark + ${vendor.markDescription}.${proof}
 
 Keep every provided word accurate; do not invent text. 16:9 composition.`;
 

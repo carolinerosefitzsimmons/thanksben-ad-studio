@@ -1,4 +1,4 @@
-export interface LegoraClient {
+export interface VaultClient {
   name: string;
   domain: string;
   logoUrl: string | null;
@@ -10,9 +10,9 @@ export interface LegoraClient {
 }
 
 export interface Specialty {
-  name: string; // e.g. "M&A / Corporate"
+  name: string; // one of the prospect's segments
   industries: string[]; // client sectors it serves
-  blurb?: string; // short description of the firm's strength here
+  blurb?: string; // short description of their strength here
 }
 
 export interface Office {

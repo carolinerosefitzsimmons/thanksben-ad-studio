@@ -3,8 +3,9 @@
 // (og:image / apple-touch-icon / an <img> whose src says "logo", incl. SVG) -> Google favicon.
 // Everything is normalised to a square PNG on white via sharp so gpt-image-2 gets clean inputs.
 import sharp from "sharp";
+import { vendor } from "./brand";
 
-const UA = "Mozilla/5.0 (compatible; LegoraAdGen/1.0)";
+const UA = `Mozilla/5.0 (compatible; ${vendor.name}-AdStudio/1.0)`;
 
 async function get(url: string, ms = 9000): Promise<{ buf: Buffer; ct: string } | null> {
   try {

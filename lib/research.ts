@@ -1,4 +1,5 @@
 import type { FirmResearch } from "./types";
+import { vendor, market } from "./brand";
 
 export function normalizeUrl(input: string): { url: string; domain: string } {
   let u = input.trim();
@@ -39,7 +40,7 @@ export async function scrapeSite(url: string): Promise<string> {
   }
   // Fallback: plain fetch + crude tag strip.
   try {
-    const res = await fetch(url, { headers: { "user-agent": "Mozilla/5.0 (LegoraAdGen/0.1)" } });
+    const res = await fetch(url, { headers: { "user-agent": `Mozilla/5.0 (${vendor.name}-AdStudio/0.1)` } });
     const html = await res.text();
     return html
       .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -52,15 +53,10 @@ export async function scrapeSite(url: string): Promise<string> {
   }
 }
 
-const REGIONS = [
-  "UK & Ireland", "Nordics", "DACH", "Benelux", "Southern Europe", "France",
-  "Central & Eastern Europe", "North America", "Middle East", "Asia-Pacific", "Global",
-];
-
-const SYSTEM = `You analyse a law firm's website text and extract a structured profile for a marketing tool. Return STRICT JSON only, no prose.`;
+const SYSTEM = `You analyse a ${market.prospectNoun}'s website text and extract a structured profile for a marketing tool. Return STRICT JSON only, no prose.`;
 
 function prompt(domain: string, siteText: string): string {
-  return `LAW FIRM DOMAIN: ${domain}
+  return `${market.prospectNoun.toUpperCase()} DOMAIN: ${domain}
 WEBSITE TEXT:
 ${siteText}
 
@@ -68,15 +64,15 @@ Extract this JSON (no markdown, no commentary):
 {
   "firmName": "the firm's name",
   "location": "primary HQ as 'City, Country' (best guess if needed)",
-  "region": one of ${JSON.stringify(REGIONS)} (closest bucket for the HQ),
+  "region": one of ${JSON.stringify(market.regions)} (closest bucket for the HQ),
   "summary": "one sentence on what the firm is known for",
   "specialties": [
-    { "name": "a practice area / specialism the firm is known for (e.g. 'M&A / Corporate', 'Competition & Antitrust', 'Real Estate', 'Disputes & Litigation', 'Employment', 'IP & Technology', 'Banking & Finance', 'Life Sciences')",
-      "industries": ["client sectors this practice serves, e.g. 'Financial Services','Energy','Technology','Life Sciences','Real Estate'"],
-      "blurb": "a few words on the firm's strength here" }
+    { "name": "a ${market.segmentLabel} they are known for (e.g. ${market.segmentExamples.map((e) => `'${e}'`).join(", ")})",
+      "industries": ["client sectors this ${market.segmentLabel} serves, e.g. ${market.sectorExamples.map((e) => `'${e}'`).join(", ")}"],
+      "blurb": "a few words on their strength here" }
   ]
 }
-Rules: return 2-6 of the firm's MOST prominent specialties (the ones it leads with), most important first. If the text is thin, infer sensibly from the firm name and what is visible. Always return at least one specialty.`;
+Rules: return 2-6 of their MOST prominent ${market.segmentLabelPlural} (the ones they lead with), most important first. If the text is thin, infer sensibly from the name and what is visible. Always return at least one.`;
 }
 
 export async function researchFirm(rawUrl: string): Promise<FirmResearch> {
@@ -124,7 +120,7 @@ export async function researchFirm(rawUrl: string): Promise<FirmResearch> {
     location: o.location || "Unknown",
     region: (o.region as string) || null,
     summary: o.summary || "",
-    specialties: specialties.length ? specialties : [{ name: "Legal Services", industries: [], blurb: "" }],
+    specialties: specialties.length ? specialties : [{ name: "General", industries: [], blurb: "" }],
     offices: Array.isArray(o.offices) ? o.offices : [],
   };
 }

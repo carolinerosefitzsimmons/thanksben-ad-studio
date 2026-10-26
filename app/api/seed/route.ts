@@ -19,7 +19,7 @@ interface RawClient {
 
 export async function POST() {
   try {
-    const raw = readFileSync(join(process.cwd(), "data", "legora_clients.json"), "utf8");
+    const raw = readFileSync(join(process.cwd(), "data", "clients.json"), "utf8");
     const clients = JSON.parse(raw) as RawClient[];
     let n = 0;
     for (const c of clients) {
@@ -27,7 +27,7 @@ export async function POST() {
       // Bump Google favicon resolution 128 -> 256 for crisper ad logos.
       const logo = (c.logoUrl || "").replace(/sz=128/, "sz=256");
       await query(
-        `insert into legora_clients (name, domain, logo_url, practice_areas, industries, geo_country, geo_region, tier, source_url)
+        `insert into tb_clients (name, domain, logo_url, practice_areas, industries, geo_country, geo_region, tier, source_url)
          values ($1,$2,$3,$4,$5,$6,$7,$8,$9)
          on conflict (domain) do update set
            name=excluded.name, logo_url=excluded.logo_url, practice_areas=excluded.practice_areas,
@@ -47,7 +47,7 @@ export async function POST() {
       );
       n++;
     }
-    const total = await query<{ c: string }>(`select count(*)::text as c from legora_clients`);
+    const total = await query<{ c: string }>(`select count(*)::text as c from tb_clients`);
     return NextResponse.json({ seeded: n, total: Number(total.rows[0].c) });
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 500 });

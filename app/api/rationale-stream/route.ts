@@ -2,6 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { streamText } from "ai";
 import { matchLogos } from "@/lib/match";
 import type { FirmResearch, Office, Specialty } from "@/lib/types";
+import { vendor, market } from "@/lib/brand";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -23,9 +24,9 @@ export async function POST(req: Request) {
     model: anthropic("claude-haiku-4-5"),
     temperature: 0.5,
     system:
-      "You are Legora's ad studio narrating, in first person and present tense, what you're building right now. Warm, concise, specific — never salesy. No preamble, no headings, no bullet points.",
+      `You are ${vendor.name}'s ad studio narrating, in first person and present tense, what you're building right now. Warm, concise, specific — never salesy. No preamble, no headings, no bullet points.`,
     prompt: `I'm creating ${markets.length} ad${markets.length === 1 ? "" : "s"} for ${firm.firmName}.
-Markets: ${cities}. Specialisms to highlight: ${selected.join(", ")}. Peer firms on Legora to feature as social proof: ${peers}.
+Markets: ${cities}. ${market.segmentLabelPlural} to highlight: ${selected.join(", ")}. Peers on ${vendor.name} to feature as social proof: ${peers}.
 
 Write 2-3 short sentences explaining what you're creating and the thinking, e.g. which city skyline and local professional you'll use per market, which capability you're leading on, and that you're featuring ${peers} as proof. Keep it under 55 words total. Present tense ("Creating…", "For ${markets[0]?.city}, I'm…").`,
   });

@@ -8,6 +8,7 @@ import LoadingDots from "./LoadingDots";
 import Sources from "./Sources";
 import SelectWizard from "./SelectWizard";
 import type { Ad, FirmResearch, Office } from "@/lib/types";
+import { vendor, palette, assets, market, label, brandGaps } from "@/lib/brand";
 
 type Phase = "empty" | "researching" | "selecting" | "generating" | "done";
 
@@ -29,6 +30,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
   const [genId, setGenId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const gaps = brandGaps();
   const scrollBottom = () => requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" }));
 
   useEffect(() => {
@@ -87,7 +89,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
         ...data,
         firmDomain: domainFromUrl(url),
         offices: data.offices?.length ? data.offices : [{ city: data.location?.split(",")[0] || "HQ", country: "" }],
-        specialties: data.specialties?.length ? data.specialties : [{ name: "Legal Services", industries: [] }],
+        specialties: data.specialties?.length ? data.specialties : [{ name: "General", industries: [] }],
       };
       setFirm(f);
       setSpecialties([]);
@@ -167,7 +169,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
   function download(ad: Ad) {
     const a = document.createElement("a");
     a.href = ad.imageDataUri;
-    a.download = `legora-${(firm?.firmDomain || "ad").replace(/\W+/g, "-")}-${ad.specialty.replace(/\W+/g, "-").toLowerCase()}.png`;
+    a.download = `${vendor.name}-${(firm?.firmDomain || "ad").replace(/\W+/g, "-")}-${ad.specialty.replace(/\W+/g, "-").toLowerCase()}.png`;
     a.click();
   }
 
@@ -178,7 +180,7 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
         <div className="pointer-events-none absolute inset-0" style={{ backgroundImage: "radial-gradient(55% 45% at 50% 40%, rgba(0,0,0,0.022), transparent 70%)" }} />
         <div className="relative z-10 -mt-8 w-full max-w-2xl">
           <div className="flex justify-center">
-            <img src="/legora-wordmark.svg" alt="Legora" draggable={false} className="w-[500px] max-w-[82%] select-none" />
+            <img src={assets.wordmarkSvg} alt={vendor.name} draggable={false} className="w-[500px] max-w-[82%] select-none" />
           </div>
           {/* pulled up so the bottom quarter of the wordmark tucks behind this white card */}
           <div className="relative z-10 -mt-[20px] rounded-2xl border border-line2 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -186,17 +188,25 @@ export default function Chat({ loadId, onGenerated }: { loadId: string | null; o
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && research()}
-              placeholder="Enter a law firm URL  (e.g. linklaters.com)"
+              placeholder={`Enter a ${label(market.prospectNoun, "prospect")} URL  (e.g. example.com)`}
               className="w-full bg-transparent px-4 pt-4 pb-2 text-[15px] outline-none placeholder:text-faint"
               autoFocus
             />
             <div className="flex items-center justify-end px-3 pb-3 pt-1">
-              <button onClick={research} disabled={!url.trim()} className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition disabled:opacity-30" title="Research firm">
+              <button onClick={research} disabled={!url.trim()} className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition disabled:opacity-30" title="Research prospect">
                 <ArrowUpwardIcon style={{ fontSize: 18 }} />
               </button>
             </div>
           </div>
           {error && <div className="mt-4 text-center text-[13px] text-red-600">{error}</div>}
+          {gaps.length > 0 && (
+            <div className="mt-5 rounded-xl border border-amber-300/70 bg-amber-50 px-4 py-3 text-[13px] leading-relaxed text-amber-900">
+              <span className="font-medium">Setup incomplete.</span> {gaps.length} field
+              {gaps.length === 1 ? "" : "s"} in <code className="rounded bg-amber-100 px-1">lib/brand.ts</code> still
+              hold placeholders, so generation is blocked. Research and selection work; filling those fields unblocks
+              the rest.
+            </div>
+          )}
         </div>
       </div>
     );
@@ -340,7 +350,7 @@ function Assistant({ children, pulse = false }: { children: React.ReactNode; pul
     <div className="mb-6 flex gap-3 fadein">
       <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#eaeaec]">
         <svg viewBox="0 0 24 24" width="15" height="15" className={pulse ? "softpulse" : ""}>
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="#005230" />
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill={palette.primary} />
         </svg>
       </div>
       <div className="min-w-0 flex-1 pt-0.5">{children}</div>

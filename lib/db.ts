@@ -18,7 +18,7 @@ export function getPool(): Pool {
 export function ensureSchema(): Promise<void> {
   if (!schemaReady) {
     schemaReady = (async () => {
-      const sql = readFileSync(join(process.cwd(), "supabase", "legora_schema.sql"), "utf8");
+      const sql = readFileSync(join(process.cwd(), "supabase", "schema.sql"), "utf8");
       await getPool().query(sql);
     })().catch((e) => {
       schemaReady = null; // allow retry on next request if it failed

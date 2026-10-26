@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     const label = `${market.city} · ${specialty.name}`;
 
     await query(
-      `update lag_ads set headline=$1, subhead=$2, image_base64=$3, logos=$4, specialty=$5 where id=$6`,
+      `update tb_ads set headline=$1, subhead=$2, image_base64=$3, logos=$4, specialty=$5 where id=$6`,
       [headline, subhead, imageB64, JSON.stringify(logoMeta), label, adId],
     );
 

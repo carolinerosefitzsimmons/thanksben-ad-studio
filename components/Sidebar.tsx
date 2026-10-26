@@ -2,7 +2,7 @@
 
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import { LegoraWordmark, LegoraMark } from "./LegoraLogo";
+import { BrandWordmark, BrandMark } from "./BrandLogo";
 import type { GenerationSummary } from "@/lib/types";
 
 const ICON = { color: "#5b5b63" };
@@ -73,12 +73,12 @@ export default function Sidebar({
       <div className="flex items-center justify-between h-14 px-3">
         {collapsed ? (
           <button onClick={onToggle} className="mx-auto rounded-lg p-1.5 hover:bg-hover" title="Expand sidebar">
-            <LegoraMark />
+            <BrandMark />
           </button>
         ) : (
           <>
             <div className="pl-1.5">
-              <LegoraWordmark />
+              <BrandWordmark />
             </div>
             <button onClick={onToggle} className="rounded-lg p-1.5 hover:bg-hover" title="Collapse sidebar">
               <SidebarPanelIcon />

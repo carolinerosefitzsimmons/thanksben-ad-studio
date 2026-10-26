@@ -48,27 +48,27 @@ unit** — one ad is generated per selected office city.
 Runs `rationale-stream` concurrently purely to mask the wait with narration.
 
 Per request:
-1. Insert a `lag_generations` row → `generationId`.
+1. Insert a `tb_generations` row → `generationId`.
 2. Kick off `buildLanding()` in parallel (cheap: one Sonnet call + logo match).
 3. `genCopy()` **once** — copy is about the practice, not the city.
 4. `Promise.all` over markets; per market:
    - `matchLogos()` → 3 peer firms from the vault
    - `fetchLogoPng()` → real logo PNGs
    - `generateAd()` → `gpt-image-2`
-   - insert a `lag_ads` row
+   - insert a `tb_ads` row
 5. Return base64 data URIs to the client.
 
 ## The three pieces of actual IP
 
-### a. The knowledge vault — `data/legora_clients.json`
+### a. The knowledge vault — `data/tb_clients.json`
 
 81 Legora customers, deduped by registrable domain, each tagged with
 `practiceAreas`, `industries`, `geo{country,region}`, `tier`, `sourceUrl`,
 `evidence`. Harvested via Firecrawl `/map` + sitemap + Exa, then tagged in
-batches of 8 by Haiku. See `data/HARVEST_NOTES.md` for the full provenance and
+batches of 8 by Haiku. See `data/reference/HARVEST_NOTES.md` for the full provenance and
 caveats — **read it before rebuilding this for a new vendor.**
 
-Loaded into the `legora_clients` Postgres table by `POST /api/seed`.
+Loaded into the `tb_clients` Postgres table by `POST /api/seed`.
 (`npm run seed` is broken — `scripts/seed.mjs` doesn't exist. Use the route.)
 
 ### b. The matcher — `lib/match.ts`
@@ -88,7 +88,7 @@ firm's own domain** — several prospects (Linklaters, Cleary) are themselves
 Legora customers, and the fix for showing a firm its own logo as social proof
 is at `lib/match.ts:44-46`.
 
-### c. The capability library — `data/legora_capabilities.json`
+### c. The capability library — `data/capabilities.json`
 
 42 rows, each with a `technical` description **and** a `prospect` rendering in
 plain language. Only the `prospect` field ever reaches a prompt — a prospect
@@ -135,11 +135,11 @@ every logo to a 360×360 PNG on white via `sharp` first, sourcing from
 logo.dev → the firm's own site (`og:image`, `apple-touch-icon`, any `<img>`
 whose tag matches `/logo/i`) → Google favicon.
 
-## Data model — `supabase/legora_schema.sql`
+## Data model — `supabase/schema.sql`
 
-- `legora_clients` — the vault (unique on `domain`)
-- `lag_generations` — one row per session; `specialties` and `landing` as JSONB
-- `lag_ads` — one row per ad; **`image_base64 text`**
+- `tb_clients` — the vault (unique on `domain`)
+- `tb_generations` — one row per session; `specialties` and `landing` as JSONB
+- `tb_ads` — one row per ad; **`image_base64 text`**
 
 `lib/db.ts:ensureSchema()` runs the whole schema file on the first query of each
 server process, so there is no migration step.
@@ -148,30 +148,52 @@ server process, so there is no migration step.
 
 | Issue | Where |
 | --- | --- |
-| Ad PNGs stored as base64 **text in Postgres**, served as data URIs. Multi-MB rows, no CDN, no caching. First thing to move to object storage. | `lag_ads.image_base64` |
-| `LOGO_DEV_TOKEN` is read by the code but missing from `.env.example` | `lib/logos.ts:62` |
-| `PARALLEL_KEY` / `EXA_KEY` are documented but never read — they were harvest-time tools only | `.env.example` |
+| Ad PNGs stored as base64 **text in Postgres**, served as data URIs. Multi-MB rows, no CDN, no caching. First thing to move to object storage. | `tb_ads.image_base64` |
 | `POST /api/research` is dead code; the UI only uses `research-stream` | `app/api/research/route.ts` |
-| `npm run seed` points at a file that doesn't exist | `package.json` |
 | `ssl: { rejectUnauthorized: false }` | `lib/db.ts:12` |
 | No auth, no rate limiting, no spend cap — every `/api/generate` is a billable `gpt-image-2` call | all routes |
 | `next.config.mjs` allows remote images from `hostname: "**"` | `next.config.mjs` |
 | `generateMetadata` in `/lp/[id]` queries the DB separately from the page body — two round trips | `app/lp/[id]/page.tsx` |
 
-## What v2 has to replace
+## Rebrand status
 
-The architecture is vendor-agnostic; the *content* is entirely Legora's.
+The v2 rebrand moved every vendor- and market-specific string into
+**`lib/brand.ts`** — the seam. Nothing else in the codebase names the vendor or
+the market. `brandGaps()` walks that config and reports any field still holding
+a `REPLACE` placeholder; `POST /api/generate` refuses with a 400 listing them,
+and the empty state shows a setup banner, so a placeholder can never reach a
+rendered ad.
 
-1. **`data/legora_clients.json`** → thanksben AI's own customer list, tagged on
-   whatever axes matter for its market (not `practiceAreas`).
-2. **`data/legora_capabilities.json`** → what thanksben AI actually does, with
-   the same `technical`/`prospect` split and `adWorthy`/`confidence` gating.
-3. **`assets/refs/*.png`** → thanksben AI reference creative. These three images
-   are what make the output look on-brand; generic refs produce generic ads.
-4. **Brand surface** — `public/legora-*`, the `#005230` green, the four-point
-   star in `components/Chat.tsx:343`, the wordmark, `tailwind.config.ts`.
-5. **Prompt vocabulary** — `lib/copy.ts` and `lib/landing.ts` hard-code
-   "Legora", "law firm", "practice area", "partner". The *constraints* transfer;
-   the nouns do not.
-6. **Table names** — `legora_clients`, `lag_*` (prefixed to share a Supabase
-   project with another app called vendor-radar).
+### Done
+
+| Was | Now |
+| --- | --- |
+| "Legora" in 6 prompt files | `vendor.name` / `vendor.descriptor` / `vendor.voiceLine` |
+| "law firm", "lawyer", "partner", "practice area" | `market.*` nouns |
+| Region buckets duplicated in two files | `market.regions`, single source |
+| `MARQUEE` regex of UK/US firm names | `vault.marqueePattern` |
+| `#005230` / `#0b3d2e` / `#f1f6f3` inline | `palette.*`, re-exported as Tailwind `brand` / `branddeep` / `brandsoft` |
+| `components/LegoraLogo.tsx` | `components/BrandLogo.tsx`, colours from `palette` |
+| `legora_clients`, `lag_generations`, `lag_ads` | `tb_clients`, `tb_generations`, `tb_ads` |
+| `supabase/legora_schema.sql` | `supabase/schema.sql` |
+| `interface LegoraClient` | `interface VaultClient` |
+| Legora's 81 customers / 42 capabilities | empty `data/clients.json` + `data/capabilities.json`, originals kept under `data/reference/` as worked examples |
+
+### Remaining — needs thanksben's own information
+
+1. **Fill `lib/brand.ts`.** 16 placeholder fields. Each carries the Legora value
+   in a comment to show the register it wants.
+2. **Build `data/clients.json`.** Your own customers, tagged. Read
+   `data/reference/HARVEST_NOTES.md` first — it documents the method and the
+   traps, including that Clearbit's logo CDN is dead.
+3. **Build `data/capabilities.json`.** Keep the `technical`/`prospect` split and
+   the `adWorthy` / `confidence` gates; `data/SCHEMA.md` explains why each
+   matters.
+4. **Replace `assets/refs/*.png`** with thanksben's own creative. These three
+   images set the visual identity of every generated ad and nothing else in the
+   system compensates for generic ones.
+5. **Replace `public/legora-*` and `public/landing-hero.png`**, then point
+   `assets.*` in `lib/brand.ts` at the new files.
+6. **Re-point `public/logos/`** — 57 pre-rendered grey law-firm wordmarks, used
+   by the landing page's trusted-by row. Regenerate with
+   `scripts/fetch-client-logos.mjs` once `data/clients.json` is populated.

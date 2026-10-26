@@ -1,6 +1,6 @@
-// What Legora actually does, rendered for a prospect who has never heard the product names.
-// Source of truth: data/legora_capabilities.json (42 rows, mirroring Legora's own feature breakdown).
-import caps from "@/data/legora_capabilities.json";
+// What the product actually does, rendered for a prospect who has never heard the product names.
+// Source of truth: data/capabilities.json. See data/SCHEMA.md for the row shape.
+import caps from "@/data/capabilities.json";
 import type { Specialty } from "./types";
 
 export interface Capability {
@@ -36,6 +36,13 @@ function seed(s: string): number {
  * Practice-tagged matches rank first; untagged (universal) ones fill the rest.
  */
 export function capabilityBrief(specialty: Specialty, firmName: string, limit = 9): string {
+  if (!ALL.length) {
+    console.error(
+      "[capabilities] data/capabilities.json is empty — ad copy has nothing concrete to work from " +
+        "and will come out generic. See data/SCHEMA.md.",
+    );
+    return "";
+  }
   const specTok = toks(`${specialty.name} ${specialty.blurb ?? ""}`);
   const indTok = toks(specialty.industries.join(" "));
 

@@ -1,7 +1,8 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { LegoraWordmark } from "./LegoraLogo";
+import { BrandWordmark } from "./BrandLogo";
 import type { LandingData } from "@/lib/landing";
+import { palette, assets } from "@/lib/brand";
 
 const NAV = ["Product", "Solutions", "Security", "Customers", "Company"];
 
@@ -11,7 +12,7 @@ function ArrowCircle({ dark = false }: { dark?: boolean }) {
       className="flex h-7 w-7 items-center justify-center rounded-full"
       style={{ background: dark ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.9)" }}
     >
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={dark ? "#ffffff" : "#0b3d2e"} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={dark ? palette.onPrimary : palette.primaryDeep} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 12h14M13 6l6 6-6 6" />
       </svg>
     </span>
@@ -20,7 +21,7 @@ function ArrowCircle({ dark = false }: { dark?: boolean }) {
 
 function BookDemo({ className = "" }: { className?: string }) {
   return (
-    <a href="#" className={`inline-flex items-center gap-2.5 rounded-full bg-[#0b3d2e] py-1.5 pl-5 pr-1.5 text-[14px] font-medium text-white ${className}`}>
+    <a href="#" className={`inline-flex items-center gap-2.5 rounded-full bg-branddeep py-1.5 pl-5 pr-1.5 text-[14px] font-medium text-white ${className}`}>
       Book a demo
       <ArrowCircle dark />
     </a>
@@ -39,7 +40,7 @@ export default function LandingPage({ firmName, location, landing }: { firmName:
         <div className="relative flex-1 overflow-hidden">
           {/* hero image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/landing-hero.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={assets.landingHero} alt="" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%)" }} />
 
           {/* nav */}
@@ -52,7 +53,7 @@ export default function LandingPage({ firmName, location, landing }: { firmName:
               ))}
             </div>
             <div className="absolute left-1/2 -translate-x-1/2">
-              <LegoraWordmark fill="#ffffff" height={22} />
+              <BrandWordmark fill={palette.onPrimary} height={22} />
             </div>
             <div className="flex items-center gap-5 text-[14px]">
               <a href="#" className="text-white/90 hover:text-white">

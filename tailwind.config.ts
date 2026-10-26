@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { palette } from "./lib/brand";
 
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
@@ -14,7 +15,11 @@ const config: Config = {
         sub: "#5b5b63", // dark-grey (icons/secondary)
         faint: "#8a8a92",
         hover: "#e7e7e9", // sidebar item hover (sits on #F1F1F2)
-        brand: "#1a1a1a",
+        // Brand colours live in lib/brand.ts — change them there, not here.
+        brand: palette.primary,
+        brandsoft: palette.primarySoft,
+        branddeep: palette.primaryDeep,
+        ink2: "#1a1a1a",
       },
       borderRadius: { panel: "14px" },
       fontFamily: {

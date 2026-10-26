@@ -5,6 +5,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import type { FirmResearch } from "@/lib/types";
+import { palette, market, label } from "@/lib/brand";
 
 // Two-step, paginated selection card (Claude-style) that sits where the input would be.
 export default function SelectWizard({
@@ -27,7 +28,7 @@ export default function SelectWizard({
 
   const steps = [
     {
-      title: "Select the specialism(s) to create ads for",
+      title: `Select the ${label(market.segmentLabelPlural, "specialisms")} to create ads for`,
       hint: "Choose one or more — each is highlighted in the ad.",
       rows: firm.specialties.map((s) => ({
         key: s.name,
@@ -79,11 +80,11 @@ export default function SelectWizard({
             key={r.key}
             onClick={r.onClick}
             className={`flex w-full items-center gap-3 rounded-xl border px-3.5 py-2.5 text-left transition ${
-              r.selected ? "border-[#005230]/45 bg-[#f1f6f3]" : "border-transparent hover:bg-hover"
+              r.selected ? "border-brand/45 bg-brandsoft" : "border-transparent hover:bg-hover"
             }`}
           >
-            <span className={`flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-2 transition ${r.selected ? "border-[#005230] bg-[#005230]" : "border-[#c4c4cc]"}`}>
-              {r.selected && <CheckIcon style={{ fontSize: 12, color: "#fff" }} />}
+            <span className={`flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-2 transition ${r.selected ? "border-brand bg-brand" : "border-[#c4c4cc]"}`}>
+              {r.selected && <CheckIcon style={{ fontSize: 12, color: palette.onPrimary }} />}
             </span>
             <span className="min-w-0">
               <span className="block text-[14px] text-ink">{r.title}</span>

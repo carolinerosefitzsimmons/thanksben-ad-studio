@@ -1,4 +1,4 @@
-// One-off: pre-fetch a logo for every legora_client and bake it into a uniform, grey,
+// One-off: pre-fetch a logo for every row in data/clients.json and bake it into a uniform, grey,
 // transparent wordmark PNG (the Legora "trusted by" aesthetic). Run once; the landing
 // pages just drop in public/logos/<slug>.png — no per-request logo search.
 //
@@ -121,7 +121,7 @@ async function toGreyMark(buf) {
     .toBuffer();
 }
 
-const clients = JSON.parse(readFileSync(join(ROOT, "data", "legora_clients.json"), "utf8")).filter((c) => c.domain);
+const clients = JSON.parse(readFileSync(join(ROOT, "data", "clients.json"), "utf8")).filter((c) => c.domain);
 let ok = 0,
   fail = 0;
 

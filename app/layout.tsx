@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { vendor, market } from "@/lib/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Legora — Ad Studio",
-  description: "Generate hyper-personalised, social-proof ads for any law firm.",
+  title: `${vendor.fullName} — Ad Studio`,
+  description: `Generate hyper-personalised, social-proof ads for any ${market.prospectNoun}.`,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -5,6 +5,7 @@ import { genCopy } from "@/lib/copy";
 import { generateAd } from "@/lib/image";
 import { fetchLogoPng } from "@/lib/logos";
 import { buildLanding } from "@/lib/landing";
+import { brandGaps } from "@/lib/brand";
 import type { FirmResearch, Office, Specialty } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -12,6 +13,18 @@ export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
+    // Refuse rather than render a placeholder into a real ad. See lib/brand.ts.
+    const gaps = brandGaps();
+    if (gaps.length) {
+      return NextResponse.json(
+        {
+          error:
+            `lib/brand.ts is not configured yet — ${gaps.length} field(s) still hold placeholders: ` +
+            `${gaps.join(", ")}. Fill them in before generating, or the ad will carry "REPLACE" text.`,
+        },
+        { status: 400 },
+      );
+    }
     if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(
         { error: "OPENAI_API_KEY not set. Add your OpenAI key to .env.local to generate ads." },
@@ -36,7 +49,7 @@ export async function POST(req: Request) {
         : [{ city: (firm.location.split(",")[0] || firm.firmName).trim(), country: locationCountry(firm.location) || "" }];
 
     const gen = await query<{ id: string }>(
-      `insert into lag_generations (firm_url, firm_name, firm_domain, location, specialties, summary)
+      `insert into tb_generations (firm_url, firm_name, firm_domain, location, specialties, summary)
        values ($1,$2,$3,$4,$5,$6) returning id`,
       [`https://${firm.firmDomain}`, firm.firmName, firm.firmDomain, firm.location, JSON.stringify(firm.specialties), firm.summary],
     );
@@ -45,7 +58,7 @@ export async function POST(req: Request) {
     // Build the tailored landing page (cheap: copy + logo match) and store it on the generation —
     // the hero image is generated once and reused, so per-firm cost stays low. Runs in parallel.
     const landingPromise = buildLanding(firm, primary, useMarkets[0]?.country || locationCountry(firm.location))
-      .then((l) => query(`update lag_generations set landing=$1 where id=$2`, [JSON.stringify(l), generationId]))
+      .then((l) => query(`update tb_generations set landing=$1 where id=$2`, [JSON.stringify(l), generationId]))
       .catch(() => {});
 
     // Copy is about the practice — compute once; image (skyline/person) + logos vary per market.
@@ -76,7 +89,7 @@ export async function POST(req: Request) {
         const label = `${mkt.city} · ${primary.name}`;
         const logoMeta = logos.map((l) => ({ name: l.name, logoUrl: l.logoUrl }));
         const row = await query<{ id: string }>(
-          `insert into lag_ads (generation_id, specialty, headline, subhead, image_base64, logos)
+          `insert into tb_ads (generation_id, specialty, headline, subhead, image_base64, logos)
            values ($1,$2,$3,$4,$5,$6) returning id`,
           [generationId, label, headline, subhead, imageB64, JSON.stringify(logoMeta)],
         );

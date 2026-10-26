@@ -1,5 +1,6 @@
 import { query } from "./db";
-import type { LegoraClient, Specialty } from "./types";
+import type { VaultClient, Specialty } from "./types";
+import { vault } from "./brand";
 
 interface ClientRow {
   name: string;
@@ -20,11 +21,9 @@ function overlap(a: Set<string>, b: Set<string>): number {
   return n;
 }
 
-const MARQUEE = /magic circle|amlaw|white & case|cleary|linklaters|dentons|goodwin|bird & bird|herbert smith/i;
-
 /**
- * Pick the best social-proof logos for a given specialty + firm region.
- * Prefers peer firms whose practice areas / served industries / geography match.
+ * Pick the best social-proof logos for a given segment + prospect region.
+ * Prefers peers whose taxonomy / served industries / geography match.
  */
 export async function matchLogos(
   specialty: Specialty,
@@ -32,15 +31,15 @@ export async function matchLogos(
   country: string | null,
   limit = 4,
   excludeDomain?: string | null,
-): Promise<LegoraClient[]> {
+): Promise<VaultClient[]> {
   const { rows } = await query<ClientRow>(
     `select name, domain, logo_url, practice_areas, industries, geo_country, geo_region, tier
-       from legora_clients where logo_url is not null`,
+       from tb_clients where logo_url is not null`,
   );
   if (!rows.length) return [];
 
-  // Never show the firm we are pitching in its own "Trusted by" row — they are a prospect,
-  // and several targets (Linklaters, Cleary, ...) are themselves Legora customers in this table.
+  // Never show the organisation we are pitching in its own "Trusted by" row — they are a
+  // prospect, and some targets are themselves customers and so appear in this table.
   const bare = (d: string) => d.toLowerCase().replace(/^www\./, "").trim();
   const exclude = excludeDomain ? bare(excludeDomain) : null;
   const pool = exclude ? rows.filter((r) => bare(r.domain) !== exclude) : rows;
@@ -59,7 +58,7 @@ export async function matchLogos(
     score += overlap(indTok, riTok) * 2; // served-industry match
     if (regionN && r.geo_region && norm(r.geo_region) === regionN) score += 2;
     if (countryN && r.geo_country && norm(r.geo_country) === countryN) score += 1;
-    if (r.tier && MARQUEE.test(`${r.tier} ${r.name}`)) score += 1; // recognizable beats obscure on a tie
+    if (r.tier && vault.marqueePattern.test(`${r.tier} ${r.name}`)) score += 1; // recognizable beats obscure on a tie
     return { r, score };
   });
 

@@ -25,7 +25,7 @@ const config: Config = {
       borderRadius: { panel: "14px" },
       fontFamily: {
         // Ben's landing pages; the studio UI keeps `sans`.
-        ben: ["var(--font-ben)", "Figtree", "-apple-system", "Segoe UI", "sans-serif"],
+        ben: ["Figtree", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
         sans: [
           "-apple-system",
           "BlinkMacSystemFont",
